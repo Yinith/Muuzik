@@ -49,5 +49,5 @@ La web hará una aproximación del valor razonable del instrumento, en función 
 | **Nombre**  | **Correo**  | **Github**  | 
 |---|---|---|
 | Clara Palomares Calvo  | ce.palomares@alumnos.urjc.es   | https://github.com/Yinith   |  
-|  Sergio Arroyo Duque |   |   |
-|  Sergio Guisado Durán |   |   |
+|  Sergio Arroyo Duque |  s.arroyod.2016@alumnos.urjc.es | https://github.com/SergioArroyoDuque  |
+|  Sergio Guisado Durán | s.guisadod@alumnos.urjc.es  |  https://github.com/s-guisadod-green |
