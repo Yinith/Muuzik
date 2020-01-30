@@ -29,6 +29,6 @@ Cuando un usuario publica un anuncio del tipo "Interesado en comprar X", la web 
 La web hará una aproximación del valor razonable del instrumento, en función de la marca o luthier, modelo, año de fabricación, precio de compra y estado de conservación. Tendrá en cuenta el precio de otros anuncios de instrumentos similares publicados por otras personas.
 
 # Integrantes del equipo de desarrollo: Nombre, Apellidos, correo oficial de la universidad y
-Clara Palomares Calvo  -   ce.palomares@alumnos.urjc.es   -  Github: https://github.com/Yinith
+Clara Palomares Calvo  -   ce.palomares@alumnos.urjc.es   -  Github: https://github.com/Yinith  
 Sergio Arroyo Duque    -  
 Sergio Guisado Durán   - 
