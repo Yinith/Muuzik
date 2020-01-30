@@ -29,12 +29,12 @@ Muuzik es una web que ayuda a los músicos a comprar y vender instrumentos y equ
 - Publicar un anuncio de búsqueda.
 
 ## Entidades principales
-- Usuario: Tiene su alias y contraseña, puede ver sus datos, su lista de instrumentos, su lista de anuncios, mensajes enviados, lista de artículos comprados y sus valoraciones.
-- Administrador: Puede eliminar anuncios y mensajes inadecuados o sospechosos, puede suspender cuentas de usuario que se comporten incorrectamente. 
-- Anuncio: Tipo: Venta / Intercambio / Ambos. Contiene un artículo, usuario vendedor, precio (si es venta). Indica si disponible para envío o no. Precio negociable o no.
-- Artículo: Clasificación (Instrumento, Accesorio, Equipo eléctrico...), Estado ("Lo vendo/intercambio", "Lo tengo público" o "Lo tengo privado"), Descripción en texto, Fotos o vídeos.
-- Chat: Asociado a dos usuarios. Lista de mensajes enviados.
-- Mensaje: Texto enviado de un usuario a otro, con un timestamp. Puede estar asociado a un articulo.
+- **Usuario**: Tiene su alias y contraseña, puede ver sus datos, su lista de instrumentos, su lista de anuncios, mensajes enviados, lista de artículos comprados y sus valoraciones.
+- **Administrador**: Puede eliminar anuncios y mensajes inadecuados o sospechosos, puede suspender cuentas de usuario que se comporten incorrectamente. 
+- **Anuncio**: Tipo: Venta / Intercambio / Ambos. Contiene un artículo, usuario vendedor, precio (si es venta). Indica si disponible para envío o no. Precio negociable o no.
+- **Artículo**: Clasificación (Instrumento, Accesorio, Equipo eléctrico...), Estado ("Lo vendo/intercambio", "Lo tengo público" o "Lo tengo privado"), Descripción en texto, Fotos o vídeos.
+- **Chat**: Asociado a dos usuarios. Lista de mensajes enviados.
+- **Mensaje**: Texto enviado de un usuario a otro, con un timestamp. Puede estar asociado a un articulo.
 
 ## Servicio interno
 - **Anuncios de búsqueda inteligentes:**
