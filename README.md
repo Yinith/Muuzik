@@ -24,7 +24,7 @@ Muuzik es una web que ayuda a los músicos a comprar y vender instrumentos y equ
 - Editar un perfil propio con información como la ciudad, estilos musicales, tipo de perfil (intérprete, luthier, productor musical...).
 - Registrar instrumentos y equipo como propios, de manera que se puedan mostrar en el perfil público, o quedar ocultos al resto de usuarios. Especificar si están dispuestos o no a la venta o intercambio.
 - Ver el perfil de otros usuarios, sus artículos en venta, los instrumentos que tengan registrados, y las valoraciones emitidas por otros usuarios.
-- Entablar una conversación con un usuario por chat.
+- Enviar un mensaje a un usuario.
 - Publicar un anuncio de venta.
 - Publicar un anuncio de búsqueda.
 
@@ -33,7 +33,7 @@ Muuzik es una web que ayuda a los músicos a comprar y vender instrumentos y equ
 - **Administrador**: Puede eliminar anuncios y mensajes inadecuados o sospechosos, puede suspender cuentas de usuario que se comporten incorrectamente. 
 - **Anuncio**: Tipo: Venta / Intercambio / Ambos. Contiene un artículo, usuario vendedor, precio (si es venta). Indica si disponible para envío o no. Precio negociable o no.
 - **Artículo**: Clasificación (Instrumento, Accesorio, Equipo eléctrico...), Estado ("Lo vendo/intercambio", "Lo tengo público" o "Lo tengo privado"), Descripción en texto, Fotos o vídeos.
-- **Chat**: Asociado a dos usuarios. Lista de mensajes enviados.
+- **Compra**: Asocia un anuncio a su vendedor y su comprador. Los añade a sus listas de vendidos / comprados y les ofrece la posibilidad de dar una valoración.
 - **Mensaje**: Texto enviado de un usuario a otro, con un timestamp. Puede estar asociado a un articulo.
 
 ## Servicio interno
