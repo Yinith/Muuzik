@@ -30,5 +30,6 @@ La web hará una aproximación del valor razonable del instrumento, en función 
 
 # Integrantes del equipo de desarrollo: Nombre, Apellidos, correo oficial de la universidad y
 Clara Palomares Calvo  -  ce.palomares@alumnos.urjc.es  - Github: @Yinith
+
 Sergio Arroyo Duque    -  
 Sergio Guisado Durán   - 
