@@ -2,7 +2,7 @@
 Compraventa de instrumentos musicales.
 
 # Descripción
-Muuzik es una web que ayuda a los músicos a comprar y vender instrumentos y equipo musical de segunda mano entre particulares. Enfocado a la venta de equipo profesional y especializado, pero también para instrumentos de iniciación. Permite la posibilidad de crear
+Muuzik es una web que ayuda a los músicos a comprar y vender instrumentos y equipo musical de segunda mano entre particulares. Enfocado a la venta de equipo profesional y especializado, pero también para instrumentos de iniciación.
 
 # Funcionalidades públicas
 - Hacer una búsqueda de un cierto artículo por nombre, con posibilidad de filtrado (ciudad del vendedor, precios, fabricante, otras etiquetas).
@@ -29,7 +29,6 @@ Cuando un usuario publica un anuncio del tipo "Interesado en comprar X", la web 
 La web hará una aproximación del valor razonable del instrumento, en función de la marca o luthier, modelo, año de fabricación, precio de compra y estado de conservación. Tendrá en cuenta el precio de otros anuncios de instrumentos similares publicados por otras personas.
 
 # Integrantes del equipo de desarrollo: Nombre, Apellidos, correo oficial de la universidad y
-Clara Palomares Calvo  -  Github: @Yinith  -  ce.palomares@alumnos.urjc.es  -
-
+Clara Palomares Calvo  -  Github: @Yinith  -  ce.palomares@alumnos.urjc.es  
 Sergio Arroyo Duque    -  
 Sergio Guisado Durán   - 
