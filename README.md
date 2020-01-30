@@ -32,10 +32,10 @@ Muuzik es una web que ayuda a los músicos a comprar y vender instrumentos y equ
 
 
 ## Servicio interno
-- Anuncios de búsqueda inteligentes:
+- **Anuncios de búsqueda inteligentes:**
 Cuando un usuario publica un anuncio del tipo "Interesado en comprar X", la web buscará equipo similar entre toda la gente que haya declarado que posee dicho equipo. Si esta información es pública, se le mostrarán dichos perfiles al usuario interesado, para que pueda hacerles una oferta de compra o de intercambio. Tanto si el dueño lo registró de forma pública como privada, se le notificará a este el nombre del usuario que está buscando ese equipo/instrumento, con un enlace al anuncio, al que podrá contestar si lo desea.
 
-- Cálculo del valor aproximado:
+- **Cálculo del valor aproximado:**
 La web hará una aproximación del valor razonable del instrumento, en función de la marca o luthier, modelo, año de fabricación, precio de compra y estado de conservación. Tendrá en cuenta el precio de otros anuncios de instrumentos similares publicados por otras personas.
 
 # Equipo de desarrollo
