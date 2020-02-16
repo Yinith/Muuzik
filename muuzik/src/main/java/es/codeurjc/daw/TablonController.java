@@ -17,17 +17,18 @@ public class TablonController {
 	
 	//Si se abre la URL http://127.0.0.1:8080/h2-console y se configura
 	//la URL JDBC con el valor jdbc:h2:mem:testdb se puede acceder a la 
-	//base de datos de la aplicación
+	//base de datos de la aplicación 
 
 	@Autowired
-	private AnunciosRepository repository;
+	private AnunciosRepository adRepo;
+
 
 	@PostConstruct
 	public void init() {
 		
 		// Añadimos muchos anuncios
-		for(int i = 0; i<100; i++){
-			repository.save(new AnuncioVenta("User "+i, "Anuncio "+i, "Contenido "+i));
+		for(int i = 1; i<=20; i++){
+			adRepo.save(new AnuncioVenta("User "+i, "Anuncio "+i, "Contenido "+i));
 		}
 
 	}
@@ -35,7 +36,7 @@ public class TablonController {
 	@GetMapping("/tablon")
 	public String tablon(Model model, Pageable page) {
 
-		model.addAttribute("anuncios", repository.findAll(page));
+		model.addAttribute("anuncios", adRepo.findAll(page));
 
 		return "tablon";
 	}
@@ -43,7 +44,7 @@ public class TablonController {
 	@PostMapping("/anuncio/nuevo")
 	public String nuevoAnuncio(Model model, AnuncioVenta anuncio) {
 
-		repository.save(anuncio);
+		adRepo.save(anuncio);
 
 		return "anuncio_guardado";
 
@@ -52,7 +53,7 @@ public class TablonController {
 	@GetMapping("/anuncio/{id}")
 	public String verAnuncio(Model model, @PathVariable long id) {
 		
-		Optional<AnuncioVenta> anuncio = repository.findById(id);
+		Optional<AnuncioVenta> anuncio = adRepo.findById(id);
 
 		if(anuncio.isPresent()) {
 			model.addAttribute("anuncio", anuncio.get());
@@ -60,4 +61,5 @@ public class TablonController {
 
 		return "ver_anuncio";
 	}
+
 }
