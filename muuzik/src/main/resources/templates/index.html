@@ -3,15 +3,48 @@
 	<meta charset="UTF-8"/>
 </head>
 <body>
-	<h1>Bienvenido a Muuzik </h1>
+
+   	<p align="center"><font color="#008000" size="20" face="Arial"> Bienvenido a Muuzik</font> </p>
+	
+	<!--<h1><p align="center", style="color:#FF0000";>Bienvenido a Muuzik </p> </h1> -->
 	
 	{{#loggedIn}}
 	<a>Sesión iniciada como {{nick}}.</a><br>
 	{{/loggedIn}}  
 	<br>
 	
-	<a href="nuevoUsuario.html">Registrarse</a><br>
-	<a href="inicio_sesion.html">Iniciar sesión</a><br>
-	<a href="tablon">Tablón de anuncios</a>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+	<p align="center"><br><a href="nuevoUsuario.html" class="btn btn-success">Registrarse</a><br></p>
+	
+	<p align="center"><br><a href="inicio_sesion.html" class="btn btn-success">Iniciar sesión</a><br></p>
+	
+	<p align="center"><br><a href="tablon" class="btn btn-success">Tablón de anuncios</a><br>
+
+
+	
 </body>
 </html>
+
+<!-- <form action="action_page.php" method="post"> -->
+<!--   <div class="imgcontainer"> -->
+<!--     <img src="img_avatar2.png" alt="Avatar" class="avatar"> -->
+<!--   </div> -->
+
+<!--   <div class="container"> -->
+<!--     <label for="uname"><b>Username</b></label> -->
+<!--     <input type="text" placeholder="Enter Username" name="uname" required> -->
+
+<!--     <label for="psw"><b>Password</b></label> -->
+<!--     <input type="password" placeholder="Enter Password" name="psw" required> -->
+
+<!--     <button type="submit">Login</button> -->
+<!--     <label> -->
+<!--       <input type="checkbox" checked="checked" name="remember"> Remember me -->
+<!--     </label> -->
+<!--   </div> -->
+
+<!--   <div class="container" style="background-color:#f1f1f1"> -->
+<!--     <button type="button" class="cancelbtn">Cancel</button> -->
+<!--     <span class="psw">Forgot <a href="#">password?</a></span> -->
+<!--   </div> -->
+<!-- </form> -->
