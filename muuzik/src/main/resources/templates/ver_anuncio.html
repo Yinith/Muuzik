@@ -1,10 +1,12 @@
 <html>
 <body>
-	<p>Nombre: {{anuncio.nombre}}</p>
-	<p>Asunto: {{anuncio.asunto}}</p>
-	<p>Comentario: {{anuncio.comentario}}</p>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+	<p align="center"><font color="#008000" size="20" face="Arial"> Anuncio: {{anuncio.id}}</font> </p>
+	<p align="center">Nombre: {{anuncio.nombre}}</p>
+	<p align="center">Asunto: {{anuncio.asunto}}</p>
+	<p align="center">Comentario: {{anuncio.comentario}}</p>
 	
-	<a href="/tablon?page=0&size=50">Volver al tablón</a>
-	<a href="">Estoy interesado</a>
+	<p align="center"><a href="/tablon/?page=0&size=50" class="btn btn-success">Volver al tablón</a>
+	<a href="" class="btn btn-success">Estoy interesado</a></p>
 </body>
 </html>
