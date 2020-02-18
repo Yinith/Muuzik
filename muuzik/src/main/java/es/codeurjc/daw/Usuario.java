@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+
 @Entity
 public class Usuario {
 	
@@ -20,9 +21,14 @@ public class Usuario {
 	@Column(unique = true)
 	private String nick;
 	private String contrasena;
-	private String info_perfil;
+	private String info_perfil
+	;
 	@OneToMany
 	private List<Anuncio> anuncios;
+	@OneToMany(mappedBy = "remitente")
+	private List<Chat> c1; //Nombre provisional podría ser misChats?
+	@OneToMany(mappedBy = "destinatario")
+	private List<Chat> c2; //Nombre provisional
 
 	
 	public Usuario () {
