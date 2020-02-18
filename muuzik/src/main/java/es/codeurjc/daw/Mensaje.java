@@ -1,6 +1,7 @@
 package es.codeurjc.daw;
 
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,60 +15,36 @@ public class Mensaje {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
-	@Column(unique = true)
-	private String remitente;
-	@Column(unique = true)
-	private String destinatario;
-	private String mensaje;
+	private String cuerpo;
 	private SimpleDateFormat fecha = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy");
 	
-	public Mensaje() {
+	protected Mensaje(){
 		
 	}
-
-	public Mensaje(long id, String remitente, String destinatario, String mensaje, SimpleDateFormat fecha) {
-		super();
-		this.id = id;
-		this.remitente = remitente;
-		this.destinatario = destinatario;
-		this.mensaje = mensaje;
-		this.fecha = fecha;
+	
+	public Mensaje(String s, SimpleDateFormat f) {
+		this.cuerpo = s;
+		this.fecha = f;
 	}
 
-	public long getId() {
-		return id;
-	}
-
-	public String getRemitente() {
-		return remitente;
-	}
-
-	public String getDestinatario() {
-		return destinatario;
-	}
-
-	public String getMensaje() {
-		return mensaje;
+	public String getCuerpo() {
+		return cuerpo;
 	}
 
 	public SimpleDateFormat getFecha() {
 		return fecha;
 	}
 
+	public long getId() {
+		return id;
+	}
+
 	public void setId(long id) {
 		this.id = id;
 	}
 
-	public void setRemitente(String remitente) {
-		this.remitente = remitente;
-	}
-
-	public void setDestinatario(String destinatario) {
-		this.destinatario = destinatario;
-	}
-
-	public void setMensaje(String mensaje) {
-		this.mensaje = mensaje;
+	public void setCuerpo(String cuerpo) {
+		this.cuerpo = cuerpo;
 	}
 
 	public void setFecha(SimpleDateFormat fecha) {
@@ -76,11 +53,7 @@ public class Mensaje {
 
 	@Override
 	public String toString() {
-		return "Mensaje [id=" + id + ", remitente=" + remitente + ", destinatario=" + destinatario + ", mensaje="
-				+ mensaje + ", fecha=" + fecha + "]";
-	}
-			
+		return "Mensaje [id=" + id + ", cuerpo=" + cuerpo + ", fecha=" + fecha + "]";
+	}	
 	
-
 }
-
