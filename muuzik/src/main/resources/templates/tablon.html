@@ -1,15 +1,33 @@
 <html>
+<head>
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+
 <body>
-   	<p align="center"><font color="#008000" size="20" face="Arial"> Tablón Anuncios</font> </p>
-	{{#anuncios}}
-	<p align="center"><a href="/anuncio/{{id}}">{{usuario.nick}} {{articulo.nombre}}</a>
-	{{/anuncios}}    
+	<div class="jumbotron text-center">
+		<h1="center"><font color="#008000" size="40" face="Arial">Muuzik</font></h1>
+		<p align="center"><font color="#003300" size="5" face="Arial">¿Qué instrumento estás buscando?</font></p>
+		<p align="center">
+			<a href="/" class="btn btn-success">Volver al inicio</a> <a
+				href="/nuevoAnuncio.html" class="btn btn-success">Nuevo anuncio<a></p>
+	</div>
 	
-	<br>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-	<p align="center"><a href="/nuevoAnuncio.html" class="btn btn-success">Nuevo anuncio<a>
-	<a href="/" class="btn btn-success">Volver al inicio</a></p>
-	<!--<a href="/nuevoAnuncio.html">Nuevo anuncio</a>
-	<a href="/">Volver al inicio</a>  -->
+	<div class="container">
+		<div class="row">
+			{{#anuncios}} 
+			<div class="col-sm-4">
+				<a href="/anuncio/{{id}}">
+				<h3>{{articulo.nombre}}</h3>
+				<p>{{usuario.nick}}</p>
+				<p>{{precio}} €</p> 
+			</div>
+			{{/anuncios}}  
+		</div>
+	</div>
+ 
+
+
 </body>
 </html>

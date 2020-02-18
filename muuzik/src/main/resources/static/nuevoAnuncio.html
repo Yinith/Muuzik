@@ -1,17 +1,24 @@
 <html>
 <head>
 	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
 </head>
+
 <body>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+	<div class="jumbotron text-center">
+		<h1="center"><font color="#008000" size="40" face="Arial">Muuzik</font></h1>
+	</div>
 	
-	<form action="anuncio/nuevo" method="post">
-		<p>Nombre: </p>
-		<input type='text' name='nombre'><br>
-		<p>Asunto:</p>
-		<input type='text' name='asunto'/>
-		<p>Comentario:</p>
-		<textarea name='comentario' rows=5 cols=40></textarea>
+	<form align = center action="anuncio/nuevo" method="post">
+		<p>¿Qué vendes? 
+		<input type='text' name='nombre'><br> </p>
+		<p>¿A qué precio?
+		<input type='int' name='precio'/><span> €</span></p> 
+		<p>¿De qué año es? 
+		<input type='int' name='anoFabricacion'><br></p>
+		<p>¿Algo que añadir?
+		<textarea name='comentario' rows=5 cols=40></textarea></p>
 
 		<input type='submit' value='Enviar'/>
 	</form>

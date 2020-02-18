@@ -26,7 +26,7 @@ public class Anuncio {
 
 	public Anuncio() {}
 	
-	public Anuncio(String asunto, String comentario, int precio, Articulo articulo) {
+	public Anuncio(Articulo articulo, String asunto, String comentario, int precio) {
 		super();
 		this.asunto = asunto;
 		this.comentario = comentario;

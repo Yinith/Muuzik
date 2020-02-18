@@ -26,6 +26,7 @@ public class PortadaController {
 	public void init () {
 		userRepo.save(new Usuario("Chema", "essolodeprueba", "Vendo Oper Corsa"));
 		userRepo.save(new Usuario("Cassi", "essolodeprueba2", "Hola!! Soy Cassi, encantada de conocerte =)"));
+		userRepo.save(new Usuario("Admin", "admin", "Soy un admin. Cuidadito."));
 	}
 	
 	//Supongo que el getMapping de usuarios no nos interesa a si que lo he omitido, 
