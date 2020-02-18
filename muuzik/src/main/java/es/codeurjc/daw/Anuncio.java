@@ -16,7 +16,7 @@ public class Anuncio {
 
 	private String asunto;
 	private String comentario;
-	private double precio;
+	private int precio;
 	
 	@OneToOne
 	private Articulo articulo;
@@ -26,7 +26,7 @@ public class Anuncio {
 
 	public Anuncio() {}
 	
-	public Anuncio(String asunto, String comentario, double precio, Articulo articulo) {
+	public Anuncio(String asunto, String comentario, int precio, Articulo articulo) {
 		super();
 		this.asunto = asunto;
 		this.comentario = comentario;
@@ -34,7 +34,7 @@ public class Anuncio {
 		this.articulo = articulo;
 	}
 	
-	public Anuncio(String nombre, String asunto, String comentario, double precio) {
+	public Anuncio(String nombre, String asunto, String comentario, int precio) {
 		super();
 		this.articulo = new Articulo(nombre);
 		this.asunto = asunto;
@@ -54,7 +54,7 @@ public class Anuncio {
 		return comentario;
 	}
 
-	public double getPrecio() {
+	public int getPrecio() {
 		return precio;
 	}
 
@@ -83,7 +83,7 @@ public class Anuncio {
 		this.comentario = comentario;
 	}
 	
-	public void setPrecio(double precio) {
+	public void setPrecio(int precio) {
 		this.precio = precio;
 	} 
 	
