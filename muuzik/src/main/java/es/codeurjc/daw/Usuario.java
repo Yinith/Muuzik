@@ -21,10 +21,13 @@ public class Usuario {
 	@Column(unique = true)
 	private String nick;
 	private String contrasena;
-	private String info_perfil
-	;
+	private String info_perfil;
+	
 	@OneToMany
 	private List<Anuncio> anuncios;
+	@OneToMany
+	private List<Articulo> articulos;
+	
 	@OneToMany(mappedBy = "remitente")
 	private List<Chat> c1; //Nombre provisional podría ser misChats?
 	@OneToMany(mappedBy = "destinatario")
@@ -40,7 +43,11 @@ public class Usuario {
 		this.nick = nick;
 		this.contrasena = contrasena;
 		this.info_perfil = info_perfil;
-		anuncios = new ArrayList<Anuncio> ();
+		
+		anuncios = new ArrayList<Anuncio>();
+		articulos = new ArrayList<Articulo>();
+		c1 = new ArrayList<Chat>();
+		c2 = new ArrayList<Chat>();
 	}
 
 	public List<Anuncio> getAnuncios() {
@@ -75,9 +82,20 @@ public class Usuario {
 		this.info_perfil = info_perfil;
 	}
 	
+	
 	public void addAnuncio(Anuncio v1) {
 		v1.setUsuario(this);
 		this.anuncios.add(v1);
+	}
+	
+	public void addAnuncio(Anuncio ad, Articulo art) {
+		ad.setUsuario(this);
+		ad.setArticulo(art);
+		this.anuncios.add(ad);
+	}
+	
+	public void addArticulo(Articulo art) {
+		this.articulos.add(art);
 	}
 
 	@Override

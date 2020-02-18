@@ -2,8 +2,8 @@
 <body>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
 	<p align="center"><font color="#008000" size="20" face="Arial"> Anuncio: {{anuncio.id}}</font> </p>
-	<p align="center">Nombre: {{anuncio.nombre}}</p>
-	<p align="center">Asunto: {{anuncio.asunto}}</p>
+	<p align="center">Nombre: {{anuncio.usuario.nick}}</p>
+	<p align="center">Asunto: {{anuncio.articulo.nombre}}</p>
 	<p align="center">Comentario: {{anuncio.comentario}}</p>
 	
 	<p align="center"><a href="/tablon/?page=0&size=50" class="btn btn-success">Volver al tablón</a>

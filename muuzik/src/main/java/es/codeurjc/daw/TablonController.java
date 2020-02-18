@@ -23,22 +23,26 @@ public class TablonController {
 	private AnunciosRepository adRepo;
 	@Autowired
 	private UsuariosRepository usRepo;
+	@Autowired
+	private ArticuloRepository artRepo;
 
 
 	@PostConstruct
 	public void init() {
-		
+		/*
 		// Añadimos muchos anuncios
 		for(int i = 1; i<=8; i++){
 			//adRepo.save(new AnuncioVenta("User "+i, "Anuncio "+i, "Contenido "+i, new Articulo("asd", "asd", true, 0), i*10 ));
-			adRepo.save(new Anuncio("User "+i, "Anuncio "+i, "Contenido "+i));
-		}
+			adRepo.save(new Anuncio("User "+i, "Anuncio "+i, "Contenido "+i, (double)i));
+		}*/
 		
-		Anuncio v1 = new Anuncio("Green", "Figuritas Warhammer", "Vendo set de figuras de enanos 50$");
+		Articulo a1 = new Articulo("Figuritas Warhammer", 2005);
+		artRepo.save(a1);
+		Anuncio v1 = new Anuncio("Vendo figuritas Warhammer", "Son enanos, sin pintar.", 50, a1);
 		Usuario u1 = new Usuario ("Green", "quenoquieroponeruna", "Hi");
 		usRepo.save(u1);
-		v1.setUsuario(u1);
-		u1.addAnuncio(v1);
+		
+		u1.addAnuncio(v1,a1);
 		adRepo.save(v1);
 		usRepo.save(u1);
 	}

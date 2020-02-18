@@ -14,7 +14,7 @@ public class Articulo {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
-	private String foto = "";
+	private String nombre = "";
 	private String categoria = "";
 	private boolean publico = true;
 	private int anoFabricacion = 0;//Solo el año
@@ -23,9 +23,35 @@ public class Articulo {
 		
 	}
 	
+	public Articulo(String nombre) {
+		super();
+		this.nombre = nombre;
+	}
+	
+	public Articulo(String nombre, int anoFabricacion) {
+		this.nombre = nombre;
+		this.anoFabricacion = anoFabricacion;
+	}
+	
+	public Articulo(String nombre, String categoria, int anoFabricacion) {
+		super();
+		this.nombre = nombre;
+		this.categoria = categoria;
+		this.anoFabricacion = anoFabricacion;
+	}
+	
+	public Articulo(String nombre, String categoria, boolean publico) {
+		super();
+		this.nombre = nombre;
+		this.categoria = categoria;
+		this.publico = publico;
+		this.anoFabricacion = 0;
+	}
+			
+			
 	public Articulo(String foto, String categoria, boolean publico, int anoFabricacion) {
 		super();
-		this.foto = foto;
+		this.nombre = foto;
 		this.categoria = categoria;
 		this.publico = publico;
 		if(anoFabricacion > 0) {
@@ -39,7 +65,7 @@ public class Articulo {
 	}
 
 	public String getFoto() {
-		return foto;
+		return nombre;
 	}
 
 	public String getCategoria() {
@@ -59,7 +85,7 @@ public class Articulo {
 	}
 
 	public void setFoto(String foto) {
-		this.foto = foto;
+		this.nombre = foto;
 	}
 
 	public void setCategoria(String categoria) {
@@ -76,7 +102,7 @@ public class Articulo {
 
 	@Override
 	public String toString() {
-		return "Articulo [id=" + id + ", foto=" + foto + ", categoria=" + categoria + ", publico=" + publico
+		return "Articulo [id=" + id + ", foto=" + nombre + ", categoria=" + categoria + ", publico=" + publico
 				+ ", anoFabricacion=" + anoFabricacion + "]";
 	}
 	

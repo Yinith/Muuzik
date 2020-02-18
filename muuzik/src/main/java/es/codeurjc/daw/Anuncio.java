@@ -14,39 +14,36 @@ public class Anuncio {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 
-	private String nombre;
 	private String asunto;
 	private String comentario;
+	private double precio;
 	
-	/*
-	 * @OneToOne private Articulo articulo; private int precio;
-	 */
+	@OneToOne
+	private Articulo articulo;
 	
 	@ManyToOne
 	private Usuario user; 
 
 	public Anuncio() {}
 	
-	public Anuncio(String nombre, String asunto, String comentario) {
+	public Anuncio(String asunto, String comentario, double precio, Articulo articulo) {
 		super();
-		this.nombre = nombre;
 		this.asunto = asunto;
 		this.comentario = comentario;
+		this.precio = precio;
+		this.articulo = articulo;
 	}
-
-	/*
-	 * public AnuncioVenta(String nombre, String asunto, String comentario, Articulo
-	 * articulo, int precio) { super(); this.nombre = nombre; this.asunto = asunto;
-	 * this.comentario = comentario; this.articulo = articulo; this.precio = precio;
-	 * }
-	 */
+	
+	public Anuncio(String nombre, String asunto, String comentario, double precio) {
+		super();
+		this.articulo = new Articulo(nombre);
+		this.asunto = asunto;
+		this.comentario = comentario;
+		this.precio = precio;
+	}
 
 	public long getId() {
 		return id;
-	}
-
-	public String getNombre() {
-		return nombre;
 	}
 
 	public String getAsunto() {
@@ -57,23 +54,25 @@ public class Anuncio {
 		return comentario;
 	}
 
-	/*
-	 * public Articulo getArticulo() { return articulo; }
-	 * 
-	 * public int getPrecio() { return precio; }
-	 */
-	
+	public double getPrecio() {
+		return precio;
+	}
+
+	public Usuario getUser() {
+		return user;
+	}
+
 	public Usuario getUsuario() {
 		return this.user;
+	}
+	
+	public Articulo getArticulo() {
+		return this.articulo;
 	}
 
 
 	public void setId(long id) {
 		this.id = id;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
 	}
 
 	public void setAsunto(String asunto) {
@@ -83,56 +82,23 @@ public class Anuncio {
 	public void setComentario(String comentario) {
 		this.comentario = comentario;
 	}
-
-	/*
-	 * public void setArticulo(Articulo articulo) { this.articulo = articulo; }
-	 * 
-	 * public void setPrecio(int precio) { this.precio = precio; }
-	 */
+	
+	public void setPrecio(double precio) {
+		this.precio = precio;
+	} 
 	
 	public void setUsuario(Usuario u){
 		this.user = u;
 	}
+	
+	public void setArticulo(Articulo art) {
+		this.articulo = art;
+	}
+
 
 	@Override
 	public String toString() {
-		return "Anuncio [nombre=" + nombre + ", asunto=" + asunto + ", comentario=" + comentario + "]";
+		return "Anuncio [nombre=" + user.getNick() + ", asunto=" + asunto + ", comentario=" + comentario + "]";
 	}
-
-//	public AnuncioVenta(String nombre, String asunto, String comentario) {
-//		super();
-//		this.nombre = nombre;
-//		this.asunto = asunto;
-//		this.comentario = comentario;
-//	}
-//
-//	public String getNombre() {
-//		return nombre;
-//	}
-//
-//	public void setNombre(String nombre) {
-//		this.nombre = nombre;
-//	}
-//
-//	public String getAsunto() {
-//		return asunto;
-//	}
-//
-//	public void setAsunto(String asunto) {
-//		this.asunto = asunto;
-//	}
-//
-//	public String getComentario() {
-//		return comentario;
-//	}
-//
-//	public void setComentario(String comentario) {
-//		this.comentario = comentario;
-//	}
-//
-//	@Override
-//	public String toString() {
-//		return "Anuncio [nombre=" + nombre + ", asunto=" + asunto + ", comentario=" + comentario + "]";
-//	}
-
 }
+
