@@ -31,10 +31,10 @@ public class TablonController {
 		// Añadimos muchos anuncios
 		for(int i = 1; i<=8; i++){
 			//adRepo.save(new AnuncioVenta("User "+i, "Anuncio "+i, "Contenido "+i, new Articulo("asd", "asd", true, 0), i*10 ));
-			adRepo.save(new AnuncioVenta("User "+i, "Anuncio "+i, "Contenido "+i));
+			adRepo.save(new Anuncio("User "+i, "Anuncio "+i, "Contenido "+i));
 		}
 		
-		AnuncioVenta v1 = new AnuncioVenta("Green", "Figuritas Warhammer", "Vendo set de figuras de enanos 50$");
+		Anuncio v1 = new Anuncio("Green", "Figuritas Warhammer", "Vendo set de figuras de enanos 50$");
 		Usuario u1 = new Usuario ("Green", "quenoquieroponeruna", "Hi");
 		usRepo.save(u1);
 		v1.setUsuario(u1);
@@ -52,7 +52,7 @@ public class TablonController {
 	}
 
 	@PostMapping("/anuncio/nuevo")
-	public String nuevoAnuncio(Model model, AnuncioVenta anuncio) {
+	public String nuevoAnuncio(Model model, Anuncio anuncio) {
 
 		adRepo.save(anuncio);
 
@@ -63,7 +63,7 @@ public class TablonController {
 	@GetMapping("/anuncio/{id}")
 	public String verAnuncio(Model model, @PathVariable long id) {
 		
-		Optional<AnuncioVenta> anuncio = adRepo.findById(id);
+		Optional<Anuncio> anuncio = adRepo.findById(id);
 
 		if(anuncio.isPresent()) {
 			model.addAttribute("anuncio", anuncio.get());

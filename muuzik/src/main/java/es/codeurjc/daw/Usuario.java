@@ -22,7 +22,7 @@ public class Usuario {
 	private String contrasena;
 	private String info_perfil;
 	@OneToMany
-	private List<AnuncioVenta> anuncios;
+	private List<Anuncio> anuncios;
 
 	
 	public Usuario () {
@@ -34,14 +34,14 @@ public class Usuario {
 		this.nick = nick;
 		this.contrasena = contrasena;
 		this.info_perfil = info_perfil;
-		anuncios = new ArrayList<AnuncioVenta> ();
+		anuncios = new ArrayList<Anuncio> ();
 	}
 
-	public List<AnuncioVenta> getAnuncios() {
+	public List<Anuncio> getAnuncios() {
 		return anuncios;
 	}
 
-	public void setAnuncios(List<AnuncioVenta> anuncios) {
+	public void setAnuncios(List<Anuncio> anuncios) {
 		this.anuncios = anuncios;
 	}
 
@@ -69,7 +69,7 @@ public class Usuario {
 		this.info_perfil = info_perfil;
 	}
 	
-	public void addAnuncio(AnuncioVenta v1) {
+	public void addAnuncio(Anuncio v1) {
 		v1.setUsuario(this);
 		this.anuncios.add(v1);
 	}

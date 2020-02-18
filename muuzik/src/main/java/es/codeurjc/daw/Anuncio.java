@@ -8,7 +8,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
-public class AnuncioVenta {
+public class Anuncio {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -17,15 +17,17 @@ public class AnuncioVenta {
 	private String nombre;
 	private String asunto;
 	private String comentario;
+	
 	/*
 	 * @OneToOne private Articulo articulo; private int precio;
 	 */
+	
 	@ManyToOne
 	private Usuario user; 
 
-	public AnuncioVenta() {}
+	public Anuncio() {}
 	
-	public AnuncioVenta(String nombre, String asunto, String comentario) {
+	public Anuncio(String nombre, String asunto, String comentario) {
 		super();
 		this.nombre = nombre;
 		this.asunto = asunto;
