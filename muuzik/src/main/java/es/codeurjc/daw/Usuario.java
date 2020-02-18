@@ -1,5 +1,6 @@
 package es.codeurjc.daw;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -21,7 +22,7 @@ public class Usuario {
 	private String contrasena;
 	private String info_perfil;
 	@OneToMany
-	private List<Mensaje> mensajes;
+	private List<AnuncioVenta> anuncios;
 
 	
 	public Usuario () {
@@ -33,6 +34,15 @@ public class Usuario {
 		this.nick = nick;
 		this.contrasena = contrasena;
 		this.info_perfil = info_perfil;
+		anuncios = new ArrayList<AnuncioVenta> ();
+	}
+
+	public List<AnuncioVenta> getAnuncios() {
+		return anuncios;
+	}
+
+	public void setAnuncios(List<AnuncioVenta> anuncios) {
+		this.anuncios = anuncios;
 	}
 
 	public String getNick() {
@@ -57,6 +67,11 @@ public class Usuario {
 
 	public void setPerfil(String info_perfil) {
 		this.info_perfil = info_perfil;
+	}
+	
+	public void addAnuncio(AnuncioVenta v1) {
+		v1.setUsuario(this);
+		this.anuncios.add(v1);
 	}
 
 	@Override
