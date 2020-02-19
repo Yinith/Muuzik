@@ -73,7 +73,7 @@ public class Articulo {
 		return id;
 	}
 
-	public String getFoto() {
+	public String getNombre() {
 		return nombre;
 	}
 
@@ -93,8 +93,8 @@ public class Articulo {
 		this.id = id;
 	}
 
-	public void setFoto(String foto) {
-		this.nombre = foto;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
 	public void setCategoria(String categoria) {

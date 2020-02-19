@@ -28,10 +28,10 @@ public class TablonController {
 	private UsuariosRepository usRepo;
 	@Autowired
 	private ArticulosRepository artRepo;
-	//Repositorio del pedido
+	/*
 	@Autowired
 	private PedidoRepository pRepo;
-
+	*/
 
 	@PostConstruct
 	public void init() {
@@ -50,10 +50,10 @@ public class TablonController {
 		u2.addAnuncio(v2);
 		adRepo.save(v2);
 		usRepo.save(u2);
-		
+		/*
 		pRepo.save(new Pedido(u1,v1));
 		pRepo.save(new Pedido(u2,v2));
-		
+		*/
 		
 		// Añadimos muchos anuncios
 		for(int i = 1; i<=10; i++){
@@ -114,7 +114,9 @@ public class TablonController {
 		Optional<Anuncio> op = adRepo.findById(id);
 		if(op.isPresent()) {
 			Anuncio ad = op.get();
-			ad.getUsuario().borrarAnuncio(ad);
+			Usuario user = ad.getUsuario();
+			user.borrarArticulo(ad.getArticulo());
+			user.borrarAnuncio(ad);
 			adRepo.deleteById(id);
 		}
 		model.addAttribute("anuncios", adRepo.findAll(page));
