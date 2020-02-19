@@ -21,7 +21,9 @@ public class Anuncio {
 	@OneToOne(cascade = CascadeType.ALL)
 	private Articulo articulo;
 	@ManyToOne
-	private Usuario user; 
+	private Usuario user;
+	@OneToOne
+	private Pedido pedido;
 
 	public Anuncio() {}
 	
@@ -62,7 +64,14 @@ public class Anuncio {
 	public Articulo getArticulo() {
 		return this.articulo;
 	}
+	
+	public Pedido getPedido() {
+		return pedido;
+	}
 
+	public void setPedido(Pedido pedido) {
+		this.pedido = pedido;
+	}
 
 	public void setId(long id) {
 		this.id = id;
@@ -83,11 +92,17 @@ public class Anuncio {
 	public void setArticulo(Articulo art) {
 		this.articulo = art;
 	}
-
+	
+	public void addPedido(Pedido p)
+	{
+		this.pedido = p;
+	}
 
 	@Override
 	public String toString() {
-		return "Anuncio [nombre=" + user.getNick() + ", comentario=" + comentario + "]";
+		return "Anuncio [articulo=" + articulo.nombre + ", vendedor=" + user.getNick() + ", comentario=" + comentario + ", pedido=" + pedido + "]";
 	}
+
+
 }
 

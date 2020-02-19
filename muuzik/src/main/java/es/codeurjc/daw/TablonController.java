@@ -19,6 +19,7 @@ public class TablonController {
 	//Si se abre la URL http://127.0.0.1:8080/h2-console y se configura
 	//la URL JDBC con el valor jdbc:h2:mem:testdb se puede acceder a la 
 	//base de datos de la aplicación 
+	//Green: Voy a utilizar esto para crear un pedido de la misma forma que hacemos el anuncio a usuario.
 
 	@Autowired
 	private AnunciosRepository adRepo;
@@ -26,6 +27,9 @@ public class TablonController {
 	private UsuariosRepository usRepo;
 	@Autowired
 	private ArticulosRepository artRepo;
+	//Repositorio del pedido
+	@Autowired
+	private PedidoRepository pRepo;
 
 
 	@PostConstruct
@@ -45,6 +49,9 @@ public class TablonController {
 		u2.addAnuncio(v2);
 		adRepo.save(v2);
 		usRepo.save(u2);
+		
+		pRepo.save(new Pedido(u1,v1));
+		pRepo.save(new Pedido(u2,v2));
 		
 		
 		// Añadimos muchos anuncios

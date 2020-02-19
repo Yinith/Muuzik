@@ -10,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
 
 
 
@@ -34,6 +36,8 @@ public class Usuario {
 	private List<Chat> c1; //Nombre provisional podría ser misChats?
 	@OneToMany(mappedBy = "destinatario")
 	private List<Chat> c2; //Nombre provisional
+	@OneToOne
+	private Pedido pedido;
 
 	
 	public Usuario () {
@@ -92,7 +96,14 @@ public class Usuario {
 		this.articulos = articulos;
 	}
 	
-	
+	public Pedido getPedido() {
+		return pedido;
+	}
+
+	public void setPedido(Pedido pedido) {
+		this.pedido = pedido;
+	}
+
 	public void addAnuncio(Anuncio v1) {
 		v1.setUsuario(this);
 		this.anuncios.add(v1);
@@ -108,6 +119,11 @@ public class Usuario {
 	
 	public void addArticulo(Articulo art) {
 		this.articulos.add(art);
+	}
+	
+	public void addPedido(Pedido p)
+	{
+		this.pedido = p;
 	}
 	
 	public boolean borrarAnuncio(Anuncio ad) {
@@ -133,10 +149,25 @@ public class Usuario {
 			iter.remove();
 		}
 	}
-	
+
+	public boolean borrarPedido(Pedido p) {
+		return this.pedido.remove(p);
+	}
+/*
+	public void borrarTodosPedidos() {
+		ListIterator<Pedido> iter = this.pedidos.listIterator();
+		while(iter.hasNext()){
+			iter.next();
+			iter.remove();
+		}
+	}
+*/	
 	@Override
 	public String toString() {
-		return "Usuario [nombre=" + nick + ", contraseña=" + contrasena + ", info_perfil=" + info_perfil + "]";
-
+		return "Usuario [id=" + id + ", nick=" + nick + ", contrasena=" + contrasena + ", info_perfil=" + info_perfil
+				+ ", anuncios=" + anuncios + ", articulos=" + articulos + ", c1=" + c1 + ", c2=" + c2 + ", pedido="
+				+ pedido + "]";
 	}
+	
+
 }
