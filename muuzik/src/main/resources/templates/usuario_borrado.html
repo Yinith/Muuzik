@@ -28,16 +28,8 @@
 		</div>
 	</nav>
 	<br>
-	<p align="center">Producto: {{anuncio.articulo.nombre}}</p>
-	{{#hayCat}}<p align="center">Categoria: {{anuncio.articulo.categoria}}</p>{{/hayCat}}
-	{{#hayAno}}<p align="center">Año de fabricación: {{anuncio.articulo.anoFabricacion}}</p>{{/hayAno}}
-
-	<p align="center">Precio: {{anuncio.precio}} €</p>
-	<p align="center">Comentario: {{anuncio.comentario}}</p>
-	<p align="center">Vendedor: <a href="/usuario/{{anuncio.usuario.id}}">{{anuncio.usuario.nick}}</a></p>
+   	<p align="center"><font color="#008000" size="20" face="Arial"> El usuario ha sido borrado correctamente.</font> </p>
+	<p align="center"><a href="/" class = "btn btn-success">Volver al inicio</a>
 	
-	<p align="center"><a href="/tablon/?page=0&size=50" class="btn btn-success">Volver al tablón</a>
-	<a href="" class="btn btn-success">Estoy interesado</a></p>
-	<p align="center"><a href="/borrar_anuncio/{{anuncio.id}}" class="btn btn-success">Borrar anuncio</a></p>
 </body>
 </html>
