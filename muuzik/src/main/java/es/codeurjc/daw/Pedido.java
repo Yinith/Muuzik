@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
-
+/*
 //Entidad que va a simular de momento la compra
 @Entity
 public class Pedido {
@@ -15,10 +15,10 @@ public class Pedido {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
-	@OneToOne
+	@OneToOne(mappedBy = "pedido")
 	private Usuario user;
 	
-	@OneToOne
+	@OneToOne(mappedBy = "pedido")
 	private Anuncio anuncio;
 	
 	public Pedido () {}
@@ -60,3 +60,4 @@ public class Pedido {
 	}
 
 }
+*/

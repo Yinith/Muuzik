@@ -22,9 +22,10 @@ public class Anuncio {
 	private Articulo articulo;
 	@ManyToOne
 	private Usuario user;
+	/*
 	@OneToOne
 	private Pedido pedido;
-
+*/
 	public Anuncio() {}
 	
 	public Anuncio(Articulo articulo, String comentario, int precio) {
@@ -64,7 +65,7 @@ public class Anuncio {
 	public Articulo getArticulo() {
 		return this.articulo;
 	}
-	
+	/*
 	public Pedido getPedido() {
 		return pedido;
 	}
@@ -72,7 +73,7 @@ public class Anuncio {
 	public void setPedido(Pedido pedido) {
 		this.pedido = pedido;
 	}
-
+*/
 	public void setId(long id) {
 		this.id = id;
 	}
@@ -93,16 +94,21 @@ public class Anuncio {
 		this.articulo = art;
 	}
 	
+	@Override
+	public String toString() {
+		return "Anuncio [articulo=" + articulo.getNombre() + ", vendedor=" + user.getNick() + ", comentario=" + comentario + "]";
+	}
+	/*
 	public void addPedido(Pedido p)
 	{
 		this.pedido = p;
 	}
-
+	
 	@Override
 	public String toString() {
-		return "Anuncio [articulo=" + articulo.nombre + ", vendedor=" + user.getNick() + ", comentario=" + comentario + ", pedido=" + pedido + "]";
+		return "Anuncio [articulo=" + articulo.getNombre() + ", vendedor=" + user.getNick() + ", comentario=" + comentario + ", pedido=" + pedido + "]";
 	}
-
+	*/
 
 }
 
