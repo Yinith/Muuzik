@@ -34,10 +34,9 @@
 		<div class="row">
 			{{#anuncios}} 
 			<div class="col-sm-4">
-				<a href="/anuncio/{{id}}">
-				<h3>{{articulo.nombre}}</h3>
-				<p>{{usuario.nick}}</p>
-				<p>{{precio}} €</p> 
+				<h3><a href="/anuncio/{{id}}"> {{articulo.nombre}}</h3>
+				<p>{{precio}} €</p>
+				<p><a href="/usuario/{{usuario.id}}">{{usuario.nick}}</p>
 			</div>
 			{{/anuncios}}  
 		</div>

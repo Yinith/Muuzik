@@ -2,6 +2,7 @@ package es.codeurjc.daw;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ListIterator;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+
 
 
 @Entity
@@ -50,14 +52,6 @@ public class Usuario {
 		c2 = new ArrayList<Chat>();
 	}
 
-	public List<Anuncio> getAnuncios() {
-		return anuncios;
-	}
-
-	public void setAnuncios(List<Anuncio> anuncios) {
-		this.anuncios = anuncios;
-	}
-
 	public String getNick() {
 		return nick;
 	}
@@ -82,22 +76,64 @@ public class Usuario {
 		this.info_perfil = info_perfil;
 	}
 	
+	public List<Anuncio> getAnuncios() {
+		return this.anuncios;
+	}
+
+	public void setAnuncios(List<Anuncio> anuncios) {
+		this.anuncios = anuncios;
+	}
+	
+	public List<Articulo> getArticulos() {
+		return this.articulos;
+	}
+
+	public void setArticulos(List<Articulo> articulos) {
+		this.articulos = articulos;
+	}
+	
 	
 	public void addAnuncio(Anuncio v1) {
 		v1.setUsuario(this);
 		this.anuncios.add(v1);
+		this.articulos.add(v1.getArticulo());
 	}
 	
 	public void addAnuncio(Anuncio ad, Articulo art) {
 		ad.setUsuario(this);
 		ad.setArticulo(art);
 		this.anuncios.add(ad);
+		this.articulos.add(art);
 	}
 	
 	public void addArticulo(Articulo art) {
 		this.articulos.add(art);
 	}
+	
+	public boolean borrarAnuncio(Anuncio ad) {
+		return this.anuncios.remove(ad);
+	}
+	
+	public void borrarTodosAnuncios() {
+		ListIterator<Anuncio> iter = this.anuncios.listIterator();
+		while(iter.hasNext()){
+			iter.next();
+			iter.remove();
+		}
+	}
+	
+	public boolean borrarArticulo(Articulo art) {
+		return this.articulos.remove(art);
+	}
 
+	public void borrarTodosArticulos() {
+		ListIterator<Articulo> iter = this.articulos.listIterator();
+		while(iter.hasNext()){
+			iter.next();
+			iter.remove();
+		}
+	}
+	
 	@Override
 	public String toString() {
 		return "Usuario [nombre=" + nick + ", contraseña=" + contrasena + ", info_perfil=" + info_perfil + "]";

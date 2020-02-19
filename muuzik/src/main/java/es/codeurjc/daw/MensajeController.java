@@ -7,6 +7,6 @@ import org.springframework.stereotype.Controller;
 public class MensajeController {
 	
 	@Autowired
-	private MensajeRepository msgRepo;
+	private MensajesRepository msgRepo;
 
 }

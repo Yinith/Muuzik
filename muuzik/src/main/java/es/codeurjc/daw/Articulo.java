@@ -1,8 +1,5 @@
 package es.codeurjc.daw;
 
-import java.text.SimpleDateFormat;
-
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,10 +11,10 @@ public class Articulo {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
-	private String nombre = "";
-	private String categoria = "";
+	private String nombre;
+	private String categoria;
 	private boolean publico = true;
-	private int anoFabricacion = 0;//Solo el año
+	private int anoFabricacion;//Solo el año
 	
 	public Articulo() {
 		
@@ -26,18 +23,24 @@ public class Articulo {
 	public Articulo(String nombre) {
 		super();
 		this.nombre = nombre;
+		this.categoria = "";
 	}
 	
 	public Articulo(String nombre, int anoFabricacion) {
 		this.nombre = nombre;
-		this.anoFabricacion = anoFabricacion;
+		this.categoria = "";
+		if(anoFabricacion > 0) {
+			this.anoFabricacion = anoFabricacion;
+		} else this.anoFabricacion = 0;
 	}
 	
 	public Articulo(String nombre, String categoria, int anoFabricacion) {
 		super();
 		this.nombre = nombre;
 		this.categoria = categoria;
-		this.anoFabricacion = anoFabricacion;
+		if(anoFabricacion > 0) {
+			this.anoFabricacion = anoFabricacion;
+		} else this.anoFabricacion = 0;
 	}
 	
 	public Articulo(String nombre, String categoria, boolean publico) {
@@ -45,7 +48,7 @@ public class Articulo {
 		this.nombre = nombre;
 		this.categoria = categoria;
 		this.publico = publico;
-		this.anoFabricacion = 0;
+//		this.anoFabricacion = 0;
 	}
 			
 			
