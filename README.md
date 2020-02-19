@@ -82,7 +82,7 @@ La web hará una aproximación del valor razonable del instrumento, en función 
 ![](ImagenesReadme/UMLMuuzik.png)
 
 # Modelo Entidad-Relación en Fase 2
-![](ImagenesReadme/ModeloEntidadRelacion.png)
+![](ImagenesReadme/ModeloEntidadRelacion.PNG)
 
 
 
