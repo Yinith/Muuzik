@@ -63,18 +63,12 @@ public class Articulo {
 		else this.anoFabricacion = 0;
 	}
 	
-	
-
 	public String getNombre() {
 		return nombre;
 	}
-
+	
 	public long getId() {
 		return id;
-	}
-
-	public String getNombre() {
-		return nombre;
 	}
 
 	public String getCategoria() {
