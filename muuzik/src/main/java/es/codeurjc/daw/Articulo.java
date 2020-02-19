@@ -11,7 +11,7 @@ public class Articulo {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
-	private String nombre;
+	public String nombre;
 	private String categoria;
 	private boolean publico = true;
 	private int anoFabricacion;//Solo el año
@@ -61,6 +61,12 @@ public class Articulo {
 			this.anoFabricacion = anoFabricacion;
 		}
 		else this.anoFabricacion = 0;
+	}
+	
+	
+
+	public String getNombre() {
+		return nombre;
 	}
 
 	public long getId() {

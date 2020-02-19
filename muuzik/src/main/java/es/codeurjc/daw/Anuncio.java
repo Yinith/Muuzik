@@ -41,6 +41,8 @@ public class Anuncio {
 		this.precio = precio;
 	}
 
+	
+	
 	public long getId() {
 		return id;
 	}
@@ -100,9 +102,9 @@ public class Anuncio {
 
 	@Override
 	public String toString() {
-		return "Anuncio [articulo=" + articulo.nombre + ", vendedor=" + user.getNick() + ", comentario=" + comentario + ", pedido=" + pedido + "]";
+		return "Anuncio [id=" + id + ", comentario=" + comentario + ", precio=" + precio + ", articulo=" + articulo
+				+ ", user=" + user + ", pedido=" + pedido + "]";
 	}
-
 
 }
 

@@ -150,9 +150,9 @@ public class Usuario {
 		}
 	}
 
-	public boolean borrarPedido(Pedido p) {
+	/*public boolean borrarPedido(Pedido p) {
 		return this.pedido.remove(p);
-	}
+	}*/
 /*
 	public void borrarTodosPedidos() {
 		ListIterator<Pedido> iter = this.pedidos.listIterator();
