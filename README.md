@@ -54,7 +54,7 @@ La web hará una aproximación del valor razonable del instrumento, en función 
 ![](ImagenesReadme/PantallasFase2/Index.png)
 
 **Registrar usuario**
-<kbd>![](ImagenesReadme/PantallasFase2/Index.png)</kbd>
+<kbd>![](ImagenesReadme/PantallasFase2/Registro.png)</kbd>
 
 **Usuario guardado**
 <kbd>![enter image description here](ImagenesReadme/PantallasFase2/Usuario_guardado.png)</kbd>
@@ -79,10 +79,10 @@ La web hará una aproximación del valor razonable del instrumento, en función 
 
 
 # Diagrama UML en Fase 2
-![alt text](ImagenesReadme/UMLMuuzik.png)
+![](ImagenesReadme/UMLMuuzik.png)
 
 # Modelo Entidad-Relación en Fase 2
-![alt text](ImagenesReadme/ModeloEntidadRelacion.png)
+![](ImagenesReadme/ModeloEntidadRelacion.png)
 
 
 
