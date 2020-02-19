@@ -46,43 +46,43 @@ La web hará una aproximación del valor razonable del instrumento, en función 
 - **Alertas:** Un usuario puede suscribirse para recibir un correo electrónico si se publica un artículo con las características que busca (por ejemplo que contenga ciertas etiquetas).
 
 # Diagrama de Navegación en Fase 2
-![alt text](ImagenesDiseño/DiagramaNavegacionMuuzik.png)
+![](ImagenesReadme/DiagramaNavegacionMuuzik.png)
 
 # Capturas de pantalla de cada página
 
 **Inicio**
-<kbd>![enter image description here](ImagenesDiseño/PantallasFase2/Index.png)</kbd>
+![](ImagenesReadme/PantallasFase2/Index.png)
 
 **Registrar usuario**
-<kbd>![enter image description here](ImagenesDiseño/PantallasFase2/Index.png)</kbd>
+<kbd>![](ImagenesReadme/PantallasFase2/Index.png)</kbd>
 
 **Usuario guardado**
-<kbd>![enter image description here](ImagenesDiseño/PantallasFase2/Usuario_guardado.png)</kbd>
+<kbd>![enter image description here](ImagenesReadme/PantallasFase2/Usuario_guardado.png)</kbd>
 
 **Iniciar sesión**
-<kbd>![enter image description here](ImagenesDiseño/PantallasFase2/Iniciar_sesion.png)</kbd>
+<kbd>![enter image description here](ImagenesReadme/PantallasFase2/Iniciar_sesion.png)</kbd>
 
 **Tablón de anuncios**
-<kbd>![enter image description here](ImagenesDiseño/PantallasFase2/Tablon.png)</kbd>
+<kbd>![enter image description here](ImagenesReadme/PantallasFase2/Tablon.png)</kbd>
 
 **Ver anuncio individual**
-<kbd>![enter image description here](ImagenesDiseño/PantallasFase2/Ver_anuncio.png)</kbd>
+<kbd>![enter image description here](ImagenesReadme/PantallasFase2/Ver_anuncio.png)</kbd>
 
 **Perfil usuario**
-<kbd>![enter image description here](ImagenesDiseño/PantallasFase2/Perfil_usuario.png)</kbd>
+<kbd>![enter image description here](ImagenesReadme/PantallasFase2/Perfil_usuario.png)</kbd>
 
 **Editar usuario**
-<kbd>![enter image description here](ImagenesDiseño/PantallasFase2/Editar_usuario.png)</kbd>
+<kbd>![enter image description here](ImagenesReadme/PantallasFase2/Editar_usuario.png)</kbd>
 
 **Borrar usuario**
-<kbd>![enter image description here](ImagenesDiseño/PantallasFase2/Usuario_borrado.png)</kbd>
+<kbd>![enter image description here](ImagenesReadme/PantallasFase2/Usuario_borrado.png)</kbd>
 
 
 # Diagrama UML en Fase 2
-![alt text](ImagenesDiseño/UMLMuuzik.png)
+![alt text](ImagenesReadme/UMLMuuzik.png)
 
 # Modelo Entidad-Relación en Fase 2
-![alt text](ImagenesDiseño/ModeloEntidadRelacion.png)
+![alt text](ImagenesReadme/ModeloEntidadRelacion.png)
 
 
 
