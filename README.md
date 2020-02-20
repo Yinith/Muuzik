@@ -84,11 +84,12 @@ La web hará una aproximación del valor razonable del instrumento, en función 
 # Modelo Entidad-Relación en Fase 2
 ![](ImagenesReadme/ModeloEntidadRelacion.PNG)
 
-
-
 # Equipo de desarrollo
 | **Nombre**  | **Correo**  | **Github**  | 
 |---|---|---|
 | Clara Palomares Calvo  | ce.palomares@alumnos.urjc.es   | https://github.com/Yinith   |  
 |  Sergio Arroyo Duque |  s.arroyod.2016@alumnos.urjc.es | https://github.com/SergioArroyoDuque  |
 |  Sergio Guisado Durán | s.guisadod@alumnos.urjc.es  |  https://github.com/s-guisadod-green |
+
+# Tablero Trello del desarrollo
+https://trello.com/b/WcTbHPPq/muuzik
