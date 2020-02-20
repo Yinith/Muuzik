@@ -4,9 +4,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
-/*
+
 //Entidad que va a simular de momento la compra
 @Entity
 public class Pedido {
@@ -15,10 +16,10 @@ public class Pedido {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
-	@OneToOne(mappedBy = "pedido")
+	@ManyToOne
 	private Usuario user;
 	
-	@OneToOne(mappedBy = "pedido")
+	@OneToOne
 	private Anuncio anuncio;
 	
 	public Pedido () {}
@@ -60,4 +61,3 @@ public class Pedido {
 	}
 
 }
-*/

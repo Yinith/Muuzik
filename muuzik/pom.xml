@@ -15,9 +15,11 @@
 		<relativePath/>
 	</parent>
 
-<properties>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.8</java.version>
 	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -33,11 +35,6 @@
     		<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 	</dependency>
-	
-				<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
-		</dependency>
 		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -68,5 +65,5 @@
 			</plugin>
 		</plugins>
 	</build>
-	
+
 </project>

@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
 @Controller
 public class TablonController {
 	
@@ -28,10 +27,10 @@ public class TablonController {
 	private UsuariosRepository usRepo;
 	@Autowired
 	private ArticulosRepository artRepo;
-	/*
+	//Repositorio del pedido
 	@Autowired
 	private PedidoRepository pRepo;
-	*/
+
 
 	@PostConstruct
 	public void init() {
@@ -50,9 +49,12 @@ public class TablonController {
 		u2.addAnuncio(v2);
 		adRepo.save(v2);
 		usRepo.save(u2);
+		
 		/*
-		pRepo.save(new Pedido(u1,v1));
-		pRepo.save(new Pedido(u2,v2));
+		Pedido p1 = new Pedido(u1,v1);
+		Pedido p2 = new Pedido(u2,v2);
+		pRepo.save(p1);
+		pRepo.save(p2);
 		*/
 		
 		// Añadimos muchos anuncios

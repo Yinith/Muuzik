@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -37,10 +36,9 @@ public class Usuario {
 	private List<Chat> c1; //Nombre provisional podría ser misChats?
 	@OneToMany(mappedBy = "destinatario")
 	private List<Chat> c2; //Nombre provisional
-	/*
-	@OneToOne(cascade = CascadeType.ALL)
-	private Pedido pedido;
-	*/
+	@OneToMany
+	private List<Pedido> pedidos;
+
 	
 	public Usuario () {
 		
@@ -57,6 +55,8 @@ public class Usuario {
 		c1 = new ArrayList<Chat>();
 		c2 = new ArrayList<Chat>();
 	}
+	
+	
 
 	public String getNick() {
 		return nick;
@@ -97,15 +97,15 @@ public class Usuario {
 	public void setArticulos(List<Articulo> articulos) {
 		this.articulos = articulos;
 	}
-	/*
-	public Pedido getPedido() {
-		return pedido;
+	
+	public List<Pedido> getPedido() {
+		return this.pedidos;
 	}
 
-	public void setPedido(Pedido pedido) {
-		this.pedido = pedido;
+	public void addPedido(Pedido pedido) {
+		this.pedidos.add(pedido);
 	}
-*/
+
 	public void addAnuncio(Anuncio v1) {
 		v1.setUsuario(this);
 		this.anuncios.add(v1);
@@ -122,12 +122,8 @@ public class Usuario {
 	public void addArticulo(Articulo art) {
 		this.articulos.add(art);
 	}
-	/*
-	public void addPedido(Pedido p)
-	{
-		this.pedido = p;
-	}
-	*/
+
+	
 	public boolean borrarAnuncio(Anuncio ad) {
 		return this.anuncios.remove(ad);
 	}
@@ -154,12 +150,7 @@ public class Usuario {
 
 	/*public boolean borrarPedido(Pedido p) {
 		return this.pedido.remove(p);
-	}*/
-/*
-	public void borrarPedido(Pedido p) {
-		this.pedido = null;
 	}
-*/
 /*
 	public void borrarTodosPedidos() {
 		ListIterator<Pedido> iter = this.pedidos.listIterator();
@@ -172,8 +163,8 @@ public class Usuario {
 	@Override
 	public String toString() {
 		return "Usuario [id=" + id + ", nick=" + nick + ", contrasena=" + contrasena + ", info_perfil=" + info_perfil
-				+ ", anuncios=" + anuncios + ", articulos=" + articulos + ", c1=" + c1 + ", c2=" + c2 + "]";
-//				", pedido="+ pedido + "]";
+				+ ", anuncios=" + anuncios + ", articulos=" + articulos + ", c1=" + c1 + ", c2=" + c2 + ", pedidos="
+				+ pedidos + "]";
 	}
 	
 
