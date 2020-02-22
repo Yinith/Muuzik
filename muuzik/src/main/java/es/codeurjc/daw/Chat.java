@@ -36,7 +36,12 @@ public class Chat {
 	}
 	
 	public void insertarMensaje(String mensaje) {
-		this.mensajes.add(new Mensaje(mensaje, new SimpleDateFormat())); //No le pongo:  "HH:mm:ss dd/MM/yyyy"
+		this.mensajes.add(new Mensaje(mensaje)); //No le pongo:  "HH:mm:ss dd/MM/yyyy"
+	}
+	
+	public void addMensaje(Mensaje mensaje)
+	{
+		this.mensajes.add(mensaje);
 	}
 
 	public long getId() {

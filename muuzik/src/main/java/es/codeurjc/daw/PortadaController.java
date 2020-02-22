@@ -1,7 +1,10 @@
 package es.codeurjc.daw;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.TimeZone;
 
 import javax.annotation.PostConstruct;
 
@@ -14,9 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.*;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.ResponseStatus;
+
 
 @Controller
 public class PortadaController {
@@ -26,8 +27,6 @@ public class PortadaController {
 	private UsuariosRepository userRepo;
 	@Autowired
 	private AnunciosRepository adRepo;
-	@Autowired
-	private ArticulosRepository artRepo;
 	
 	private Usuario userActual; //Si un usuario ha iniciado sesión
 	
@@ -37,6 +36,26 @@ public class PortadaController {
 		userRepo.save(new Usuario("Chema", "essolodeprueba", "Clarinetista en la orquesta RTVE"));
 		userRepo.save(new Usuario("Cassi", "essolodeprueba2", "Luthier de zanfonas"));
 		userRepo.save(new Usuario("Admin", "admin", "Administrador de la página web"));
+		
+		/*
+		Usuario u1 = new Usuario ("uPrueba1", "pruebachat1", "pruebachat1");
+		userRepo.save(u1);
+		Usuario u2 = new Usuario ("uPrueba2", "pruebachat2", "pruebachat2");
+		userRepo.save(u2);
+		
+		Chat c1 = new Chat(u1,u2);
+		chtRepo.save(c1);
+		*/
+		/*
+		 * Date now = new Date (); SimpleDateFormat fechaActual = new
+		 * SimpleDateFormat("yyyy-MM-dd HH:mm:ssZ");
+		 * fechaActual.setTimeZone(TimeZone.getTimeZone("Europe/Madrid"));
+		 */
+		
+		for(int i = 0; i<100; i++){
+			//msgRepo.save(new Mensaje("Cuerpo" +i, fechaActual));
+		}
+		
 	}
 	
 	//Supongo que el getMapping de usuarios no nos interesa a si que lo he omitido, 
@@ -49,6 +68,7 @@ public class PortadaController {
 
 		return "index";
 	}
+	
 	
 	@PostMapping("/usuario/nuevo")
 	public String nuevoUsuario(Model model, Usuario usuario) {

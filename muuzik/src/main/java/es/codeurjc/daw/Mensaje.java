@@ -16,24 +16,23 @@ public class Mensaje {
 	private long id;
 	
 	private String cuerpo;
-	private SimpleDateFormat fecha = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy");
+	//private SimpleDateFormat fecha = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy");
 	
 	protected Mensaje(){
 		
 	}
 	
-	public Mensaje(String s, SimpleDateFormat f) {
+	public Mensaje(String s) {
 		this.cuerpo = s;
-		this.fecha = f;
 	}
 
 	public String getCuerpo() {
 		return cuerpo;
 	}
 
-	public SimpleDateFormat getFecha() {
-		return fecha;
-	}
+	/*
+	 * public SimpleDateFormat getFecha() { return fecha; }
+	 */
 
 	public long getId() {
 		return id;
@@ -47,13 +46,13 @@ public class Mensaje {
 		this.cuerpo = cuerpo;
 	}
 
-	public void setFecha(SimpleDateFormat fecha) {
-		this.fecha = fecha;
-	}
+	/*
+	 * public void setFecha(SimpleDateFormat fecha) { this.fecha = fecha; }
+	 */
 
 	@Override
 	public String toString() {
-		return "Mensaje [id=" + id + ", cuerpo=" + cuerpo + ", fecha=" + fecha + "]";
+		return "Mensaje [id=" + id + ", cuerpo=" + cuerpo + "]";
 	}	
 	
 }
