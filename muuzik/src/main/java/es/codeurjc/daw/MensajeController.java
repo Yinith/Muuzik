@@ -1,12 +1,19 @@
 package es.codeurjc.daw;
 
+import java.util.ArrayList;
 import java.util.Optional;
+
+import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import antlr.collections.List;
 
 @Controller
 public class MensajeController {
@@ -20,14 +27,14 @@ public class MensajeController {
 
 
 
-
+	@PostConstruct
 	public void init () {
 
 		Usuario u1 = new Usuario ("uPrueba1", "pruebachat1", "pruebachat1");
 		userRepo.save(u1);
 		Usuario u2 = new Usuario ("uPrueba2", "pruebachat2", "pruebachat2");
 		userRepo.save(u2);
-		Chat c1 = new Chat(u1,u2);
+		Chat c1 = new Chat(u1,u2); //u1 es remitente, u2 es destinatario
 		chtRepo.save(c1);
 
 		Mensaje m1 = new Mensaje ("Prueba de que hay mensajes dentro del chat");
@@ -38,12 +45,12 @@ public class MensajeController {
 
 	}
 
-	@GetMapping("/chat")
+	@GetMapping("/bandeja_entrada")
 	public String chatUsuarios(Model model) {
 
-		model.addAttribute("chat", chtRepo.findAll());
+		model.addAttribute("chats", chtRepo.findAll());
 
-		return "chat";
+		return "bandeja_entrada";
 	}
 	
 	@GetMapping("/chat/mensajes")
@@ -54,13 +61,32 @@ public class MensajeController {
 		return "index";
 	}
 
-	@GetMapping("/chat/{id}")
-	public String verChat(Model model, @PathVariable long id) {
+	@GetMapping("/chat/{toId}")
+	public String verChat(Model model, @PathVariable long toId) {
 		
-		Optional<Chat> chat = chtRepo.findById(id);
+		//Esto va a haber que cambiarlo para buscar el remitente cuando haya inicios de sesión
+		java.util.List<Chat> listachats = chtRepo.findByDestinatario_Id(toId);
+		model.addAttribute("hayChat", false);
+		
+		if(!listachats.isEmpty()) {
+			model.addAttribute("chat", listachats.get(0));
+			model.addAttribute("hayChat", true);
+		}
 
-		if(chat.isPresent()) {
-			model.addAttribute("chat", chat.get());
+		return "ver_chat";
+	}
+	
+	@PostMapping("mensaje/nuevo/{id}")
+	public String nuevoMensaje(Model model, @PathVariable long id, @RequestParam(defaultValue="") String cuerpo) {
+		
+		Optional<Chat> op = chtRepo.findById(id);
+		
+		if(op.isPresent()) {
+			
+			Chat chat = op.get();
+			chat.insertarMensaje(cuerpo);
+			model.addAttribute("chat", chat);
+			
 		}
 
 		return "ver_chat";
@@ -77,5 +103,6 @@ public class MensajeController {
 
 		return "ver_mensaje";
 	}
+	
 
 }

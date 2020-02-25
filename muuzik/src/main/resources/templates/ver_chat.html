@@ -2,7 +2,7 @@
 <head>
 	<meta charset="UTF-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
 </head>
 
 <body>
@@ -12,7 +12,7 @@
 			<span class="navbar-toggler-icon"></span>
 		</button>
 		<div class="collapse navbar-collapse" id="collapsibleNavbar">
-			<ul class="nav navbar-nav nav-fill">
+		<ul class="nav navbar-nav nav-fill">
 				<li class="nav-item">        </li>
   				<li class="nav-item"><a class="nav-link" href="/">Inicio</a></li>
   				<li class="nav-item"><a class="nav-link" href="/tablon">Tablón</a></li>
@@ -28,21 +28,21 @@
 		</div>
 	</nav>
 	<br>
-	<p align="center"><font color="#003300" size="5" face="Arial">¿Qué instrumento estás buscando?</font></p>
-
-	<div class="container">
-		<div class="row">
-			{{#anuncios}} 
-			<div class="col-sm-4">
-				<h3><a href="/anuncio/{{id}}"> {{articulo.nombre}}</h3>
-				<p>{{precio}} €</p>
-				<p><a href="/usuario/{{usuario.id}}">{{usuario.nick}}</p>
+	
+	{{#hayChat}} 
+			<h3><a href="/usuario/{{destinatario.id}}"> Chat con {{destinatario.nick}}</h3>
+			{{#mensajes}}
+			<div class="row">
+				<p>{{.cuerpo}}</p>
 			</div>
-			{{/anuncios}} 
-		</div>
-	</div>
- 
+			{{/mensajes}}
+	{{/hayChat}}
 
+	<form align = center action="mensaje/nuevo/3" method="post">
+		<p>Cuerpo del mensaje:
+		<textarea name='cuerpo' rows=5 cols=40></textarea></p>
 
+		<input type='submit' value='Enviar'/>
+	</form>
 </body>
 </html>
