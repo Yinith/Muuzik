@@ -30,7 +30,7 @@ public class TablonController {
 	@PostConstruct
 	public void init() {
 
-		Articulo a1 = new Articulo("Ampli de bajo", "Amplificadores", 2005);
+		/*Articulo a1 = new Articulo("Ampli de bajo", "Amplificadores", 2005);
 		Anuncio v1 = new Anuncio(a1, "Es de válvulas.", 50);
 		Usuario u1 = new Usuario ("Green", "quenoquieroponeruna", "Tienda de música");
 		usRepo.save(u1);
@@ -44,10 +44,8 @@ public class TablonController {
 		u2.addAnuncio(v2);
 		adRepo.save(v2);
 		usRepo.save(u2);
-		/*
 		pRepo.save(new Pedido(u1,v1));
 		pRepo.save(new Pedido(u2,v2));
-		*/
 		
 		// Añadimos muchos anuncios
 		for(int i = 1; i<=10; i++){
@@ -58,8 +56,9 @@ public class TablonController {
 			ui.addAnuncio(vi);
 			adRepo.save(vi);
 			usRepo.save(ui);
+			
 		}
-		
+		*/
 	}
 
 	@GetMapping("/tablon")

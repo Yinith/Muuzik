@@ -33,7 +33,7 @@ public class PortadaController {
 	@PostConstruct
 	//Son solo ejemplos
 	public void init () {
-		userRepo.save(new Usuario("Chema", "essolodeprueba", "Clarinetista en la orquesta RTVE"));
+		/*userRepo.save(new Usuario("Chema", "essolodeprueba", "Clarinetista en la orquesta RTVE"));
 		userRepo.save(new Usuario("Cassi", "essolodeprueba2", "Luthier de zanfonas"));
 		userRepo.save(new Usuario("Admin", "admin", "Administrador de la página web"));
 		
@@ -52,9 +52,10 @@ public class PortadaController {
 		 * fechaActual.setTimeZone(TimeZone.getTimeZone("Europe/Madrid"));
 		 */
 		
-		for(int i = 0; i<100; i++){
-			//msgRepo.save(new Mensaje("Cuerpo" +i, fechaActual));
-		}
+		/*
+		 * for(int i = 0; i<100; i++){ //msgRepo.save(new Mensaje("Cuerpo" +i,
+		 * fechaActual)); }
+		 */
 		
 	}
 	

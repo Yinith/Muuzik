@@ -30,18 +30,16 @@ public class MensajeController {
 	@PostConstruct
 	public void init () {
 
-		Usuario u1 = new Usuario ("uPrueba1", "pruebachat1", "pruebachat1");
-		userRepo.save(u1);
-		Usuario u2 = new Usuario ("uPrueba2", "pruebachat2", "pruebachat2");
-		userRepo.save(u2);
-		Chat c1 = new Chat(u1,u2); //u1 es remitente, u2 es destinatario
-		chtRepo.save(c1);
-
-		Mensaje m1 = new Mensaje ("Prueba de que hay mensajes dentro del chat");
-		Mensaje m2 = new Mensaje ("Prueba de que hay una contestación");
-		c1.addMensaje(m1);
-		c1.addMensaje(m2);
-		chtRepo.save(c1);
+		/*
+		 * Usuario u1 = new Usuario ("uPrueba1", "pruebachat1", "pruebachat1");
+		 * userRepo.save(u1); Usuario u2 = new Usuario ("uPrueba2", "pruebachat2",
+		 * "pruebachat2"); userRepo.save(u2); Chat c1 = new Chat(u1,u2); //u1 es
+		 * remitente, u2 es destinatario chtRepo.save(c1);
+		 * 
+		 * Mensaje m1 = new Mensaje ("Prueba de que hay mensajes dentro del chat");
+		 * Mensaje m2 = new Mensaje ("Prueba de que hay una contestación");
+		 * c1.addMensaje(m1); c1.addMensaje(m2); chtRepo.save(c1);
+		 */
 
 	}
 
