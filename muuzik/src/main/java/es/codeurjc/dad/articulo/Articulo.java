@@ -1,4 +1,4 @@
-package es.codeurjc.daw;
+package es.codeurjc.dad.articulo;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

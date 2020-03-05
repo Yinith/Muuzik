@@ -1,4 +1,4 @@
-package es.codeurjc.daw;
+package es.codeurjc.dad.usuario;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +11,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+
+import es.codeurjc.dad.anuncio.Anuncio;
+import es.codeurjc.dad.articulo.Articulo;
+import es.codeurjc.dad.chat.Chat;
+import es.codeurjc.dad.pedido.Pedido;
 
 
 

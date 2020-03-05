@@ -1,10 +1,10 @@
-package es.codeurjc.daw;
+package es.codeurjc.dad.usuario;
 
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface UsuariosRepository extends JpaRepository<Usuario, Long> {
+public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 	
 	Optional<Usuario> findByNickAndContrasena(String nick, String contrasena);
 	Usuario findByNick(String nick);

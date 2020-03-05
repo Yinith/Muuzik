@@ -1,4 +1,4 @@
-package es.codeurjc.daw;
+package es.codeurjc.dad;
 
 import java.util.ArrayList;
 import java.util.Optional;
@@ -14,34 +14,21 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import antlr.collections.List;
+import es.codeurjc.dad.chat.Chat;
+import es.codeurjc.dad.chat.ChatRepository;
+import es.codeurjc.dad.chat.Mensaje;
+import es.codeurjc.dad.chat.MensajeRepository;
+import es.codeurjc.dad.usuario.UsuarioRepository;
 
 @Controller
-public class MensajeController {
+public class ChatController {
 	
 	@Autowired
-	private MensajesRepository msgRepo;
+	private MensajeRepository msgRepo;
 	@Autowired
-	private UsuariosRepository userRepo;
+	private UsuarioRepository userRepo;
 	@Autowired
 	private ChatRepository chtRepo;
-
-
-
-	@PostConstruct
-	public void init () {
-
-		/*
-		 * Usuario u1 = new Usuario ("uPrueba1", "pruebachat1", "pruebachat1");
-		 * userRepo.save(u1); Usuario u2 = new Usuario ("uPrueba2", "pruebachat2",
-		 * "pruebachat2"); userRepo.save(u2); Chat c1 = new Chat(u1,u2); //u1 es
-		 * remitente, u2 es destinatario chtRepo.save(c1);
-		 * 
-		 * Mensaje m1 = new Mensaje ("Prueba de que hay mensajes dentro del chat");
-		 * Mensaje m2 = new Mensaje ("Prueba de que hay una contestación");
-		 * c1.addMensaje(m1); c1.addMensaje(m2); chtRepo.save(c1);
-		 */
-
-	}
 
 	@GetMapping("/bandeja_entrada")
 	public String chatUsuarios(Model model) {

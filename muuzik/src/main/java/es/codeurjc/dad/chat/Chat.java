@@ -1,4 +1,4 @@
-package es.codeurjc.daw;
+package es.codeurjc.dad.chat;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -6,6 +6,8 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.*;
+
+import es.codeurjc.dad.usuario.Usuario;
 
 
 @Entity

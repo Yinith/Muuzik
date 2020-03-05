@@ -1,4 +1,4 @@
- package es.codeurjc.daw;
+ package es.codeurjc.dad.anuncio;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -7,6 +7,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+
+import es.codeurjc.dad.articulo.Articulo;
+import es.codeurjc.dad.usuario.Usuario;
 
 @Entity
 public class Anuncio {

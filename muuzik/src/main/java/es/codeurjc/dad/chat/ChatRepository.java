@@ -1,4 +1,4 @@
-package es.codeurjc.daw;
+package es.codeurjc.dad.chat;
 
 import java.util.List;
 import java.util.Optional;

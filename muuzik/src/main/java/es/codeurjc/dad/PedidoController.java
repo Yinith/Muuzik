@@ -1,4 +1,4 @@
-package es.codeurjc.daw;
+package es.codeurjc.dad;
 
 import java.util.Optional;
 
@@ -13,21 +13,23 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import es.codeurjc.dad.anuncio.Anuncio;
+import es.codeurjc.dad.anuncio.AnuncioRepository;
+import es.codeurjc.dad.pedido.Pedido;
+import es.codeurjc.dad.pedido.PedidoRepository;
+import es.codeurjc.dad.usuario.Usuario;
+import es.codeurjc.dad.usuario.UsuarioRepository;
+
 
 @Controller
 public class PedidoController {
 
 	@Autowired
-	private AnunciosRepository adRepo;
+	private AnuncioRepository adRepo;
 	@Autowired
-	private UsuariosRepository usRepo;
+	private UsuarioRepository usRepo;
 	@Autowired
-	private PedidosRepository peRepo; 
-
-	@PostConstruct
-	public void init() {
-
-	}
+	private PedidoRepository peRepo; 
 
 	@GetMapping("/nuevo_pedido/{idAnuncio}")
 	public String tablon(Model model, @PathVariable long idAnuncio) {

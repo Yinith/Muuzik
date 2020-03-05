@@ -1,4 +1,4 @@
-package es.codeurjc.daw;
+package es.codeurjc.dad;
 
 import java.util.Optional;
 
@@ -13,6 +13,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import es.codeurjc.dad.anuncio.Anuncio;
+import es.codeurjc.dad.anuncio.AnuncioRepository;
+import es.codeurjc.dad.articulo.Articulo;
+import es.codeurjc.dad.usuario.Usuario;
+import es.codeurjc.dad.usuario.UsuarioRepository;
+
 
 @Controller
 public class TablonController {
@@ -23,43 +29,9 @@ public class TablonController {
 	//Green: Voy a utilizar esto para crear un pedido de la misma forma que hacemos el anuncio a usuario.
 
 	@Autowired
-	private AnunciosRepository adRepo;
+	private AnuncioRepository adRepo;
 	@Autowired
-	private UsuariosRepository usRepo;
-
-	@PostConstruct
-	public void init() {
-
-		/*Articulo a1 = new Articulo("Ampli de bajo", "Amplificadores", 2005);
-		Anuncio v1 = new Anuncio(a1, "Es de válvulas.", 50);
-		Usuario u1 = new Usuario ("Green", "quenoquieroponeruna", "Tienda de música");
-		usRepo.save(u1);
-		u1.addAnuncio(v1);
-		adRepo.save(v1);
-		usRepo.save(u1);
-		
-		Anuncio v2 = new Anuncio(new Articulo("Guitarra Ibanez", "Guitarras", 1997), "No está bien conservada, la tienes que arreglar.", 800);
-		Usuario u2 = new Usuario ("Cthulhu", "cthulhu", "Aprendiendo a tocar la guitarra");
-		usRepo.save(u2);
-		u2.addAnuncio(v2);
-		adRepo.save(v2);
-		usRepo.save(u2);
-		pRepo.save(new Pedido(u1,v1));
-		pRepo.save(new Pedido(u2,v2));
-		
-		// Añadimos muchos anuncios
-		for(int i = 1; i<=10; i++){
-			//adRepo.save(new AnuncioVenta("User "+i, "Anuncio "+i, "Contenido "+i, new Articulo("asd", "asd", true, 0), i*10 ));
-			Anuncio vi = new Anuncio(new Articulo("Instrumento "+i), "Un instrumento cualquiera", i*10);
-			Usuario ui = new Usuario ("Usuario"+i, "password"+i, "No soy un robot.");
-			usRepo.save(ui);
-			ui.addAnuncio(vi);
-			adRepo.save(vi);
-			usRepo.save(ui);
-			
-		}
-		*/
-	}
+	private UsuarioRepository usRepo;
 
 	@GetMapping("/tablon")
 	public String tablon(Model model, Pageable page) {
