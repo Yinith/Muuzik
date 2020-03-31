@@ -61,7 +61,7 @@ public class DatabaseInit {
 		
 
 		
-*/
+
 		////////// INICIALIZAR MENSAJES Y CHATS
 		
 		/* 		///// USUARIOS PARA PRUEBA CHATS

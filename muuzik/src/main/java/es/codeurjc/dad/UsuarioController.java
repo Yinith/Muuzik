@@ -89,12 +89,12 @@ public class UsuarioController {
 	}
 	
 	@PostMapping("/usuario/{userId}/guardar")
-	public String usuarioEditGuardar(Model model, @PathVariable Long userId, @RequestParam Optional<String> contrasena, @RequestParam Optional<String> info_perfil) {
+	public String usuarioEditGuardar(Model model, @PathVariable Long userId, @RequestParam Optional<String> contrasena, @RequestParam Optional<String> bio) {
 		Optional<Usuario> op = userRepo.findById(userId);
 		if(op.isPresent()) {
 			Usuario usuario = op.get();
 			if(contrasena.isPresent()) {usuario.setContrasena(contrasena.get());}
-			if(info_perfil.isPresent()) {usuario.setBio(info_perfil.get());}
+			if(bio.isPresent()) {usuario.setBio(bio.get());}
 			userRepo.save(usuario);
 		}
 

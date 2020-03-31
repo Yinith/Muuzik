@@ -26,7 +26,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers("/registerOK").permitAll();
 		
 		///// PAGINAS TRAS AUTENTICACION
-		http.authorizeRequests().anyRequest().authenticated();	
+		//http.authorizeRequests().anyRequest().authenticated();
+		http.authorizeRequests().antMatchers("/crearAnuncio").hasAnyRole("ADMIN");
+		
 		
 		///// FORMULARIO DE LOGIN
 		http.formLogin().loginPage("/login");
