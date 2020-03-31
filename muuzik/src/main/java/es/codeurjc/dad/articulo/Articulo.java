@@ -21,7 +21,6 @@ public class Articulo {
 	}
 	
 	public Articulo(String nombre) {
-		super();
 		this.nombre = nombre;
 		this.categoria = "";
 	}

@@ -29,7 +29,6 @@ public class Anuncio {
 	public Anuncio() {}
 	
 	public Anuncio(Articulo articulo, String comentario, int precio) {
-		super();
 		this.comentario = comentario;
 		this.precio = precio;
 		this.articulo = articulo;

@@ -22,11 +22,11 @@ public class DatabaseInit {
 	
 	@PostConstruct
 	public void init () {
-/*		
+/*
 		////////// INICIALIZAR USUARIOS
 		userRepo.save(new Usuario("Chema", "essolodeprueba", "Clarinetista en la orquesta RTVE"));
-		userRepo.save(new Usuario("Cassi", "essolodeprueba2", "Luthier de zanfonas"));
-		userRepo.save(new Usuario("Admin", "admin", "Administrador de la página web"));
+		userRepo.save(new Usuario("Cassi", "pass", "Luthier de zanfonas", "ROLE_USER"));
+		userRepo.save(new Usuario("Admin", "admin", "Administrador de la página web", "ROLE_USER", "ROLE_ADMIN"));
 		Usuario u1 = new Usuario ("Green", "quenoquieroponeruna", "Tienda de música");
 		userRepo.save(u1);
 		Usuario u2 = new Usuario ("Cthulhu", "cthulhu", "Aprendiendo a tocar la guitarra");
@@ -61,7 +61,7 @@ public class DatabaseInit {
 		
 
 		
-*/	
+*/
 		////////// INICIALIZAR MENSAJES Y CHATS
 		
 		/* 		///// USUARIOS PARA PRUEBA CHATS

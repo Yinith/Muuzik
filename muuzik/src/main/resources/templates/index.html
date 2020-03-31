@@ -16,11 +16,8 @@
  				<li class="nav-item">        </li>
   				<li class="nav-item"><a class="nav-link" href="/">Inicio</a></li>
   				<li class="nav-item"><a class="nav-link" href="/tablon">Tablón</a></li>
-				<li class="nav-item"><a class="nav-link" href="/nuevoAnuncio.html">Nuevo Anuncio</a></li>
+				<li class="nav-item"><a class="nav-link" href="/crearAnuncio">Nuevo Anuncio</a></li>
 				<li class="nav-item">        </li>
-				{{#loggedIn}}
-				<li class="nav-item"><a class="nav-link" href="#">Sesión iniciada como {{nick}}.</a></li>
-				{{/loggedIn}}  
 				<!-- 
 				<li class="nav-item">        </li>
 				<form class="form-inline" action="/action_page.php">
@@ -32,23 +29,9 @@
 		</div>
 	</nav>
 	<br>
-	<div class="container">
-		<div class="row">
-			{{#anuncios}} 
-			<div class="col-sm-4">
-				<a href="/anuncio/{{id}}">
-				<h3>{{articulo.nombre}}</h3>
-				<p>{{usuario.nick}}</p>
-				<p>{{precio}} €</p> 
-			</div>
-			{{/anuncios}}  
-		</div>
-	</div>
 	
-
-	<p align="center"><a href="nuevoUsuario.html" class="btn btn-success">Registrarse</a>
-	<a href="inicio_sesion.html" class="btn btn-success">Iniciar sesión</a></p>
-	<p align="center"><br><a href="tablon" class="btn btn-success">Tablón de anuncios</a>
+	<p align="center"><a href="/register" class="btn btn-success">Registrarse</a>
+	<a href="/login" class="btn btn-success">Iniciar sesión</a></p>
 
 
 	

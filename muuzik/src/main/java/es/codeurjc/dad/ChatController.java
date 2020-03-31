@@ -26,8 +26,6 @@ public class ChatController {
 	@Autowired
 	private MensajeRepository msgRepo;
 	@Autowired
-	private UsuarioRepository userRepo;
-	@Autowired
 	private ChatRepository chtRepo;
 
 	@GetMapping("/bandeja_entrada")

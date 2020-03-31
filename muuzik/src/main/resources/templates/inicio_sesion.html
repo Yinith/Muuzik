@@ -11,8 +11,8 @@
 			<span class="navbar-toggler-icon"></span>
 		</button>
 		<div class="collapse navbar-collapse" id="collapsibleNavbar">
-		<ul class="nav navbar-nav nav-fill">
-				<li class="nav-item">        </li>
+			<ul class="nav navbar-nav nav-fill">
+  				<li class="nav-item">        </li>
   				<li class="nav-item"><a class="nav-link" href="/">Inicio</a></li>
   				<li class="nav-item"><a class="nav-link" href="/tablon">Tablón</a></li>
 				<li class="nav-item"><a class="nav-link" href="/crearAnuncio">Publicar un anuncio</a></li>
@@ -27,7 +27,14 @@
 		</div>
 	</nav>
 	<br>
-	<p align="center"><font color="#C8707E" size="20" face="Arial"> No se ha encontrado un usuario con ese nick o contraseña.</font> </p>
-	<p align="center"><a href="/" class="btn btn-success">Volver al inicio</a>
+	<h2>Inicia sesión:</h2>
+	<form action="/login" method="post">
+		<p>Nick: </p>
+		<input type='text' name='nick'/>
+		<p>Contraseña:</p>
+		<input type='password' name='contrasena'/>
+
+		<input type='submit' value='Enviar'/>
+	</form>
 </body>
 </html>

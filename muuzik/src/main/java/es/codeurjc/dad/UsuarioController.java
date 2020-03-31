@@ -1,12 +1,6 @@
 package es.codeurjc.dad;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
 import java.util.Optional;
-import java.util.TimeZone;
-
-import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -30,30 +24,21 @@ public class UsuarioController {
 	@Autowired
 	private UsuarioRepository userRepo;
 	@Autowired
-	private AnuncioRepository adRepo;
-	
-	private Usuario userActual; //Si un usuario ha iniciado sesión
-	
+	private AnuncioRepository adRepo;	
 	
 	@GetMapping("/")
-	public String tablaUsuarios(Model model) {
-
-		model.addAttribute("usuario", userRepo.findAll());
-
+	public String inicio(Model model) {
 		return "index";
 	}
 	
-	
-	@PostMapping("/usuario/nuevo")
-	public String nuevoUsuario(Model model, Usuario usuario) {
-
-		userRepo.save(usuario);
-
-		return "usuario_guardado";
+	@GetMapping("/login")
+	public String login() {
+		return "inicio_sesion";
 	}
 	
+	/*
 	@PostMapping("/loggedIn")
-	public String nuevoAnuncio(Model model, @RequestParam String nick, @RequestParam String contrasena) {
+	public String loggedIn(Model model, @RequestParam String nick, @RequestParam String contrasena) {
 		
 		Optional<Usuario> user = userRepo.findByNickAndContrasena(nick, contrasena);
 		if(user.isPresent()) {
@@ -62,13 +47,28 @@ public class UsuarioController {
 			model.addAttribute("loggedIn", true);
 			return "index";
 		}
-		else {
-			return "usuarioNoExiste";
-		}
+	}
+	*/
+	
+	@GetMapping("/loginerror")
+	public String loginerror() {
+		return "usuarioNoExiste";
+	}
+	
+	@GetMapping("/register")
+	public String registrarUsuario() {
+		return "registro_form";
+	}
+	
+	@PostMapping("/registerOK")
+	public String nuevoUsuario(Model model, Usuario usuario) {
+		
+		userRepo.save(usuario);
+		return "usuario_guardado";
 	}
 	
 	@GetMapping("/usuario/{userId}")
-	public String nuevoUsuario(Model model, @PathVariable Long userId) {
+	public String verPerfil(Model model, @PathVariable Long userId) {
 	
 		Optional<Usuario> op = userRepo.findById(userId);
 		if(op.isPresent()) {
@@ -94,7 +94,7 @@ public class UsuarioController {
 		if(op.isPresent()) {
 			Usuario usuario = op.get();
 			if(contrasena.isPresent()) {usuario.setContrasena(contrasena.get());}
-			if(info_perfil.isPresent()) {usuario.setPerfil(info_perfil.get());}
+			if(info_perfil.isPresent()) {usuario.setBio(info_perfil.get());}
 			userRepo.save(usuario);
 		}
 

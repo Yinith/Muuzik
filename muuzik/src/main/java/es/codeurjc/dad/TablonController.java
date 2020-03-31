@@ -3,6 +3,7 @@ package es.codeurjc.dad;
 import java.util.Optional;
 
 import javax.annotation.PostConstruct;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -34,12 +35,19 @@ public class TablonController {
 	private UsuarioRepository usRepo;
 
 	@GetMapping("/tablon")
-	public String tablon(Model model, Pageable page) {
-
+	public String tablon(Model model, Pageable page, HttpServletRequest request) {
+		Usuario usuarioActual = usRepo.findByNick(request.getUserPrincipal().getName());
+		model.addAttribute("username", usuarioActual.getNick());
 		model.addAttribute("anuncios", adRepo.findAll(page));
 
 		return "tablon";
 	}
+	
+	@GetMapping("/crearAnuncio")
+	public String crearAnuncio() {
+		return "nuevoAnuncio_form";
+	}
+	
 
 	@PostMapping("/anuncio/nuevo")
 	public String nuevoAnuncio(Model model, @RequestParam String nombre, @RequestParam int precio, @RequestParam(required=false) String categoria, @RequestParam(defaultValue="0") int anoFabricacion, @RequestParam String comentario) {

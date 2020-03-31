@@ -1,16 +1,21 @@
 package es.codeurjc.dad.usuario;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.ListIterator;
 
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import es.codeurjc.dad.anuncio.Anuncio;
 import es.codeurjc.dad.articulo.Articulo;
@@ -29,8 +34,10 @@ public class Usuario {
 	
 	@Column(unique = true)
 	private String nick;
-	private String contrasena;
-	private String info_perfil;
+	private String contrasena; //Contraseña se va a cifrar con una función hash
+	private String biografia;
+	@ElementCollection(fetch = FetchType.EAGER)
+	private List<String> roles;	   //Roles que puede tener el usuario: user, admin
 	
 	@OneToMany
 	private List<Anuncio> anuncios;
@@ -45,23 +52,35 @@ public class Usuario {
 	private List<Pedido> pedidos;
 
 	
-	public Usuario () {
-		
-	}
+	public Usuario () {	}
 	
-	public Usuario (String nick, String contrasena, String info_perfil) {
-		super();
+	public Usuario (String nick, String contrasena, String bio) {
 		this.nick = nick;
-		this.contrasena = contrasena;
-		this.info_perfil = info_perfil;
+		//Encriptacion de la contraseña; ya no se puede desencriptar nunca
+		this.contrasena = new BCryptPasswordEncoder().encode(contrasena); 
+		this.biografia = bio;
+		
+		this.roles = new ArrayList<>(); 
+		this.roles.add("ROLE_USER"); //Por defecto su rol es user (no es admin)
 		
 		anuncios = new ArrayList<Anuncio>();
 		articulos = new ArrayList<Articulo>();
 		c1 = new ArrayList<Chat>();
 		c2 = new ArrayList<Chat>();
 	}
-	
-	
+
+	// Constructor sobrecargado: permite escoger el rol del usuario desde su creacion
+	public Usuario (String nick, String contrasena, String info_perfil, String ... roles) {
+		this.nick = nick;
+		this.contrasena = new BCryptPasswordEncoder().encode(contrasena); 
+		this.biografia = info_perfil;
+		this.roles = new ArrayList<>(Arrays.asList(roles));
+		
+		anuncios = new ArrayList<Anuncio>();
+		articulos = new ArrayList<Articulo>();
+		c1 = new ArrayList<Chat>();
+		c2 = new ArrayList<Chat>();
+	}
 
 	public String getNick() {
 		return nick;
@@ -76,15 +95,27 @@ public class Usuario {
 	}
 
 	public void setContrasena(String contrasena) {
-		this.contrasena = contrasena;
+		this.contrasena = new BCryptPasswordEncoder().encode(contrasena);
 	}
 
-	public String getPerfil() {
-		return info_perfil;
+	public String getBio() {
+		return biografia;
 	}
 
-	public void setPerfil(String info_perfil) {
-		this.info_perfil = info_perfil;
+	public void setBio(String info_perfil) {
+		this.biografia = info_perfil;
+	}
+	
+	public List<String> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<String> roles) {
+		this.roles = roles;
+	}
+	
+	public void addRole(String role) {
+		this.roles.add(role);
 	}
 	
 	public List<Anuncio> getAnuncios() {
@@ -167,7 +198,7 @@ public class Usuario {
 */	
 	@Override
 	public String toString() {
-		return "Usuario [id=" + id + ", nick=" + nick + ", contrasena=" + contrasena + ", info_perfil=" + info_perfil
+		return "Usuario [id=" + id + ", nick=" + nick + ", contrasena=" + contrasena + ", info_perfil=" + biografia
 				+ ", anuncios=" + anuncios + ", articulos=" + articulos + ", c1=" + c1 + ", c2=" + c2 + ", pedidos="
 				+ pedidos + "]";
 	}

@@ -30,6 +30,10 @@ public class Mensaje {
 		return cuerpo;
 	}
 
+	public void setCuerpo(String cuerpo) {
+		this.cuerpo = cuerpo;
+	}
+
 	/*
 	 * public SimpleDateFormat getFecha() { return fecha; }
 	 */
@@ -40,10 +44,6 @@ public class Mensaje {
 
 	public void setId(long id) {
 		this.id = id;
-	}
-
-	public void setCuerpo(String cuerpo) {
-		this.cuerpo = cuerpo;
 	}
 
 	/*
