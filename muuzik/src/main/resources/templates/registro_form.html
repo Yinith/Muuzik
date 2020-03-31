@@ -34,8 +34,8 @@
 		<input type='text' name='contrasena'/>
 		<p>¿Eres luthier? ¿Intérprete? ¿Productor musical? Cuéntaselo al resto:</p>
 		<textarea name='perfil' rows=5 cols=40></textarea>
-
 		<input type='submit' value='Enviar'/>
+		<input type="hidden" name="_csrf" value="{{token}}" />
 	</form>
 </body>
 </html>

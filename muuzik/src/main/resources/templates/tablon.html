@@ -17,7 +17,12 @@
   				<li class="nav-item"><a class="nav-link" href="/">Inicio</a></li>
   				<li class="nav-item"><a class="nav-link" href="/tablon">Tablón</a></li>
 				<li class="nav-item"><a class="nav-link" href="/crearAnuncio">Publicar un anuncio</a></li>
-				<li class="nav-item"><a class="nav-link" href="/logout">Cerrar sesión</a></li>
+				<li class="nav-item">
+					<form action="/logout" method="post">
+						<input type="submit" value="Cerrar sesión" />
+						<input type="hidden" name="_csrf" value="{{token}}" />
+					</form>
+				</li>
 				<!-- 
 				<li class="nav-item">        </li>
 				<form class="form-inline" action="/action_page.php">
