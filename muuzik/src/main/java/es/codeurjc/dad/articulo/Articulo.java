@@ -19,6 +19,7 @@ public class Articulo {
 	private String categoria;
 	private boolean publico = true;
 	private int anoFabricacion;//Solo el año
+	private String urlFoto;
 	
 	public Articulo() {
 		
@@ -27,6 +28,7 @@ public class Articulo {
 	public Articulo(String nombre) {
 		this.nombre = nombre;
 		this.categoria = "";
+		this.urlFoto = "imagenprueba.jpg";
 	}
 	
 	public Articulo(String nombre, int anoFabricacion) {
@@ -35,6 +37,7 @@ public class Articulo {
 		if(anoFabricacion > 0) {
 			this.anoFabricacion = anoFabricacion;
 		} else this.anoFabricacion = 0;
+		this.urlFoto = "imagenprueba.jpg";
 	}
 	
 	public Articulo(String nombre, String categoria, int anoFabricacion) {
@@ -44,6 +47,7 @@ public class Articulo {
 		if(anoFabricacion > 0) {
 			this.anoFabricacion = anoFabricacion;
 		} else this.anoFabricacion = 0;
+		this.urlFoto = "imagenprueba.jpg";
 	}
 	
 	public Articulo(String nombre, String categoria, boolean publico) {
@@ -52,6 +56,7 @@ public class Articulo {
 		this.categoria = categoria;
 		this.publico = publico;
 		this.anoFabricacion = 0;
+		this.urlFoto = "imagenprueba.jpg";
 	}
 			
 			
@@ -64,6 +69,7 @@ public class Articulo {
 			this.anoFabricacion = anoFabricacion;
 		}
 		else this.anoFabricacion = 0;
+		this.urlFoto = "imagenprueba.jpg";
 	}
 	
 	public long getId() {
@@ -76,6 +82,10 @@ public class Articulo {
 
 	public String getCategoria() {
 		return categoria;
+	}
+	
+	public String getUrlFoto() {
+		return urlFoto;
 	}
 	
 	public boolean isPublico() {
@@ -96,6 +106,10 @@ public class Articulo {
 
 	public void setAnoFabricacion(int anoFabricacion) {
 		this.anoFabricacion = anoFabricacion;
+	}
+	
+	public void setUrlFoto(String uri) {
+		this.urlFoto = uri;
 	}
 	
 	@Override

@@ -6,50 +6,56 @@
 </head>
 
 <body>
-	<nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
-		<a class="navbar-brand" href="#">MUUZIK</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="collapsibleNavbar">
-			<ul class="nav navbar-nav nav-fill">
-				<li class="nav-item">        </li>
-  				<li class="nav-item"><a class="nav-link" href="/">Inicio</a></li>
-  				<li class="nav-item"><a class="nav-link" href="/tablon">Tablón</a></li>
-				<li class="nav-item"><a class="nav-link" href="/crearAnuncio">Publicar un anuncio</a></li>
-				<li class="nav-item">
-					<form action="/logout" method="post">
-						<input type="submit" value="Cerrar sesión" />
-						<input type="hidden" name="_csrf" value="{{token}}" />
-					</form>
-				</li>
-				<!-- 
-				<li class="nav-item">        </li>
-				<form class="form-inline" action="/action_page.php">
-    				<input class="form-control mr-sm-2" type="text" placeholder="¿Qué estás buscando?">
-   				 	<button class="btn btn-success" type="submit">Buscar</button>
-  				</form>
-  				 -->
-			</ul>
-		</div>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+	  <div class="container">
+	    <a class="navbar-brand" href="#">MUUZIK</a>
+	    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+	          <span class="navbar-toggler-icon"></span>
+	    </button>
+	    <div class="collapse navbar-collapse" id="navBar">
+	      <ul class="navbar-nav ml-fill">
+	        <li class="nav-item"><a class="nav-link" href="/">Inicio<span class="sr-only">(current)</span></a></li>
+	        <li class="nav-item"><a class="nav-link" href="/tablon">Tablón</a></li>
+	        <li class="nav-item"><a class="nav-link" href="/crearAnuncio">Publicar un anuncio</a></li>
+	      </ul>
+	    </div>
+	    <div class="collapse navbar-collapse" id="navBar">
+	      <ul class="navbar-nav ml-auto">
+	        <li class="nav-item"><a class="nav-link" href="/login">Inicia sesión</a></li>
+	        <li class="nav-item"><a class="nav-link" href="/register">Regístrate</a></li>
+	        <li class="nav-item-active"><a class="nav-link" href="#"> ¡Hola, {{username}}!</a></li>
+	        <li class="nav-item">
+				<form action="/logout" method="post">
+					<button type="submit" class="btn btn-primary my-1">Cerrar sesión</button>
+					<input type="hidden" name="_csrf" value="{{token}}" />
+				</form>
+			</li>
+	      </ul>
+	    </div>
+	  </div>
 	</nav>
-	<br>
-	<h1>¡Hola, {{username}}!</h1>
-	<p align="center"><font color="#003300" size="5" face="Arial">¿Qué instrumento estás buscando?</font></p>
-
-	<div class="container">
-		<div class="row">
-			{{#anuncios}} 
-			<div class="col-sm-4">
-				<h3><a href="/anuncio/{{id}}"> {{articulo.nombre}}</h3>
-				<p>{{precio}} € <span class="text-danger">{{#vendido}}   ¡Vendido!{{/vendido}}</span></p>
-				<p><a href="/usuario/{{anunciante.id}}">{{anunciante.nick}}</p>				
+	
+		<br>
+		<br>
+		<p align="center"><font color="#003300" size="5" face="Arial">¿Qué instrumento estás buscando?</font></p>
+	
+		<div class="container">
+			<div class="row">
+				{{#anuncios}} 
+				<div class="col-sm-3">
+					<div class="card">
+						<img class="card-img-top" src={{articulo.urlFoto}} alt="Foto articulo">
+						<div class="card-body">
+							<h5 class="card-title">{{articulo.nombre}}<span class="text-danger">{{#vendido}} - ¡Vendido!{{/vendido}}</span></h5>
+							<p class="card-text">{{precio}} €</p>
+							<p>Vendido por: <a href="/usuario/{{anunciante.id}}">{{anunciante.nick}}</p>		
+							<a href="/anuncio/{{id}}" class="btn btn-primary">Ver anuncio</a>
+						</div>
+					</div>		
+				</div>
+				{{/anuncios}} 
 			</div>
-			{{/anuncios}} 
 		</div>
-	</div>
- 
-
 
 </body>
 </html>
