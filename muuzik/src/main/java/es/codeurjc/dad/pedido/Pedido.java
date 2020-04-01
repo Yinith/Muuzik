@@ -8,6 +8,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 import es.codeurjc.dad.anuncio.Anuncio;
+import es.codeurjc.dad.articulo.Articulo;
 import es.codeurjc.dad.usuario.Usuario;
 
 
@@ -19,18 +20,18 @@ public class Pedido {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
-	@ManyToOne
-	private Usuario user;
-	
 	@OneToOne
 	private Anuncio anuncio;
 	
+	@ManyToOne
+	private Usuario comprador;
+	
 	public Pedido () {}
 	
-	public Pedido (Usuario u, Anuncio a) 
+	public Pedido (Usuario c, Anuncio a) 
 	{
 		super ();
-		this.user = u;
+		this.comprador = c;
 		this.anuncio = a;
 	}
 
@@ -42,12 +43,12 @@ public class Pedido {
 		this.id = id;
 	}
 
-	public Usuario getUser() {
-		return user;
+	public Usuario getComprador() {
+		return this.comprador;
 	}
 
-	public void setUser(Usuario user) {
-		this.user = user;
+	public void setComprador(Usuario user) {
+		this.comprador = user;
 	}
 
 	public Anuncio getAnuncio() {
@@ -57,10 +58,22 @@ public class Pedido {
 	public void setAnuncio(Anuncio anuncio) {
 		this.anuncio = anuncio;
 	}
+	
+	
+	// Este método asigna un nuevo dueño al articulo. 
+	public void comprado() {
+		Articulo art = anuncio.getArticulo();
+		
+		this.comprador.addPedido(this);						// La añado al historial de pedidos del usuario = historial comprados
+		this.comprador.addArticulo(art);					// Añado el articulo a los objetos del comprador
+		this.anuncio.getAnunciante().borrarArticulo(art);   // Le quito el objeto al vendedor
+		this.anuncio.setVendido();							// El anuncio se marca como vendido (luego aparecerá en una lista de anuncios vendidos en el perfil del vendedor).  
+		
+	}
 
 	@Override
 	public String toString() {
-		return "Pedido [id=" + id + ", user=" + user + ", anuncio=" + anuncio + "]";
+		return "Pedido [id=" + id + ", comprador =" + comprador + ", vendedor = " + anuncio.getAnunciante() + "anuncio=" + anuncio + "]";
 	}
 
 }

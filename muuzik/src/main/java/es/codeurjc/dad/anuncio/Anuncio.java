@@ -19,26 +19,31 @@ public class Anuncio {
 	private long id;
 	private String comentario;
 	private int precio;
+	private boolean vendido;
 	
+	@OneToOne
 	//@OneToOne(cascade = CascadeType.ALL)
-	@OneToOne(cascade = CascadeType.ALL)
 	private Articulo articulo;
 	@ManyToOne
-	private Usuario user;
+	private Usuario anunciante;
+	
+	
 
 	public Anuncio() {}
 	
 	public Anuncio(Articulo articulo, String comentario, int precio) {
 		this.comentario = comentario;
 		this.precio = precio;
+		this.vendido = false;
 		this.articulo = articulo;
 	}
 	
 	public Anuncio(String nombre, String comentario, int precio) {
 		super();
-		this.articulo = new Articulo(nombre);
 		this.comentario = comentario;
 		this.precio = precio;
+		this.vendido = false;
+		this.articulo = new Articulo(nombre);
 	}
 
 	public long getId() {
@@ -53,12 +58,16 @@ public class Anuncio {
 		return precio;
 	}
 
-	public Usuario getUsuario() {
-		return this.user;
+	public Usuario getAnunciante() {
+		return this.anunciante;
 	}
 	
 	public Articulo getArticulo() {
 		return this.articulo;
+	}
+	
+	public boolean isVendido() {
+		return this.vendido;
 	}
 	
 	public void setId(long id) {
@@ -73,18 +82,27 @@ public class Anuncio {
 		this.precio = precio;
 	} 
 	
-	public void setUsuario(Usuario u){
-		this.user = u;
+	public void setAnunciante(Usuario u){
+		this.anunciante = u;
 	}
 	
 	public void setArticulo(Articulo art) {
 		this.articulo = art;
 	}
+
+	public void deleteArticulo() {
+		this.articulo = null;
+	}
+	
+	
+	public void setVendido() {
+		this.vendido = true;
+	}
 	
 	@Override
 	public String toString() {
 		return "Anuncio [id=" + id + ", comentario=" + comentario + ", precio=" + precio + ", articulo=" + articulo
-				+ ", user=" + user + "]";
+				+ ", anunciante=" + anunciante + "]";
 	}
 
 

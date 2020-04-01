@@ -40,10 +40,10 @@
 
 	<p align="center">Precio: {{anuncio.precio}} €</p>
 	<p align="center">Comentario: {{anuncio.comentario}}</p>
-	<p align="center">Vendedor: <a href="/usuario/{{anuncio.usuario.id}}">{{anuncio.usuario.nick}}</a></p>
+	<p align="center">Vendedor: <a href="/usuario/{{anuncio.anunciante.id}}">{{anuncio.anunciante.nick}}</a></p>
 	
 	<p align="center"><a href="/tablon/?page=0&size=50" class="btn btn-success">Volver al tablón</a>
-	<a href="/nuevo_pedido/{{anuncio.id}}" class="btn btn-success">Estoy interesado</a></p>
+	<a href="/hacerPedido/{{anuncio.id}}" class="btn btn-success">Estoy interesado</a></p>
 {{#admin}}
 	<p align="center">
 		<a href="/borrar_anuncio/{{anuncio.id}}" class="btn btn-success">Borrar anuncio</a>

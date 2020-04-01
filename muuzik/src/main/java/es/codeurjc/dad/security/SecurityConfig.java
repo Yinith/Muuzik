@@ -26,8 +26,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers("/registerOK").permitAll();
 		
 		///// PAGINAS TRAS AUTENTICACION
-		//http.authorizeRequests().anyRequest().authenticated();
-		http.authorizeRequests().antMatchers("/crearAnuncio").hasAnyRole("ADMIN");
+		http.authorizeRequests().antMatchers("/borrar_anuncio/{id}").hasAnyRole("ADMIN");
+		http.authorizeRequests().antMatchers("/usuario/{userId}/edit").hasAnyRole("ADMIN"); //Solo se puede editar un usuario si eres admin
+		http.authorizeRequests().anyRequest().authenticated();
 		
 		
 		///// FORMULARIO DE LOGIN

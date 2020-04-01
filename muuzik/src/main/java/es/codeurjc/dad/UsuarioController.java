@@ -1,6 +1,9 @@
 package es.codeurjc.dad;
 
+import java.util.List;
 import java.util.Optional;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -13,6 +16,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import es.codeurjc.dad.anuncio.AnuncioRepository;
+import es.codeurjc.dad.articulo.Articulo;
+import es.codeurjc.dad.articulo.ArticuloRepository;
 import es.codeurjc.dad.usuario.Usuario;
 import es.codeurjc.dad.usuario.UsuarioRepository;
 
@@ -25,6 +30,9 @@ public class UsuarioController {
 	private UsuarioRepository userRepo;
 	@Autowired
 	private AnuncioRepository adRepo;	
+	@Autowired
+	private ArticuloRepository artRepo;
+	
 	
 	@GetMapping("/")
 	public String inicio(Model model) {
@@ -61,19 +69,20 @@ public class UsuarioController {
 	}
 	
 	@PostMapping("/registerOK")
-	public String nuevoUsuario(Model model, Usuario usuario) {
-		
-		userRepo.save(usuario);
+	public String nuevoUsuario(Model model, @RequestParam String nick, @RequestParam String contrasena, @RequestParam String biografia) {
+		userRepo.save(new Usuario(nick, contrasena, biografia));
 		return "usuario_guardado";
 	}
 	
 	@GetMapping("/usuario/{userId}")
-	public String verPerfil(Model model, @PathVariable Long userId) {
+	public String verPerfil(Model model, @PathVariable Long userId, HttpServletRequest request) {
 	
 		Optional<Usuario> op = userRepo.findById(userId);
 		if(op.isPresent()) {
 			model.addAttribute("usuario", op.get());
+			model.addAttribute("admin", request.isUserInRole("ADMIN"));
 		}
+		
 
 		return "perfil_usuario";
 	}
@@ -101,19 +110,23 @@ public class UsuarioController {
 		return "usuario_guardado";
 	}
 	
-	@Transactional
+	
+	@Transactional		//Hace falta la anotación transactional 
 	@GetMapping("/borrar_usuario/{userId}")
 	public String borrarUsuario(Model model, @PathVariable long userId, Pageable page) {
 		
 		Optional<Usuario> op = userRepo.findById(userId);
 		if(op.isPresent()) {
 			Usuario user = op.get();
-			//List<Articulo> articulos = user.getArticulos();
-			//artRepo.deleteInBatch(articulos);
-			user.borrarTodosAnuncios();
+			
+			List<Articulo> articulos = user.getArticulos(); //Se saca la referencia a todos los articulos que aun son de este usuario
+			
+			user.borrarTodosAnuncios();				// Borramos la referencia que tiene el usuario de sus anuncios y artículos
 			user.borrarTodosArticulos();
-			adRepo.deleteByUser_Id(userId);
-			userRepo.deleteById(userId);
+			
+			artRepo.deleteInBatch(articulos);		// Borramos todas las instancias de sus articulos del repositorio
+			adRepo.deleteByAnunciante_Id(userId);	// Borramos todas las instancias de sus anuncios
+			userRepo.deleteById(userId);			// Borramos el usuario de su repo
 		}
 		return "usuario_borrado";
 	}

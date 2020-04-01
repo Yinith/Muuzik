@@ -4,6 +4,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+
+import es.codeurjc.dad.usuario.Usuario;
 
 @Entity
 public class Articulo {
@@ -47,7 +51,7 @@ public class Articulo {
 		this.nombre = nombre;
 		this.categoria = categoria;
 		this.publico = publico;
-//		this.anoFabricacion = 0;
+		this.anoFabricacion = 0;
 	}
 			
 			
@@ -77,17 +81,13 @@ public class Articulo {
 	public String getCategoria() {
 		return categoria;
 	}
-
+	
 	public boolean isPublico() {
 		return publico;
 	}
 
 	public int getAnoFabricacion() {
 		return anoFabricacion;
-	}
-
-	public void setId(long id) {
-		this.id = id;
 	}
 
 	public void setFoto(String foto) {
@@ -105,13 +105,10 @@ public class Articulo {
 	public void setAnoFabricacion(int anoFabricacion) {
 		this.anoFabricacion = anoFabricacion;
 	}
-
+	
 	@Override
 	public String toString() {
 		return "Articulo [id=" + id + ", foto=" + nombre + ", categoria=" + categoria + ", publico=" + publico
 				+ ", anoFabricacion=" + anoFabricacion + "]";
 	}
-	
-	
-	
 }
