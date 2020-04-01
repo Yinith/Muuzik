@@ -11,7 +11,6 @@ import es.codeurjc.dad.articulo.Articulo;
 import es.codeurjc.dad.articulo.ArticuloRepository;
 import es.codeurjc.dad.usuario.Usuario;
 import es.codeurjc.dad.usuario.UsuarioRepository;
-import es.codeurjc.dad.chat.Mensaje;
 
 @Component
 public class DatabaseInit {
@@ -24,7 +23,7 @@ public class DatabaseInit {
 	@PostConstruct
 	public void init () {
 
-		////////// INICIALIZAR USUARIOS
+		/*////////// INICIALIZAR USUARIOS
 		userRepo.save(new Usuario("Chema", "essolodeprueba", "Clarinetista en la orquesta RTVE"));
 		userRepo.save(new Usuario("Cassi", "pass", "Luthier de zanfonas", "ROLE_USER"));
 		userRepo.save(new Usuario("Admin", "admin", "Administrador de la página web", "ROLE_USER", "ROLE_ADMIN"));
@@ -57,15 +56,12 @@ public class DatabaseInit {
 			adRepo.save(vi);
 			userRepo.save(ui);
 		}	
+		//pRepo.save(new Pedido(u1,v1));
+		//pRepo.save(new Pedido(u2,v2));
 		
-		Mensaje msg = new Mensaje(u2, u1, "mensaje de prueba", "pues eso que esto es un mensaje de prueba");
-		u1.addMensaje(msg);
-		Mensaje msg1 = new Mensaje(u1, u1, "mensaje de prueba2", "me puedo escribir a mi mismo?");
-		u1.addMensaje(msg1);
-		Mensaje msg2 = new Mensaje(u1, u1, "mensaje de prueba3", "Green, te escribo porque esto es otra prueba más");
-		u1.addMensaje(msg2);
+
 		
-		
+
 		////////// INICIALIZAR MENSAJES Y CHATS
 		
 		/* 		///// USUARIOS PARA PRUEBA CHATS
