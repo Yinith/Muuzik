@@ -34,21 +34,22 @@
 		</div>
 	</nav>
 	<br>
-	
-	{{#hayChat}} 
-			<h3><a href="/usuario/{{destinatario.id}}"> Chat con {{destinatario.nick}}</h3>
-			{{#mensajes}}
-			<div class="row">
-				<p>{{.cuerpo}}</p>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-3">
+					<p><font color="#003300" size="5" face="Arial">Bandeja entrada</font></p>
+			</div>		
+		</div>
+		{{#mensaje}} 
+		<div class="row">
+			<div class="col-sm-3">
+				<h3><a href="/usuario/{remitente.id}}"> {{remitente.nick}}</a></h3>
+				<p align="center">Asunto: {{asunto}} </p>
+				<p align="center">Cuerpo: {{cuerpo}} </p>
 			</div>
-			{{/mensajes}}
-	{{/hayChat}}
-
-	<form align = center action="mensaje/nuevo/3" method="post">
-		<p>Cuerpo del mensaje:
-		<textarea name='cuerpo' rows=5 cols=40></textarea></p>
-
-		<input type='submit' value='Enviar'/>
-	</form>
+		</div>
+		{{/mensaje}}
+	</div>
 </body>
-</html>
+</html> 

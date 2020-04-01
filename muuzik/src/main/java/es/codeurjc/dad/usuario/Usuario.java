@@ -20,7 +20,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import es.codeurjc.dad.anuncio.Anuncio;
 import es.codeurjc.dad.articulo.Articulo;
-import es.codeurjc.dad.chat.Chat;
+import es.codeurjc.dad.chat.Mensaje;
 import es.codeurjc.dad.pedido.Pedido;
 
 
@@ -46,10 +46,8 @@ public class Usuario {
 	@OneToMany
 	private List<Articulo> articulos;
 	
-	@OneToMany(mappedBy = "remitente")
-	private List<Chat> c1; //Nombre provisional podría ser misChats?
-	@OneToMany(mappedBy = "destinatario")
-	private List<Chat> c2; //Nombre provisional
+	@OneToMany(mappedBy="destinatario")
+	private List<Mensaje> mensajes;	
 	
 	@OneToMany(mappedBy="comprador")
 	private List<Pedido> historialPedidos; // Lista de pedidos comprados
@@ -71,8 +69,7 @@ public class Usuario {
 		this.anuncios = new ArrayList<Anuncio>();
 		this.articulos = new ArrayList<Articulo>();
 		this.historialPedidos = new ArrayList<Pedido>(); 
-		c1 = new ArrayList<Chat>();
-		c2 = new ArrayList<Chat>();
+		this.mensajes = new ArrayList<Mensaje>();
 		
 		
 	}
@@ -87,8 +84,7 @@ public class Usuario {
 		this.anuncios = new ArrayList<Anuncio>();
 		this.articulos = new ArrayList<Articulo>();
 		this.historialPedidos = new ArrayList<Pedido>(); 
-		c1 = new ArrayList<Chat>();
-		c2 = new ArrayList<Chat>();
+		this.mensajes = new ArrayList<Mensaje>();
 	}
 
 	public String getNick() {
@@ -167,6 +163,10 @@ public class Usuario {
 	public void addArticulo(Articulo art) {
 		this.articulos.add(art);
 	}
+	
+	public void addMensaje(Mensaje msg) {
+		this.mensajes.add(msg);
+	}
 
 	
 	public boolean borrarAnuncio(Anuncio ad) {
@@ -210,7 +210,7 @@ public class Usuario {
 	@Override
 	public String toString() {
 		return "Usuario [id=" + id + ", nick=" + nick + ", contrasena=" + contrasena + ", info_perfil=" + biografia
-				+ ", anuncios=" + anuncios + ", articulos=" + articulos + ", c1=" + c1 + ", c2=" + c2 + ", pedidos="
+				+ ", anuncios=" + anuncios + ", articulos=" + articulos + ", pedidos="
 				+ historialPedidos + "]";
 	}
 	

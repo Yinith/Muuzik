@@ -34,12 +34,16 @@
 		</div>
 	</nav>
 	<br>
-	<p align="center">Nick: {{usuario.nick}}</p>
-	<p align="center">Información del perfil: {{usuario.biografia}}</p>
-	<p align="center"><a href="/bandeja_entrada" class="btn btn-success">Bandeja de mensajes del usuario</a></p>
-	<p align="center"><a href="/mensaje/{{usuario.id}}" class="btn btn-success">Enviar un mensaje</a></p>
-	{{#admin}}
-		<p align="center"><a href="/usuario/{{usuario.id}}/edit" class="btn btn-success">Editar el perfil de usuario</a></p>
-	{{/admin}}
+	
+<form align = center action="mensaje/nuevo" method="post">
+		<p>Destinatario:  
+		<input type='text' name='destinatario'><br> </p>
+		<p>Asunto del mensaje:  
+		<input type='text' name='asunto'><br> </p>
+		<p>Cuerpo del mensaje:
+		<textarea name='cuerpo' rows=5 cols=40></textarea></p>
+		<input type='submit' value='Enviar'/>
+		<input type="hidden" name="_csrf" value="{{token}}" />
+	</form>
 </body>
 </html>
