@@ -37,9 +37,6 @@ public class Chat {
 		return mensajes;
 	}
 	
-	public void insertarMensaje(String mensaje) {
-		this.mensajes.add(new Mensaje(mensaje)); //No le pongo:  "HH:mm:ss dd/MM/yyyy"
-	}
 	
 	public void addMensaje(Mensaje mensaje)
 	{

@@ -8,6 +8,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import es.codeurjc.dad.chat.*;
+import es.codeurjc.dad.usuario.*;
 
 @Entity
 public class Mensaje {
@@ -15,15 +18,39 @@ public class Mensaje {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
+	private String asunto;
 	private String cuerpo;
-	//private SimpleDateFormat fecha = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy");
+	
+	@OneToOne
+	private Usuario remitente;
+	@OneToOne
+	private Usuario destinatario;
 	
 	protected Mensaje(){
 		
 	}
 	
-	public Mensaje(String s) {
-		this.cuerpo = s;
+	public Mensaje(Usuario r, Usuario d, String a, String c) {
+		this.remitente = r;
+		this.destinatario = d;
+		this.asunto = a;
+		this.cuerpo = c;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public String getAsunto() {
+		return asunto;
+	}
+
+	public void setAsunto(String asunto) {
+		this.asunto = asunto;
 	}
 
 	public String getCuerpo() {
@@ -34,25 +61,28 @@ public class Mensaje {
 		this.cuerpo = cuerpo;
 	}
 
-	/*
-	 * public SimpleDateFormat getFecha() { return fecha; }
-	 */
-
-	public long getId() {
-		return id;
+	public Usuario getRemitente() {
+		return remitente;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public void setRemitente(Usuario remitente) {
+		this.remitente = remitente;
 	}
 
-	/*
-	 * public void setFecha(SimpleDateFormat fecha) { this.fecha = fecha; }
-	 */
+	public Usuario getDestinatario() {
+		return destinatario;
+	}
+
+	public void setDestinatario(Usuario destinatario) {
+		this.destinatario = destinatario;
+	}
 
 	@Override
 	public String toString() {
-		return "Mensaje [id=" + id + ", cuerpo=" + cuerpo + "]";
-	}	
+		return "Mensaje [id=" + id + ", asunto=" + asunto + ", cuerpo=" + cuerpo + ", remitente=" + remitente
+				+ ", destinatario=" + destinatario + "]";
+	}
+
+
 	
 }

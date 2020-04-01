@@ -6,7 +6,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.ListIterator;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
@@ -15,12 +14,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import es.codeurjc.dad.anuncio.Anuncio;
 import es.codeurjc.dad.articulo.Articulo;
-import es.codeurjc.dad.chat.Chat;
+import es.codeurjc.dad.chat.Mensaje;
 import es.codeurjc.dad.pedido.Pedido;
 
 
@@ -40,21 +40,19 @@ public class Usuario {
 	@ElementCollection(fetch = FetchType.EAGER)
 	private List<String> roles;	   //Roles que puede tener el usuario: user, admin
 	
-	@OneToMany(mappedBy="anunciante")
+	@OneToMany
 	private List<Anuncio> anuncios;
-	
 	@OneToMany
 	private List<Articulo> articulos;
+	@OneToMany
+	private List<Mensaje> mensajes; 
 	
-	@OneToMany(mappedBy = "remitente")
-	private List<Chat> c1; //Nombre provisional podría ser misChats?
-	@OneToMany(mappedBy = "destinatario")
-	private List<Chat> c2; //Nombre provisional
-	
-	@OneToMany(mappedBy="comprador")
-	private List<Pedido> historialPedidos; // Lista de pedidos comprados
-	
-	
+//	@OneToMany(mappedBy = "remitente")
+//	private List<Chat> c1; //Nombre provisional podría ser misChats?
+//	@OneToMany(mappedBy = "destinatario")
+//	private List<Chat> c2; //Nombre provisional
+	@OneToMany
+	private List<Pedido> pedidos;
 
 	
 	public Usuario () {	}
@@ -68,27 +66,19 @@ public class Usuario {
 		this.roles = new ArrayList<>(); 
 		this.roles.add("ROLE_USER"); //Por defecto su rol es user (no es admin)
 		
-		this.anuncios = new ArrayList<Anuncio>();
-		this.articulos = new ArrayList<Articulo>();
-		this.historialPedidos = new ArrayList<Pedido>(); 
-		c1 = new ArrayList<Chat>();
-		c2 = new ArrayList<Chat>();
-		
-		
+		anuncios = new ArrayList<Anuncio>();
+		articulos = new ArrayList<Articulo>();
 	}
 
 	// Constructor sobrecargado: permite escoger el rol del usuario desde su creacion
-	public Usuario (String nick, String contrasena, String bio, String ... roles) {
+	public Usuario (String nick, String contrasena, String info_perfil, String ... roles) {
 		this.nick = nick;
 		this.contrasena = new BCryptPasswordEncoder().encode(contrasena); 
-		this.biografia = bio;
+		this.biografia = info_perfil;
 		this.roles = new ArrayList<>(Arrays.asList(roles));
 		
-		this.anuncios = new ArrayList<Anuncio>();
-		this.articulos = new ArrayList<Articulo>();
-		this.historialPedidos = new ArrayList<Pedido>(); 
-		c1 = new ArrayList<Chat>();
-		c2 = new ArrayList<Chat>();
+		anuncios = new ArrayList<Anuncio>();
+		articulos = new ArrayList<Articulo>();
 	}
 
 	public String getNick() {
@@ -143,18 +133,18 @@ public class Usuario {
 		this.articulos = articulos;
 	}
 	
-	public List<Pedido> getHistPedidos() {
-		return this.historialPedidos;
+	public List<Pedido> getPedido() {
+		return this.pedidos;
 	}
 
 	public void addPedido(Pedido pedido) {
-		this.historialPedidos.add(pedido);
+		this.pedidos.add(pedido);
 	}
 
 	public void addAnuncio(Anuncio v1) {
 		v1.setAnunciante(this);
-		this.articulos.add(v1.getArticulo());
 		this.anuncios.add(v1);
+		this.articulos.add(v1.getArticulo());
 	}
 	
 	public void addAnuncio(Anuncio ad, Articulo art) {
@@ -167,16 +157,18 @@ public class Usuario {
 	public void addArticulo(Articulo art) {
 		this.articulos.add(art);
 	}
+	
+	public void addMensaje(Mensaje msg) {
+		this.mensajes.add(msg);
+	}
 
 	
 	public boolean borrarAnuncio(Anuncio ad) {
 		return this.anuncios.remove(ad);
 	}
 	
-	
 	public void borrarTodosAnuncios() {
 		ListIterator<Anuncio> iter = this.anuncios.listIterator();
-		
 		while(iter.hasNext()){
 			iter.next();
 			iter.remove();
@@ -210,8 +202,7 @@ public class Usuario {
 	@Override
 	public String toString() {
 		return "Usuario [id=" + id + ", nick=" + nick + ", contrasena=" + contrasena + ", info_perfil=" + biografia
-				+ ", anuncios=" + anuncios + ", articulos=" + articulos + ", c1=" + c1 + ", c2=" + c2 + ", pedidos="
-				+ historialPedidos + "]";
+				+ ", anuncios=" + anuncios + ", articulos=" + articulos + ", pedidos=" + pedidos + "]";
 	}
 	
 
