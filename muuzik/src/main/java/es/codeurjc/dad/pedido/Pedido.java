@@ -59,18 +59,16 @@ public class Pedido {
 		this.anuncio = anuncio;
 	}
 	
-	
+/*	
 	// Este método asigna un nuevo dueño al articulo. 
 	public void comprado() {
-		Articulo art = anuncio.getArticulo();
-		
-		this.comprador.addPedido(this);						// La añado al historial de pedidos del usuario = historial comprados
-		this.comprador.addArticulo(art);					// Añado el articulo a los objetos del comprador
+		Articulo art = new Articulo(anuncio.getArticulo().getNombre());		
+		//this.comprador.addPedido(this);					// La añado al historial de pedidos del usuario = historial comprados
 		this.anuncio.getAnunciante().borrarArticulo(art);   // Le quito el objeto al vendedor
-		this.anuncio.setVendido();							// El anuncio se marca como vendido (luego aparecerá en una lista de anuncios vendidos en el perfil del vendedor).  
-		
+		this.comprador.addArticulo(art);					// Añado el articulo a los objetos del comprador
+		this.anuncio.setVendido();							// El anuncio se marca como vendido (luego aparecerá en una lista de anuncios vendidos en el perfil del vendedor).  	
 	}
-
+*/
 	@Override
 	public String toString() {
 		return "Pedido [id=" + id + ", comprador =" + comprador + ", vendedor = " + anuncio.getAnunciante() + "anuncio=" + anuncio + "]";

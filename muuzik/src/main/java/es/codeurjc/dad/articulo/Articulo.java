@@ -65,16 +65,12 @@ public class Articulo {
 		}
 		else this.anoFabricacion = 0;
 	}
-
-	public String getNombre() {
-		return nombre;
-	}
-
+	
 	public long getId() {
 		return id;
 	}
 
-	public String getFoto() {
+	public String getNombre() {
 		return nombre;
 	}
 
@@ -88,10 +84,6 @@ public class Articulo {
 
 	public int getAnoFabricacion() {
 		return anoFabricacion;
-	}
-
-	public void setFoto(String foto) {
-		this.nombre = foto;
 	}
 
 	public void setCategoria(String categoria) {

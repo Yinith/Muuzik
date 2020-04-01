@@ -43,7 +43,7 @@ public class Usuario {
 	@OneToMany(mappedBy="anunciante")
 	private List<Anuncio> anuncios;
 	
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany
 	private List<Articulo> articulos;
 	
 	@OneToMany(mappedBy = "remitente")

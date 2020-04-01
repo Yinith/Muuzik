@@ -1,6 +1,5 @@
  package es.codeurjc.dad.anuncio;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,8 +20,8 @@ public class Anuncio {
 	private int precio;
 	private boolean vendido;
 	
-	@OneToOne
 	//@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne
 	private Articulo articulo;
 	@ManyToOne
 	private Usuario anunciante;

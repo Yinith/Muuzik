@@ -63,7 +63,6 @@ public class AnuncioController {
 		artRepo.save(art);
 		Anuncio anuncio = new Anuncio(art, comentario, precio);
 		usuarioActual.addAnuncio(anuncio);
-		usuarioActual.addArticulo(art);
 		adRepo.save(anuncio);
 
 		return "anuncio_guardado";
@@ -86,6 +85,7 @@ public class AnuncioController {
 			}
 			model.addAttribute("admin", request.isUserInRole("ADMIN"));
 			model.addAttribute("anuncio", anuncio);
+			model.addAttribute("enVenta", !anuncio.isVendido());
 		}
 		return "ver_anuncio";
 	}
@@ -105,27 +105,16 @@ public class AnuncioController {
 			
 			// El artículo solo se va a eliminar tambien si no ha sido vendido: en ese caso su dueño ahora sería el comprador y él no querría perder la referencia a su nuevo articulo
 			if(!ad.isVendido()) {
-				anunciante.borrarAnuncio(ad);  // Lo quito de la lista de anuncios del anunciante
 				Articulo art = ad.getArticulo();
-				artRepo.delete(art);
+				anunciante.borrarArticulo(art);  // Lo quito de la lista de articulos del usuario
+				artRepo.delete(art);			 // Borro el articulo de su repo
 			}
-			adRepo.deleteById(id);
+			
+			adRepo.deleteById(id);				 //
 		}
 		model.addAttribute("anuncios", adRepo.findAll(page));
 		return "tablon";
 	}
 	
-	@GetMapping("/hacerPedido/{id}")
-	public String hacerPedido(Model model, @PathVariable long id, HttpServletRequest request) {
-		
-		Usuario comprador = usRepo.findByNick(request.getUserPrincipal().getName());
-		Anuncio anuncio = adRepo.findById(id).get();
-		Usuario vendedor = anuncio.getAnunciante();
-		
-		Pedido pedido = new Pedido(comprador, anuncio); // Creo una instancia de Pedido
-		pedido.comprado(); 		// Este método asigna un nuevo dueño al articulo. Saca el articulo de la lista de posesiones del vendedor, y lo mete en la del comprador. El anuncio se marca como vendido
-		
-		return "pedido_realizado";
-		
-	}
+
 }

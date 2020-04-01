@@ -43,12 +43,16 @@
 	<p align="center">Vendedor: <a href="/usuario/{{anuncio.anunciante.id}}">{{anuncio.anunciante.nick}}</a></p>
 	
 	<p align="center"><a href="/tablon/?page=0&size=50" class="btn btn-success">Volver al tablón</a>
-	<a href="/hacerPedido/{{anuncio.id}}" class="btn btn-success">Estoy interesado</a></p>
-{{#admin}}
-	<p align="center">
-		<a href="/borrar_anuncio/{{anuncio.id}}" class="btn btn-success">Borrar anuncio</a>
-	</p>
-{{/admin}}
+	
+	{{#enVenta}}
+		<a href="/hacerPedido/{{anuncio.id}}" class="btn btn-success">Comprar</a></p>
+	{{/enVenta}}
+	
+	{{#admin}}
+		<p align="center">
+			<a href="/borrar_anuncio/{{anuncio.id}}" class="btn btn-success">Borrar anuncio</a>
+		</p>
+	{{/admin}}
 
 </body>
 </html>

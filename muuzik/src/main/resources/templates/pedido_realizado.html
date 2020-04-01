@@ -32,8 +32,22 @@
 			</ul>
 		</div>
 	</nav>
+	
 	<br>
 	<p align="center">El pedido ha sido realizado con éxito.</p>
+	<p align="center">Lista de articulos de {{userActual.nick}}:</p>
+	<div class="container">
+		<div class="row">
+			{{#userActual.articulos}} 
+			<div class="col-sm-4">
+				<p>{{nombre}}</p>
+				<p>{{categoria}}</p>
+			</div>
+			{{/userActual.articulos}} 
+		</div>
+	</div>
+	
 	<p align="center"><a href="/tablon/?page=0&size=50" class="btn btn-success">Volver al tablón</a>
+	
 </body>
 </html>

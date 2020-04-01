@@ -42,8 +42,8 @@
 			{{#anuncios}} 
 			<div class="col-sm-4">
 				<h3><a href="/anuncio/{{id}}"> {{articulo.nombre}}</h3>
-				<p>{{precio}} €</p>
-				<p><a href="/usuario/{{anunciante.id}}">{{anunciante.nick}}</p>
+				<p>{{precio}} € <span class="text-danger">{{#vendido}}   ¡Vendido!{{/vendido}}</span></p>
+				<p><a href="/usuario/{{anunciante.id}}">{{anunciante.nick}}</p>				
 			</div>
 			{{/anuncios}} 
 		</div>
