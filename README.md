@@ -40,10 +40,67 @@ Muuzik es una web que ayuda a los músicos a comprar y vender instrumentos y equ
 - **Anuncios de búsqueda inteligentes:**
 Cuando un usuario publica un anuncio del tipo "Interesado en comprar X", la web buscará equipo similar entre toda la gente que haya declarado que posee dicho equipo. Si esta información es pública, se le mostrarán dichos perfiles al usuario interesado, para que pueda hacerles una oferta de compra o de intercambio. Tanto si el dueño lo registró de forma pública como privada, se le notificará a este el nombre del usuario que está buscando ese equipo/instrumento, con un enlace al anuncio, al que podrá contestar si lo desea.
 
-- **Cálculo del valor aproximado:**
-La web hará una aproximación del valor razonable del instrumento, en función de la marca o luthier, modelo, año de fabricación, precio de compra y estado de conservación. Tendrá en cuenta el precio de otros anuncios de instrumentos similares publicados por otras personas.
-
 - **Alertas:** Un usuario puede suscribirse para recibir un correo electrónico si se publica un artículo con las características que busca (por ejemplo que contenga ciertas etiquetas).
+  
+# DiagramaUML
+![](ImagenesReadme/uml.gif)
+
+# Modelo Entidad-Relación
+![](ImagenesReadme/ModeloEntidadRelacion.PNG)  
+  
+# Diagrama de Navegación en Fase 3
+![](ImagenesReadme/DiagramaNavegacionMuuzik.PNG)
+
+
+# Capturas de pantalla de cada página (Fase 3)
+
+**Inicio**
+![](ImagenesReadme/PantallasFase3/index.png)
+
+**Registrar usuario**
+<kbd>![](ImagenesReadme/PantallasFase3/Registro.png)</kbd>
+
+**Usuario guardado**
+<kbd>![enter image description here](ImagenesReadme/PantallasFase3/Usuario_guardado.png)</kbd>
+
+**Iniciar sesión**
+<kbd>![enter image description here](ImagenesReadme/PantallasFase3/Inicio_sesion.png)</kbd>
+
+**Tablón de anuncios**
+<kbd>![enter image description here](ImagenesReadme/PantallasFase3/Tablon.png)</kbd>
+  
+**Publicar anuncio**
+<kbd>![enter image description here](ImagenesReadme/PantallasFase3/Publicar_anuncio.png)</kbd>  
+  
+**Publicar anuncio**
+<kbd>![enter image description here](ImagenesReadme/PantallasFase3/Anuncio_guardado.png)</kbd>
+
+**Ver anuncio individual**
+<kbd>![enter image description here](ImagenesReadme/PantallasFase3/Ver_anuncio.png)</kbd>  
+  
+**Ver anuncio como Admin**
+<kbd>![enter image description here](ImagenesReadme/PantallasFase3/Ver_anuncio_admin.png)</kbd>
+
+**Perfil usuario**
+<kbd>![enter image description here](ImagenesReadme/PantallasFase3/Perfil_usuario.png)</kbd>
+
+**Perfil usuario como Admin**
+<kbd>![enter image description here](ImagenesReadme/PantallasFase3/Perfil_usuario_admin.png)</kbd>
+
+**Editar usuario (solo Admin)**
+<kbd>![enter image description here](ImagenesReadme/PantallasFase3/Editar_usuario_admin.png)</kbd>
+
+**Borrar usuario (solo Admin)**
+<kbd>![enter image description here](ImagenesReadme/PantallasFase3/Borrar_usuario.png)</kbd>  
+  
+**Enviar un mensaje a usuario**
+<kbd>![enter image description here](ImagenesReadme/PantallasFase3/Enviar_mensaje.png)</kbd>  
+  
+**Bandeja de mensajes**
+<kbd>![enter image description here](ImagenesReadme/PantallasFase3/Bandeja_mensajes.png)</kbd>  
+
+_____________________________________________________________
+
 
 # Diagrama de Navegación en Fase 2
 ![](ImagenesReadme/DiagramaNavegacionMuuzik.png)
@@ -77,12 +134,8 @@ La web hará una aproximación del valor razonable del instrumento, en función 
 **Borrar usuario**
 <kbd>![enter image description here](ImagenesReadme/PantallasFase2/Usuario_borrado.png)</kbd>
 
+___________________________________________________________________________________
 
-# Diagrama UML en Fase 2
-![](ImagenesReadme/UMLMuuzik.png)
-
-# Modelo Entidad-Relación en Fase 2
-![](ImagenesReadme/ModeloEntidadRelacion.PNG)
 
 # Equipo de desarrollo
 | **Nombre**  | **Correo**  | **Github**  | 
