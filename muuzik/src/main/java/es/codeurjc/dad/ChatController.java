@@ -23,33 +23,36 @@ public class ChatController {
 	@Autowired
 	private MensajeRepository msgRepo;
 	@Autowired
-	private UsuarioRepository usRepo;
+	private UsuarioRepository userRepo;
 
 	@GetMapping("/bandeja_entrada")
 	public String misMensajes(Model model, HttpServletRequest request) {
 		
-		Usuario usuarioActual = usRepo.findByNick(request.getUserPrincipal().getName());
+		Usuario usuarioActual = userRepo.findByNick(request.getUserPrincipal().getName());
+		
 		model.addAttribute("mensaje", msgRepo.findAllByDestinatario(usuarioActual));
-
+		model.addAttribute("username", usuarioActual.getNick());
 		return "mensajes";
 	}
 	
 	@GetMapping("/mensaje/{destinatarioid}")
-	public String escribirMensaje(Model model, @PathVariable long destinatarioid) {
-		
-		Usuario destinatario = usRepo.findById(destinatarioid).get();
+	public String escribirMensaje(Model model, @PathVariable long destinatarioid,  HttpServletRequest request) {
+		Usuario destinatario = userRepo.findById(destinatarioid).get();
 		model.addAttribute("destinatario", destinatario);
-		return "ver_mensaje";
+		model.addAttribute("username", request.getUserPrincipal().getName());
+		return "enviar_mensaje";
 	}
 	
 	@PostMapping("/mensaje/nuevo/")
 	public String nuevoMensaje(Model model, @RequestParam String dest, @RequestParam String asunto, @RequestParam String cuerpo,  HttpServletRequest request) {
-		Usuario remitente = usRepo.findByNick(request.getUserPrincipal().getName());
-		Usuario destinatario = usRepo.findByNick(dest);
+		Usuario remitente = userRepo.findByNick(request.getUserPrincipal().getName());
+		Usuario destinatario = userRepo.findByNick(dest);
 		Mensaje mensaje = new Mensaje(remitente, destinatario, asunto, cuerpo);
 		msgRepo.save(mensaje);
 		destinatario.addMensaje(mensaje);
-		usRepo.save(destinatario);
+		userRepo.save(destinatario);
+
+		model.addAttribute("username", request.getUserPrincipal().getName());
 		return "mensaje_enviado";
 	}
 
