@@ -54,7 +54,7 @@ public class PedidoController {
 		userRepo.save(vendedor);
 		userRepo.save(comprador);
 		model.addAttribute("userActual", comprador);
-		model.addAttribute("username", comprador.getNick());
+		
 		return "pedido_realizado";
 		
 	}

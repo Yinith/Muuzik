@@ -5,51 +5,48 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
 </head>
 <body>
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-	  <div class="container">
-	    <a class="navbar-brand" href="#">MUUZIK</a>
-	    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-	          <span class="navbar-toggler-icon"></span>
-	    </button>
-	    <div class="collapse navbar-collapse" id="navBar">
-	      <ul class="navbar-nav ml-fill">
-	        <li class="nav-item"><a class="nav-link" href="/">Inicio<span class="sr-only">(current)</span></a></li>
-	        <li class="nav-item"><a class="nav-link" href="/tablon">Tablón</a></li>
-	        <li class="nav-item"><a class="nav-link" href="/crearAnuncio">Publicar un anuncio</a></li>
-	      </ul>
-	    </div>
-	    <div class="collapse navbar-collapse" id="navBar">
-	      <ul class="navbar-nav ml-auto">
-
-	        <li class="nav-item-active"><a class="nav-link" href="#"> ¡Hola, {{username}}!</a></li>
-	        <li class="nav-item">
-				<form action="/logout" method="post">
-					<button type="submit" class="btn btn-primary my-1">Cerrar sesión</button>
-					<input type="hidden" name="_csrf" value="{{token}}" />
-				</form>
-			</li>
-	      </ul>
-	    </div>
-	  </div>
+	<nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+		<a class="navbar-brand" href="#">MUUZIK</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="collapsibleNavbar">
+			<ul class="nav navbar-nav nav-fill">
+ 				<li class="nav-item">        </li>
+  				<li class="nav-item"><a class="nav-link" href="/">Inicio</a></li>
+  				<li class="nav-item"><a class="nav-link" href="/tablon">Tablón</a></li>
+				<li class="nav-item"><a class="nav-link" href="/crearAnuncio">Publicar un anuncio</a></li>
+				<li class="nav-item">
+					<form action="/logout" method="post">
+						<input type="submit" value="Cerrar sesión" />
+						<input type="hidden" name="_csrf" value="{{token}}" />
+					</form>
+				</li>
+				<!-- 
+				<li class="nav-item">        </li>
+				<form class="form-inline" action="/action_page.php">
+    				<input class="form-control mr-sm-2" type="text" placeholder="¿Qué estás buscando?">
+   				 	<button class="btn btn-success" type="submit">Buscar</button>
+  				</form>
+  				 -->
+			</ul>
+		</div>
 	</nav>
 	
 	<br>
 	<p align="center">El pedido ha sido realizado con éxito.</p>
-	<br>
+	<p align="center">Lista de articulos de {{userActual.nick}}:</p>
 	<div class="container">
-			<div class="row">
-				{{#userActual.articulos}} 
-				<div class="col-sm-3">
-					<div class="card text-white bg-info mb-3">
-						<div class="card-body">
-							<p>{{nombre}}</p>
-						</div>
-					</div>		
-				</div>
-				{{/userActual.articulos}} 
+		<div class="row">
+			{{#userActual.articulos}} 
+			<div class="col-sm-4">
+				<p>{{nombre}}</p>
+				<p>{{categoria}}</p>
 			</div>
+			{{/userActual.articulos}} 
 		</div>
-	<br>
+	</div>
+	
 	<p align="center"><a href="/tablon/?page=0&size=50" class="btn btn-primary">Volver al tablón</a>
 	
 </body>
