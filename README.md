@@ -37,10 +37,7 @@ Muuzik es una web que ayuda a los músicos a comprar y vender instrumentos y equ
 - **Mensaje**: Texto enviado de un usuario a otro, con un timestamp. Puede estar asociado a un articulo.
 
 ## Servicio interno
-- **Anuncios de búsqueda inteligentes:**
-Cuando un usuario publica un anuncio del tipo "Interesado en comprar X", la web buscará equipo similar entre toda la gente que haya declarado que posee dicho equipo. Si esta información es pública, se le mostrarán dichos perfiles al usuario interesado, para que pueda hacerles una oferta de compra o de intercambio. Tanto si el dueño lo registró de forma pública como privada, se le notificará a este el nombre del usuario que está buscando ese equipo/instrumento, con un enlace al anuncio, al que podrá contestar si lo desea.
-
-- **Alertas:** Un usuario puede suscribirse para recibir un correo electrónico si se publica un artículo con las características que busca (por ejemplo que contenga ciertas etiquetas).
+- **Alertas por correo electrónico:** Recibir correo electrónico cuando uno de tus productos ha sido comprado, o recibe un nuevo mensaje por la aplicación.
   
 # DiagramaUML
 ![](ImagenesReadme/uml.gif)
