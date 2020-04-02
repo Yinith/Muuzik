@@ -97,7 +97,7 @@ Cuando un usuario publica un anuncio del tipo "Interesado en comprar X", la web 
 <kbd>![enter image description here](ImagenesReadme/PantallasFase3/Enviar_mensaje.png)</kbd>  
   
 **Bandeja de mensajes**
-<kbd>![enter image description here](ImagenesReadme/PantallasFase3/Bandeja_mensajes.png)</kbd>  
+![](ImagenesReadme/PantallasFase3/Bandeja_mensajes.PNG)
 
 _____________________________________________________________
 
