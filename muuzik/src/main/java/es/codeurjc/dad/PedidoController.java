@@ -3,10 +3,13 @@ package es.codeurjc.dad;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.client.RestTemplate;
 
 import es.codeurjc.dad.anuncio.Anuncio;
 import es.codeurjc.dad.anuncio.AnuncioRepository;
@@ -55,6 +58,13 @@ public class PedidoController {
 		userRepo.save(comprador);
 		model.addAttribute("userActual", comprador);
 		model.addAttribute("username", comprador.getNick());
+		
+		//Comunicación por REST
+		//String url = PARTIDOS_URL;
+		HttpEntity<Pedido> pedidoRequest= new HttpEntity<>(pedido);
+	    RestTemplate.exchange(url, HttpMethod.GET,pedidoRequest,Void.class);
+	    
+	    
 		return "pedido_realizado";
 		
 	}
