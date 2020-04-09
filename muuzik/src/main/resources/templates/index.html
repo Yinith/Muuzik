@@ -26,7 +26,7 @@
 			<li class="nav-item"><a class="nav-link" href="/register">Regístrate</a></li>
 			{{/loggedIn}}
 			{{#loggedIn}}
-	        <li class="nav-item-active"><a class="nav-link" href="#"> ¡Hola, {{username}}!</a></li>
+	        <li class="nav-item-active"><a class="nav-link" href="/zona-usuario"> ¡Hola, {{username}}!</a></li>
 	        <li class="nav-item">
 				<form action="/logout" method="post">
 					<button type="submit" class="btn btn-primary my-1">Cerrar sesión</button>
