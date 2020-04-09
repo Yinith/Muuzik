@@ -22,7 +22,7 @@
 	    <div class="collapse navbar-collapse" id="navBar">
 	      <ul class="navbar-nav ml-auto">
 
-	        <li class="nav-item-active"><a class="nav-link" href="#"> ¡Hola, {{username}}!</a></li>
+	        <li class="nav-item-active"><a class="nav-link" href="/zona-usuario"> ¡Hola, {{username}}!</a></li>
 	        <li class="nav-item">
 				<form action="/logout" method="post">
 					<button type="submit" class="btn btn-primary my-1">Cerrar sesión</button>
@@ -42,18 +42,19 @@
 			<div class="row">
 				{{#anuncios}} 
 				<div class="col-sm-3">
-					<div class="card">
+					<div class="card"> <a href="/anuncio/{{id}}" >
 						<img class="card-img-top" src={{articulo.urlFoto}} alt="Foto articulo">
 						<div class="card-body">
-							<h5 class="card-title">{{articulo.nombre}}<span class="text-danger">{{#vendido}} - ¡Vendido!{{/vendido}}</span></h5>
-							<p class="card-text">{{precio}} €</p>
-							<p>Vendido por: <a href="/usuario/{{anunciante.id}}">{{anunciante.nick}}</p>		
-							<a href="/anuncio/{{id}}" class="btn btn-primary">Ver anuncio</a>
+							<h5 class="card-title" style="color:black;">{{articulo.nombre}}<span class="text-danger">{{#vendido}} - ¡Vendido!{{/vendido}}</span></h5>
+							<p class="card-text" style="color:grey;">{{precio}} €</p>
+							<p class="card-text" style="color:grey;">Vendido por:  <span><a href="/usuario/{{anunciante.id}}">{{anunciante.nick}}</a></span> </p>
+							<!-- <a href="/anuncio/{{id}}" class="btn btn-primary">Ver anuncio</a> -->
 						</div>
 					</div>		
 				</div>
 				{{/anuncios}} 
 			</div>
+			
 		</div>
 
 </body>
