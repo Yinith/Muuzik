@@ -43,14 +43,14 @@ public class ChatController {
 		return "enviar_mensaje";
 	}
 	
-	@PostMapping("/mensaje/nuevo/")
-	public String nuevoMensaje(Model model, @RequestParam String dest, @RequestParam String asunto, @RequestParam String cuerpo,  HttpServletRequest request) {
+	@PostMapping("/mensaje/nuevo")
+	public String nuevoMensaje(Model model, @RequestParam String destinatario, @RequestParam String asunto, @RequestParam String cuerpo,  HttpServletRequest request) {
 		Usuario remitente = userRepo.findByNick(request.getUserPrincipal().getName());
-		Usuario destinatario = userRepo.findByNick(dest);
-		Mensaje mensaje = new Mensaje(remitente, destinatario, asunto, cuerpo);
+		Usuario dest = userRepo.findByNick(destinatario);
+		Mensaje mensaje = new Mensaje(remitente, dest, asunto, cuerpo);
 		msgRepo.save(mensaje);
-		destinatario.addMensaje(mensaje);
-		userRepo.save(destinatario);
+		dest.addMensaje(mensaje);
+		userRepo.save(dest);
 
 		model.addAttribute("username", request.getUserPrincipal().getName());
 		return "mensaje_enviado";

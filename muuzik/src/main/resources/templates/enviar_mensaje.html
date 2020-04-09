@@ -35,15 +35,16 @@
 	</nav>
 	<br>
 	
-	<form align = center action="mensaje/nuevo" method="post">
+	<form align = center action="/mensaje/nuevo" method="post">
 		<p>Destinatario:  
 		<input type='text' name='destinatario'><br> </p>
 		<p>Asunto del mensaje:  
 		<input type='text' name='asunto'><br> </p>
 		<p>Cuerpo del mensaje:
 		<textarea name='cuerpo' rows=5 cols=40></textarea></p>
-		<button type="submit" class="btn btn-primary my-1">Enviar</button>
 		<input type="hidden" name="_csrf" value="{{token}}" />
+		<button type="submit" class="btn btn-primary my-1">Enviar</button>
+		
 	</form>
 </body>
 </html>
