@@ -27,7 +27,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		
 		///// PAGINAS TRAS AUTENTICACION
 		http.authorizeRequests().antMatchers("/borrar_anuncio/{id}").hasAnyRole("ADMIN");
-		http.authorizeRequests().antMatchers("/usuario/{userId}/edit").hasAnyRole("ADMIN"); //Solo se puede editar un usuario si eres admin
 //		http.authorizeRequests().antMatchers("/usuario/{userId}/guardar").hasAnyRole("ADMIN");
 		http.authorizeRequests().anyRequest().authenticated();
 		
