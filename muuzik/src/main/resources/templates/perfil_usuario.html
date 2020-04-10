@@ -7,7 +7,6 @@
 
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-	  <div class="container">
 	    <a class="navbar-brand" href="#">MUUZIK</a>
 	    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 	          <span class="navbar-toggler-icon"></span>
@@ -21,25 +20,27 @@
 	    </div>
 	    <div class="collapse navbar-collapse" id="navBar">
 	      <ul class="navbar-nav ml-auto">
-
 	        <li class="nav-item-active"><a class="nav-link" href="/zona-usuario"> ¡Hola, {{username}}!</a></li>
 	        <li class="nav-item">
-				<form action="/logout" method="post">
-					<button type="submit" class="btn btn-primary my-1">Cerrar sesión</button>
+	        	<form action="/logout" method="post">
+		        	<button type="submit" class="btn btn-primary my-1">Cerrar sesión</button>
 					<input type="hidden" name="_csrf" value="{{token}}" />
 				</form>
 			</li>
 	      </ul>
 	    </div>
-	  </div>
 	</nav>
 	<br>
-	<p align="center">Nick: {{usuario.nick}}</p>
-	<p align="center">Información del perfil: {{usuario.biografia}}</p>
-	<p align="center"><a href="/bandeja_entrada" class="btn btn-primary my-1">Bandeja de mensajes con el usuario</a></p>
-	<p align="center"><a href="/mensaje/{{usuario.id}}" class="btn btn-primary my-1">Enviar un mensaje</a></p>
-	{{#admin}}
-		<p align="center"><a href="/usuario/{{usuario.id}}/edit" class="btn btn-primary my-1">Editar el perfil de usuario</a></p>
-	{{/admin}}
+	
+	<div class="container">
+		<p>Nick: {{usuario.nick}}</p>
+		<p>Información del perfil: {{usuario.biografia}}</p>
+		<p><a href="/bandeja_entrada" class="btn btn-primary my-1">Bandeja de mensajes con el usuario</a></p>
+		<p><a href="/mensaje/{{usuario.id}}" class="btn btn-primary my-1">Enviar un mensaje</a></p>
+		{{#admin}}
+			<p><a href="/usuario/{{usuario.id}}/edit" class="btn btn-primary my-1">Editar el perfil de usuario</a></p>
+		{{/admin}}
+	</div>
+	
 </body>
 </html>

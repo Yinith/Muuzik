@@ -75,8 +75,8 @@ public class AnuncioController {
 	public String verAnuncio(Model model, @PathVariable long id, HttpServletRequest request) {
 		
 		String username = usRepo.findByNick(request.getUserPrincipal().getName()).getNick();
-		
 		Optional<Anuncio> op = adRepo.findById(id);
+		
 		Anuncio anuncio;
 		
 		if(op.isPresent()) {

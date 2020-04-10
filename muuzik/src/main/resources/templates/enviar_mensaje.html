@@ -7,7 +7,6 @@
 
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-	  <div class="container">
 	    <a class="navbar-brand" href="#">MUUZIK</a>
 	    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 	          <span class="navbar-toggler-icon"></span>
@@ -21,30 +20,30 @@
 	    </div>
 	    <div class="collapse navbar-collapse" id="navBar">
 	      <ul class="navbar-nav ml-auto">
-
 	        <li class="nav-item-active"><a class="nav-link" href="/zona-usuario"> ¡Hola, {{username}}!</a></li>
 	        <li class="nav-item">
-				<form action="/logout" method="post">
-					<button type="submit" class="btn btn-primary my-1">Cerrar sesión</button>
+	        	<form action="/logout" method="post">
+		        	<button type="submit" class="btn btn-primary my-1">Cerrar sesión</button>
 					<input type="hidden" name="_csrf" value="{{token}}" />
 				</form>
 			</li>
 	      </ul>
 	    </div>
-	  </div>
 	</nav>
 	<br>
 	
-	<form align = center action="/mensaje/nuevo" method="post">
-		<p>Destinatario:  
-		<input type='text' name='destinatario'><br> </p>
-		<p>Asunto del mensaje:  
-		<input type='text' name='asunto'><br> </p>
-		<p>Cuerpo del mensaje:
-		<textarea name='cuerpo' rows=5 cols=40></textarea></p>
-		<input type="hidden" name="_csrf" value="{{token}}" />
-		<button type="submit" class="btn btn-primary my-1">Enviar</button>
-		
-	</form>
+	<div class="container">
+		<form action="/mensaje/nuevo" method="post">
+			<p>Destinatario:  
+			<input type='text' name='destinatario'><br> </p>
+			<p>Asunto del mensaje:  
+			<input type='text' name='asunto'><br> </p>
+			<p>Cuerpo del mensaje:
+			<textarea name='cuerpo' rows=5 cols=40></textarea></p>
+			<input type="hidden" name="_csrf" value="{{token}}" />
+			<button type="submit" class="btn btn-primary my-1">Enviar</button>	
+		</form>
+	</div>
+	
 </body>
 </html>

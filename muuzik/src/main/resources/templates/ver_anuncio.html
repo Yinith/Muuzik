@@ -6,8 +6,7 @@
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-	  <div class="container">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
 	    <a class="navbar-brand" href="#">MUUZIK</a>
 	    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 	          <span class="navbar-toggler-icon"></span>
@@ -21,38 +20,31 @@
 	    </div>
 	    <div class="collapse navbar-collapse" id="navBar">
 	      <ul class="navbar-nav ml-auto">
-
 	        <li class="nav-item-active"><a class="nav-link" href="/zona-usuario"> ¡Hola, {{username}}!</a></li>
 	        <li class="nav-item">
-				<form action="/logout" method="post">
-					<button type="submit" class="btn btn-primary my-1">Cerrar sesión</button>
+	        	<form action="/logout" method="post">
+		        	<button type="submit" class="btn btn-primary my-1">Cerrar sesión</button>
 					<input type="hidden" name="_csrf" value="{{token}}" />
 				</form>
 			</li>
 	      </ul>
 	    </div>
-	  </div>
 	</nav>
 	<br>
-	<p align="center">Producto: {{anuncio.articulo.nombre}}</p>
-	{{#hayCat}}<p align="center">Categoria: {{anuncio.articulo.categoria}}</p>{{/hayCat}}
-	{{#hayAno}}<p align="center">Año de fabricación: {{anuncio.articulo.anoFabricacion}}</p>{{/hayAno}}
-
-	<p align="center">Precio: {{anuncio.precio}} €</p>
-	<p align="center">Comentario: {{anuncio.comentario}}</p>
-	<p align="center">Vendedor: <a href="/usuario/{{anuncio.anunciante.id}}">{{anuncio.anunciante.nick}}</a></p>
-	
-	<p align="center"><a href="/tablon" class="btn btn-primary my-1">Volver al tablón</a>
-	
-	{{#enVenta}}
-		<a href="/hacerPedido/{{anuncio.id}}" class="btn btn-primary my-1">Comprar</a></p>
-	{{/enVenta}}
-	
-	{{#admin}}
-		<p align="center">
-			<a href="/borrar_anuncio/{{anuncio.id}}" class="btn btn-primary my-1">Borrar anuncio</a>
-		</p>
-	{{/admin}}
+	<div class="container">
+		<img src={{anuncio.articulo.urlFoto}} class="img-fluid" alt="Foto articulo">
+		<br><br>
+		<p>Producto: {{anuncio.articulo.nombre}}</p>
+		{{#hayCat}}<p>Categoria: {{anuncio.articulo.categoria}}</p>{{/hayCat}}
+		{{#hayAno}}<p>Año de fabricación: {{anuncio.articulo.anoFabricacion}}</p>{{/hayAno}}
+		
+		<p>Precio: {{anuncio.precio}} €</p>
+		<p>Comentario: {{anuncio.comentario}}</p>
+		<p>Vendedor: <a href="/usuario/{{anuncio.anunciante.id}}">{{anuncio.anunciante.nick}}</a></p>
+		<p><a href="/tablon" class="btn btn-primary my-1">Volver al tablón</a>
+		{{#enVenta}}<a href="/hacerPedido/{{anuncio.id}}" class="btn btn-primary my-1">Comprar</a></p>{{/enVenta}}
+		{{#admin}}<p><a href="/borrar_anuncio/{{anuncio.id}}" class="btn btn-primary my-1">Borrar anuncio</a></p>{{/admin}}
+	</div>
 
 </body>
 </html>

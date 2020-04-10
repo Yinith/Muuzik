@@ -7,8 +7,7 @@
 
 	<body>
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-			  <div class="container">
-			    <a class="navbar-brand" href="#">MUUZIK</a>
+			<a class="navbar-brand" href="#">MUUZIK</a>
 			    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 			          <span class="navbar-toggler-icon"></span>
 			    </button>
@@ -28,20 +27,21 @@
 					{{#loggedIn}}
 			        <li class="nav-item-active"><a class="nav-link" href="/zona-usuario"> ¡Hola, {{username}}!</a></li>
 			        <li class="nav-item">
-						<form action="/logout" method="post">
-							<button type="submit" class="btn btn-primary my-1">Cerrar sesión</button>
+	        			<form action="/logout" method="post">
+		        			<button type="submit" class="btn btn-primary my-1">Cerrar sesión</button>
 							<input type="hidden" name="_csrf" value="{{token}}" />
 						</form>
 					</li>
 					{{/loggedIn}}
 			      </ul>
 			    </div>
-			  </div>
 		</nav>
-		<br>
-		<br>
-		<p align="center"><font color="#008000" size="20" face="Arial"> El usuario ha sido guardado correctamente.</font> </p>
-		<p align="center"><a href="/" class = "btn btn-primary my-1">Volver al inicio</a>
+		<br><br>
+		
+		<div class="container">
+			<p align="center"><font color="#008000" size="20" face="Arial"> El usuario ha sido guardado correctamente.</font> </p>
+			<p align="center"><a href="/" class = "btn btn-primary my-1">Volver al inicio</a></p>
+		</div>
 		
 	</body>
 </html>

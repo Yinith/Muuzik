@@ -40,33 +40,39 @@ public class PedidoController {
 		
 		Usuario comprador = userRepo.findByNick(request.getUserPrincipal().getName());
 		Anuncio anuncio = adRepo.findById(id).get();
-		Usuario vendedor = anuncio.getAnunciante();
-		Pedido pedido = new Pedido(comprador, anuncio); // Creo una instancia de Pedido
-//		peRepo.save(pedido);
-//		comprador.addPedido(pedido);
-	
-//////// Este bloque de código asigna un nuevo dueño al articulo. Saca el articulo de la lista de posesiones del vendedor, y lo mete en la del comprador. El anuncio se marca como vendido
-		Articulo aux = anuncio.getArticulo();
-		Articulo newArt = new Articulo(aux.getNombre(), aux.getCategoria(), aux.isPublico(), aux.getAnoFabricacion()); //Hago una copia del articulo, ID distinto
-		artRepo.save(newArt);
-		vendedor.borrarArticulo(aux);   	// Le quito el objeto de su lista al vendedor, pero no lo borro de la base de datos para que lo pueda ver en su historial
-		comprador.addArticulo(newArt);		// Añado el articulo a los objetos del comprador
-		anuncio.setVendido();				// El anuncio se marca como vendido (luego aparecerá en una lista de anuncios vendidos en el perfil del vendedor).  
-////////////////		
 		
-		userRepo.save(vendedor);
-		userRepo.save(comprador);
 		model.addAttribute("userActual", comprador);
 		model.addAttribute("username", comprador.getNick());
 		
-		//Comunicación por REST
-		//String url = PARTIDOS_URL;
-		HttpEntity<Pedido> pedidoRequest= new HttpEntity<>(pedido);
-	    RestTemplate.exchange(url, HttpMethod.GET,pedidoRequest,Void.class);
-	    
-	    
-		return "pedido_realizado";
+////////Comprobación por si la url se ha recargado y dicho artículo ya ha sido comprado:
+		if(anuncio.isVendido()) {
+			return "pedido_repetido";
+		}
+		else {
+			Usuario vendedor = anuncio.getAnunciante();
+			Pedido pedido = new Pedido(comprador, anuncio); // Creo una instancia de Pedido
+	//		peRepo.save(pedido);
+	//		comprador.addPedido(pedido);
 		
+/////////// Este bloque de código asigna un nuevo dueño al articulo. Saca el articulo de la lista de posesiones del vendedor, y lo mete en la del comprador. El anuncio se marca como vendido
+			Articulo aux = anuncio.getArticulo();
+			Articulo newArt = new Articulo(aux.getNombre(), aux.getCategoria(), aux.isPublico(), aux.getAnoFabricacion()); //Hago una copia del articulo, ID distinto
+			artRepo.save(newArt);
+			vendedor.borrarArticulo(aux);   	// Le quito el objeto de su lista al vendedor, pero no lo borro de la base de datos para que lo pueda ver en su lista de articulos
+			comprador.addArticulo(newArt);		// Añado el articulo a los objetos del comprador
+			anuncio.setVendido();				// El anuncio se marca como vendido (luego aparecerá en una lista de anuncios vendidos en el perfil del vendedor).  
+	////////////////		
+			
+			userRepo.save(vendedor);
+			userRepo.save(comprador);
+			
+			//Comunicación por REST
+			//String url = PARTIDOS_URL;
+			HttpEntity<Pedido> pedidoRequest= new HttpEntity<>(pedido);
+//		    RestTemplate.exchange(url, HttpMethod.GET,pedidoRequest,Void.class);
+	    
+		    return "pedido_realizado";	
+		}
 	}
 
 }

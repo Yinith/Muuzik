@@ -24,16 +24,13 @@ public class DatabaseInit {
 	
 	@PostConstruct
 	public void init () {
-/*
+
 		////////// INICIALIZAR USUARIOS
-		userRepo.save(new Usuario("Chema", "essolodeprueba", "Clarinetista en la orquesta RTVE"));
-		userRepo.save(new Usuario("Cassi", "pass", "Luthier de zanfonas", "ROLE_USER"));
-		userRepo.save(new Usuario("Admin", "admin", "Administrador de la página web", "ROLE_USER", "ROLE_ADMIN"));
-		Usuario u1 = new Usuario ("Green", "quenoquieroponeruna", "Tienda de música");
-		Usuario u2 = new Usuario ("Cthulhu", "cthulhu", "Aprendiendo a tocar la guitarra");
-		
-		
-		
+		userRepo.save(new Usuario("chema@gmail.com", "Chema", "essolodeprueba", "Clarinetista en la orquesta RTVE"));
+		userRepo.save(new Usuario("cassi@gmail.com", "Cassi", "pass", "Luthier de zanfonas", "ROLE_USER"));
+		userRepo.save(new Usuario("admin@gmail.com", "Admin", "admin", "Administrador de la página web", "ROLE_USER", "ROLE_ADMIN"));
+		Usuario u1 = new Usuario ("sergiomanchitero@gmail.com","Green", "quenoquieroponeruna", "Tienda de música");
+		Usuario u2 = new Usuario ("clarathulhu@gmail.com","Cthulhu", "cthulhu", "Aprendiendo a tocar la guitarra");
 		
 		////////// INICIALIZAR ARTICULOS, ANUNCIOS Y PEDIDOS
 		Articulo a1 = new Articulo("Ampli de bajo", "Amplificadores", 2005);
@@ -53,7 +50,7 @@ public class DatabaseInit {
 		// Añadimos anuncios en bucle
 		for(int i = 1; i<=10; i++){
 			//adRepo.save(new AnuncioVenta("User "+i, "Anuncio "+i, "Contenido "+i, new Articulo("asd", "asd", true, 0), i*10 ));
-			Usuario ui = new Usuario ("Usuario"+i, "password"+i, "No soy un robot.");
+			Usuario ui = new Usuario ("robotmail"+i+"@gmail.com","Usuario"+i, "password"+i, "No soy un robot.");
 			Articulo ai = new Articulo("Instrumento "+i);
 			artRepo.save(ai);
 			Anuncio vi = new Anuncio(ai, "Un instrumento cualquiera", i*10);	

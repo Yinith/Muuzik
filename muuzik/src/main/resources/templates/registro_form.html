@@ -5,8 +5,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-	  <div class="container">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
 	    <a class="navbar-brand" href="#">MUUZIK</a>
 	    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 	          <span class="navbar-toggler-icon"></span>
@@ -24,19 +23,28 @@
 			<li class="nav-item"><a class="nav-link" href="/register">Regístrate</a></li>
 	      </ul>
 	    </div>
-	  </div>
 	</nav>
 	<br>
-	<br>
-	<form align=center action="/registerOK" method="post">
-		<p>Nick: </p>
-		<input type='text' name='nick'/>
-		<p>Contraseña:</p>
-		<input type='password' name='contrasena'/>
-		<p>¿Eres luthier? ¿Intérprete? ¿Productor musical? Cuéntaselo al resto:</p>
-		<textarea name='biografia' rows=5 cols=40></textarea>
-		<button type="submit" class="btn btn-primary my-1">Guardar</button>
-		<input type="hidden" name="_csrf" value="{{token}}" />
-	</form>
+	
+	<div class="container">
+		<h2>Crea una nueva cuenta de usuario:</h2>
+		<br>
+		<form action="/registerOK" method="post">
+			<p>Correo electrónico: </p>
+			<textarea name='email' rows=1 cols=40></textarea>
+			<br><br>
+			<p>Nick: </p>
+			<input type='text' name='nick'/>
+			<br><br>
+			<p>Contraseña:</p>
+			<input type='password' name='contrasena'/>
+			<br><br>
+			<p>¿Eres luthier? ¿Intérprete? ¿Productor musical? Cuéntaselo al resto:</p>
+			<textarea name='biografia' rows=5 cols=40></textarea>
+			<button type="submit" class="btn btn-primary my-1">Guardar</button>
+			<input type="hidden" name="_csrf" value="{{token}}" />
+		</form>
+	</div>
+	
 </body>
 </html>

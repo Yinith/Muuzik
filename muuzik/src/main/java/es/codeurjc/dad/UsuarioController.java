@@ -63,8 +63,8 @@ public class UsuarioController {
 	}
 	
 	@PostMapping("/registerOK")
-	public String nuevoUsuario(Model model, @RequestParam String nick, @RequestParam String contrasena, @RequestParam String biografia, HttpServletRequest request) {
-		userRepo.save(new Usuario(nick, contrasena, biografia));
+	public String nuevoUsuario(Model model, @RequestParam String email, @RequestParam String nick, @RequestParam String contrasena, @RequestParam String biografia, HttpServletRequest request) {
+		userRepo.save(new Usuario(email, nick, contrasena, biografia));
 		
 		Boolean loggedIn = false;
 		String username = "";

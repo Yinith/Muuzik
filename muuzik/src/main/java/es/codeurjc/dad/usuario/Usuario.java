@@ -35,8 +35,11 @@ public class Usuario {
 	
 	@Column(unique = true)
 	private String nick;
+	@Column(unique = true)
+	private String email;
 	private String contrasena; //Contraseña se va a cifrar con una función hash
 	private String biografia;
+	
 	@ElementCollection(fetch = FetchType.EAGER)
 	private List<String> roles;	   //Roles que puede tener el usuario: user, admin
 	
@@ -57,7 +60,8 @@ public class Usuario {
 	
 	public Usuario () {	}
 	
-	public Usuario (String nick, String contrasena, String bio) {
+	public Usuario (String email, String nick, String contrasena, String bio) {
+		this.email = email;
 		this.nick = nick;
 		//Encriptacion de la contraseña; ya no se puede desencriptar nunca
 		this.contrasena = new BCryptPasswordEncoder().encode(contrasena); 
@@ -75,7 +79,8 @@ public class Usuario {
 	}
 
 	// Constructor sobrecargado: permite escoger el rol del usuario desde su creacion
-	public Usuario (String nick, String contrasena, String bio, String ... roles) {
+	public Usuario (String email, String nick, String contrasena, String bio, String ... roles) {
+		this.email = email;
 		this.nick = nick;
 		this.contrasena = new BCryptPasswordEncoder().encode(contrasena); 
 		this.biografia = bio;
@@ -87,6 +92,14 @@ public class Usuario {
 		this.mensajes = new ArrayList<Mensaje>();
 	}
 
+	public String getEmail() {
+		return email;
+	}
+	
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
 	public String getNick() {
 		return nick;
 	}
