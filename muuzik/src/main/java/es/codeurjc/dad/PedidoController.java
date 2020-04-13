@@ -32,6 +32,10 @@ public class PedidoController {
 	private ArticuloRepository artRepo;
 	@Autowired
 	private PedidoRepository peRepo; 
+	
+	private RestTemplate rest = new RestTemplate();
+	
+	private final String pedidos_link = "http://localhost:8443/hacerPedido/{id}";
 
 	
 	
@@ -51,8 +55,8 @@ public class PedidoController {
 		else {
 			Usuario vendedor = anuncio.getAnunciante();
 			Pedido pedido = new Pedido(comprador, anuncio); // Creo una instancia de Pedido
-	//		peRepo.save(pedido);
-	//		comprador.addPedido(pedido);
+			peRepo.save(pedido);
+			comprador.addPedido(pedido);
 		
 /////////// Este bloque de código asigna un nuevo dueño al articulo. Saca el articulo de la lista de posesiones del vendedor, y lo mete en la del comprador. El anuncio se marca como vendido
 			Articulo aux = anuncio.getArticulo();
@@ -67,9 +71,9 @@ public class PedidoController {
 			userRepo.save(comprador);
 			
 			//Comunicación por REST
-			//String url = PARTIDOS_URL;
+			String url = pedidos_link;
 			HttpEntity<Pedido> pedidoRequest= new HttpEntity<>(pedido);
-//		    RestTemplate.exchange(url, HttpMethod.GET,pedidoRequest,Void.class);
+		    rest.exchange(url, HttpMethod.GET,pedidoRequest,Void.class);
 	    
 		    return "pedido_realizado";	
 		}

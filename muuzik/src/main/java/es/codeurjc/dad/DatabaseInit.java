@@ -24,7 +24,7 @@ public class DatabaseInit {
 	
 	@PostConstruct
 	public void init () {
-
+/*
 		////////// INICIALIZAR USUARIOS
 		userRepo.save(new Usuario("chema@gmail.com", "Chema", "essolodeprueba", "Clarinetista en la orquesta RTVE"));
 		userRepo.save(new Usuario("cassi@gmail.com", "Cassi", "pass", "Luthier de zanfonas", "ROLE_USER"));
