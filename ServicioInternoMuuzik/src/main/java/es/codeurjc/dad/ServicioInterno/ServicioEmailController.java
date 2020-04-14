@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import es.codeurjc.dad.ServicioInterno.Anuncio;
-import es.codeurjc.dad.ServicioInterno.Usuario;
 
 
 @RestController
@@ -20,6 +18,8 @@ public class ServicioEmailController {
 	private PedidoRepository peRepo;
 	@Autowired
 	private UsuarioRepository userRepo;
+	@Autowired
+	private MensajeRepository msgRepo;
 	
 	private JavaMailSenderImpl servicioEmail = new JavaMailSenderImpl();
 	
@@ -75,5 +75,21 @@ public class ServicioEmailController {
             servicioEmail.send(envemail);
         }
     }
-
+	
+	@PostMapping("/email/mensaje")
+	public void notificarMensaje(@RequestBody Mensaje mensaje)
+    {
+		Mensaje msg = msgRepo.findById(mensaje.getId()).get();
+		
+		Usuario remitente = msg.getRemitente();
+		Usuario dest = msg.getDestinatario();
+		
+		SimpleMailMessage envemail = new SimpleMailMessage();
+		envemail.setFrom("Muuzik");
+		envemail.setTo(dest.getEmail());
+		envemail.setSubject("Tienes un mensaje nuevo");
+		envemail.setText("Revisa tu bandeja de entrada, el usuario "+remitente.getNick()+" ha contactado contigo.");
+		servicioEmail.send(envemail);
+		
+    }
 }

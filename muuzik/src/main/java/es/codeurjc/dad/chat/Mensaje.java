@@ -19,7 +19,7 @@ public class Mensaje {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-	
+
 	private String asunto;
 	private String cuerpo;
 	

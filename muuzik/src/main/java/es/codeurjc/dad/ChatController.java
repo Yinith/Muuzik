@@ -31,7 +31,7 @@ public class ChatController {
 	
 	private RestTemplate restTemplate = new RestTemplate();
 	
-	private final String pedidos_url = "http://localhost:8443/mensaje/nuevo";
+	private final String pedidos_url = "http://localhost:8050/email/mensaje";
 
 	@GetMapping("/bandeja_entrada")
 	public String misMensajes(Model model, HttpServletRequest request) {
