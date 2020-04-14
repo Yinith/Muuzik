@@ -7,6 +7,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import es.codeurjc.dad.articulo.Articulo;
 import es.codeurjc.dad.usuario.Usuario;
 
@@ -16,13 +18,18 @@ public class Anuncio {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
+	@JsonIgnore
 	private String comentario;
+	@JsonIgnore
 	private int precio;
+	@JsonIgnore
 	private boolean vendido;
 	
+	@JsonIgnore
 	//@OneToOne(cascade = CascadeType.ALL)
 	@OneToOne
 	private Articulo articulo;
+	@JsonIgnore
 	@ManyToOne
 	private Usuario anunciante;
 	

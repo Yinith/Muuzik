@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.client.support.BasicAuthenticationInterceptor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,10 +34,6 @@ public class PedidoController {
 	@Autowired
 	private PedidoRepository peRepo; 
 	
-	private RestTemplate rest = new RestTemplate();
-	
-	private final String pedidos_link = "http://localhost:8443/hacerPedido/{id}";
-
 	
 	
 	@GetMapping("/hacerPedido/{id}")
@@ -56,7 +53,7 @@ public class PedidoController {
 			Usuario vendedor = anuncio.getAnunciante();
 			Pedido pedido = new Pedido(comprador, anuncio); // Creo una instancia de Pedido
 			peRepo.save(pedido);
-			comprador.addPedido(pedido);
+			//comprador.addPedido(pedido);
 		
 /////////// Este bloque de código asigna un nuevo dueño al articulo. Saca el articulo de la lista de posesiones del vendedor, y lo mete en la del comprador. El anuncio se marca como vendido
 			Articulo aux = anuncio.getArticulo();
@@ -71,9 +68,16 @@ public class PedidoController {
 			userRepo.save(comprador);
 			
 			//Comunicación por REST
-			String url = pedidos_link;
-			HttpEntity<Pedido> pedidoRequest= new HttpEntity<>(pedido);
-		    rest.exchange(url, HttpMethod.GET,pedidoRequest,Void.class);
+			RestTemplate rest = new RestTemplate();
+			String pedido_url = "http://localhost:8050/email/pedido";
+			HttpEntity<Pedido> pedidoBody= new HttpEntity<>(pedido);
+			
+//			rest.getInterceptors().add(new BasicAuthenticationInterceptor("user", "pass"));
+//			restTemplate.postForObject('','',''');
+			rest.exchange(pedido_url, HttpMethod.POST,pedidoBody,Void.class);
+			
+		    
+		    
 	    
 		    return "pedido_realizado";	
 		}

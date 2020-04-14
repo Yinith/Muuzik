@@ -18,6 +18,8 @@ import javax.persistence.OneToMany;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import es.codeurjc.dad.anuncio.Anuncio;
 import es.codeurjc.dad.articulo.Articulo;
 import es.codeurjc.dad.chat.Mensaje;
@@ -37,24 +39,31 @@ public class Usuario {
 	private String nick;
 	@Column(unique = true)
 	private String email;
+	@JsonIgnore
 	private String contrasena; //Contraseña se va a cifrar con una función hash
+	@JsonIgnore
 	private String biografia;
 	
+	@JsonIgnore
 	@ElementCollection(fetch = FetchType.EAGER)
 	private List<String> roles;	   //Roles que puede tener el usuario: user, admin
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="anunciante")
 	private List<Anuncio> anuncios;
 	
+	@JsonIgnore
 	@OneToMany
 	private List<Articulo> articulos;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="destinatario")
 	private List<Mensaje> mensajes;	
-	
+/*	
+	@JsonIgnore
 	@OneToMany(mappedBy="comprador")
 	private List<Pedido> historialPedidos; // Lista de pedidos comprados
-	
+*/	
 	
 
 	
@@ -72,7 +81,7 @@ public class Usuario {
 		
 		this.anuncios = new ArrayList<Anuncio>();
 		this.articulos = new ArrayList<Articulo>();
-		this.historialPedidos = new ArrayList<Pedido>(); 
+//		this.historialPedidos = new ArrayList<Pedido>(); 
 		this.mensajes = new ArrayList<Mensaje>();
 		
 		
@@ -88,7 +97,7 @@ public class Usuario {
 		
 		this.anuncios = new ArrayList<Anuncio>();
 		this.articulos = new ArrayList<Articulo>();
-		this.historialPedidos = new ArrayList<Pedido>(); 
+//		this.historialPedidos = new ArrayList<Pedido>(); 
 		this.mensajes = new ArrayList<Mensaje>();
 	}
 
@@ -151,7 +160,7 @@ public class Usuario {
 	public void setArticulos(List<Articulo> articulos) {
 		this.articulos = articulos;
 	}
-	
+/*	
 	public List<Pedido> getHistPedidos() {
 		return this.historialPedidos;
 	}
@@ -159,7 +168,7 @@ public class Usuario {
 	public void addPedido(Pedido pedido) {
 		this.historialPedidos.add(pedido);
 	}
-
+*/
 	public void addAnuncio(Anuncio v1) {
 		v1.setAnunciante(this);
 		this.articulos.add(v1.getArticulo());
@@ -223,8 +232,7 @@ public class Usuario {
 	@Override
 	public String toString() {
 		return "Usuario [id=" + id + ", nick=" + nick + ", contrasena=" + contrasena + ", info_perfil=" + biografia
-				+ ", anuncios=" + anuncios + ", articulos=" + articulos + ", pedidos="
-				+ historialPedidos + "]";
+				+ ", anuncios=" + anuncios + ", articulos=" + articulos + "]";
 	}
 	
 

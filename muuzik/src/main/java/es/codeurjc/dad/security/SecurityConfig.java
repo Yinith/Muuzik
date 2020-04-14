@@ -6,6 +6,8 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 @EnableGlobalMethodSecurity(securedEnabled = true)
@@ -52,6 +54,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception{
 		//Autenticacion de usuarios en base de datos
 		auth.authenticationProvider(authenticationProvider);
+		
+		//PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+		//auth.inMemoryAuthentication().withUser("User").password(encoder.encode("pass")).roles("USER");
+		//auth.inMemoryAuthentication().withUser("Admin").password(encoder.encode("admin")).roles("USER", "ADMIN");
 	}
 
 }

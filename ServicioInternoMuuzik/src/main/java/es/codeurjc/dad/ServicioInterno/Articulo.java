@@ -1,4 +1,4 @@
-package es.codeurjc.dad.articulo;
+package es.codeurjc.dad.ServicioInterno;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,7 +9,6 @@ import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import es.codeurjc.dad.usuario.Usuario;
 
 @Entity
 public class Articulo {

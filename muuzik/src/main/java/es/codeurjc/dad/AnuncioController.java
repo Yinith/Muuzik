@@ -42,10 +42,6 @@ public class AnuncioController {
 	@Autowired
 	private ArticuloRepository artRepo;
 	
-	private RestTemplate rest = new RestTemplate();
-	
-	private final String anuncios_link = "https://localhost:8443/anuncio/nuevo";
-	
 
 	@GetMapping("/tablon")
 	public String tablon(Model model, Pageable page, HttpServletRequest request) {
@@ -73,10 +69,12 @@ public class AnuncioController {
 		usuarioActual.addAnuncio(anuncio);
 		adRepo.save(anuncio);
 		
-		String url = anuncios_link;
-		HttpEntity<Anuncio> pedidoRequest= new HttpEntity<>(anuncio);
-	    rest.exchange(url, HttpMethod.POST,pedidoRequest,Void.class);
-		
+		//Comunicación por REST
+		RestTemplate rest = new RestTemplate();
+		String anuncios_link = "http://localhost:8050/email/anuncio";
+		HttpEntity<Anuncio> mailRequest= new HttpEntity<>(anuncio);
+	    rest.exchange(anuncios_link, HttpMethod.POST,mailRequest,Void.class);
+	    
 		model.addAttribute("username", request.getUserPrincipal().getName());
 		return "anuncio_guardado";
 

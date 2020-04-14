@@ -7,8 +7,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
-import es.codeurjc.dad.articulo.Articulo;
-import es.codeurjc.dad.usuario.Usuario;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 public class Anuncio {
@@ -16,8 +16,10 @@ public class Anuncio {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
+	@JsonIgnore
 	private String comentario;
 	private int precio;
+	@JsonIgnore
 	private boolean vendido;
 	
 	//@OneToOne(cascade = CascadeType.ALL)

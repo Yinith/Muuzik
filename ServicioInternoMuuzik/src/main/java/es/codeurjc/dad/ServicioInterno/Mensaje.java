@@ -1,4 +1,4 @@
-package es.codeurjc.dad.chat;
+package es.codeurjc.dad.ServicioInterno;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -12,7 +12,6 @@ import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import es.codeurjc.dad.usuario.Usuario;
 
 @Entity
 public class Mensaje {

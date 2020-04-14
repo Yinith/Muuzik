@@ -7,9 +7,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
-import es.codeurjc.dad.anuncio.Anuncio;
-import es.codeurjc.dad.articulo.Articulo;
-import es.codeurjc.dad.usuario.Usuario;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 
 //Entidad que va a simular de momento la compra
@@ -20,9 +19,11 @@ public class Pedido {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
+	@JsonIgnore
 	@OneToOne
 	private Anuncio anuncio;
 	
+	@JsonIgnore
 	@ManyToOne
 	private Usuario comprador;
 	

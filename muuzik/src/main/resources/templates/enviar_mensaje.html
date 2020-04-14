@@ -33,15 +33,16 @@
 	<br>
 	
 	<div class="container">
-		<form action="/mensaje/nuevo" method="post">
-			<p>Destinatario:  
-			<input type='text' name='destinatario'><br> </p>
+		<form action="/mensaje/{{destinatario.id}}/nuevo" method="post">
+			<h2>Escribir mensaje para {{destinatario.nick}}</h2>
+			<br><br>
 			<p>Asunto del mensaje:  
 			<input type='text' name='asunto'><br> </p>
 			<p>Cuerpo del mensaje:
 			<textarea name='cuerpo' rows=5 cols=40></textarea></p>
+			<button type="submit" class="btn btn-primary my-1">Enviar</button>
 			<input type="hidden" name="_csrf" value="{{token}}" />
-			<button type="submit" class="btn btn-primary my-1">Enviar</button>	
+			
 		</form>
 	</div>
 	

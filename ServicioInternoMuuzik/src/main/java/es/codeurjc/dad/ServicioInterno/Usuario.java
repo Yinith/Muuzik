@@ -16,15 +16,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-
-import es.codeurjc.dad.anuncio.Anuncio;
-import es.codeurjc.dad.articulo.Articulo;
-import es.codeurjc.dad.chat.Mensaje;
-import es.codeurjc.dad.pedido.Pedido;
-
-
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Usuario {
@@ -35,20 +27,30 @@ public class Usuario {
 	
 	@Column(unique = true)
 	private String nick;
+	@Column(unique = true)
+	private String email;
+	@JsonIgnore
 	private String contrasena; //Contraseña se va a cifrar con una función hash
+	@JsonIgnore
 	private String biografia;
+	
+	@JsonIgnore
 	@ElementCollection(fetch = FetchType.EAGER)
 	private List<String> roles;	   //Roles que puede tener el usuario: user, admin
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="anunciante")
 	private List<Anuncio> anuncios;
 	
+	@JsonIgnore
 	@OneToMany
 	private List<Articulo> articulos;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="destinatario")
 	private List<Mensaje> mensajes;	
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="comprador")
 	private List<Pedido> historialPedidos; // Lista de pedidos comprados
 	
@@ -57,10 +59,11 @@ public class Usuario {
 	
 	public Usuario () {	}
 	
-	public Usuario (String nick, String contrasena, String bio) {
+	public Usuario (String email, String nick, String contrasena, String bio) {
+		this.email = email;
 		this.nick = nick;
 		//Encriptacion de la contraseña; ya no se puede desencriptar nunca
-		this.contrasena = new BCryptPasswordEncoder().encode(contrasena); 
+//		this.contrasena = new BCryptPasswordEncoder().encode(contrasena); 
 		this.biografia = bio;
 		
 		this.roles = new ArrayList<>(); 
@@ -75,9 +78,10 @@ public class Usuario {
 	}
 
 	// Constructor sobrecargado: permite escoger el rol del usuario desde su creacion
-	public Usuario (String nick, String contrasena, String bio, String ... roles) {
+	public Usuario (String email, String nick, String contrasena, String bio, String ... roles) {
+		this.email = email;
 		this.nick = nick;
-		this.contrasena = new BCryptPasswordEncoder().encode(contrasena); 
+//		this.contrasena = new BCryptPasswordEncoder().encode(contrasena); 
 		this.biografia = bio;
 		this.roles = new ArrayList<>(Arrays.asList(roles));
 		
@@ -87,6 +91,14 @@ public class Usuario {
 		this.mensajes = new ArrayList<Mensaje>();
 	}
 
+	public String getEmail() {
+		return email;
+	}
+	
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
 	public String getNick() {
 		return nick;
 	}
@@ -94,15 +106,15 @@ public class Usuario {
 	public void setNick(String nick) {
 		this.nick = nick;
 	}
-
+/*
 	public String getContrasena() {
 		return contrasena;
 	}
-
+/*
 	public void setContrasena(String contrasena) {
 		this.contrasena = new BCryptPasswordEncoder().encode(contrasena);
 	}
-
+*/
 	public String getBio() {
 		return biografia;
 	}
