@@ -8,6 +8,12 @@ Compraventa de instrumentos musicales.
 >         - [Funcionalidades privadas](#funcionalidades-privadas)
 >     - [Entidades principales](#entidades-principales)
 >     - [Servicio interno](#servicio-interno)
+> - [Diagrama UML](#diagrama-uml)  
+> - [Modelo Entidad-Relación](#modelo-entidad-relación)
+> - [Diagrama de Navegación](#diagrama-de-navegación)  
+> - [Despliegue de la máquina virtual](#despliegueVM)
+> - [Capturas de pantalla (Fase 3)](#capturas-de-pantalla-de-cada-página-fase-3)
+> - [Capturas de pantalla (Fase 2)](#capturas-de-pantalla-en-fase-2)
 > - [Equipo de desarrollo](#equipo-de-desarrollo)
 
 ## Descripción
@@ -37,16 +43,82 @@ Muuzik es una web que ayuda a los músicos a comprar y vender instrumentos y equ
 - **Mensaje**: Texto enviado de un usuario a otro, con un timestamp. Puede estar asociado a un articulo.
 
 ## Servicio interno
-- **Alertas por correo electrónico:** Recibir correo electrónico cuando uno de tus productos ha sido comprado, o recibe un nuevo mensaje por la aplicación.
+- **Alertas por correo electrónico:** Recibir correo electrónico cuando uno de tus productos ha sido comprado, o recibes un nuevo mensaje a través de la aplicación.
+  ______________________________________________________________________________________________
   
-# DiagramaUML
+# Diagrama UML
 ![](ImagenesReadme/uml.gif)
 
 # Modelo Entidad-Relación
 ![](ImagenesReadme/ModeloEntidadRelacion.PNG)  
   
-# Diagrama de Navegación en Fase 3
+# Diagrama de Navegación
 ![](ImagenesReadme/DiagramaNavegacionMuuzik.PNG)
+
+_______________________________________________________________________________________________
+
+# Despliegue de la máquina virtual<a name="despliegueVM"></a>
+Hemos creado la máquina virtual de tipo ubuntu/trusty32, utilizando Vagrant a través de línea de comandos. Es necesario configurar la máquina virtual para que se pueda acceder a ella desde el host, a través de la red, por el puerto 8443.
+```
+cd /vagrant/spring
+vagrant up
+vagrant ssh
+```
+
+### Instalación del JRE de Java 8 (dentro de la VM)
+```
+sudo add-apt-repository ppa:openjdk-r/ppa
+sudo apt-get update
+sudo apt-get install openjdk-8-jre
+```
+
+### Instalación de MySQL (en la VM)
+La contraseña de nuestro usuario root es "1234".
+```
+sudo apt-get install mysql-server
+mysql -u root -p
+	mysql> CREATE DATABASE miservidor;
+exit
+```  
+  
+
+### Compilación de la aplicación
+Para que se compile y genere el .jar correctamente, es necesario especificar en el pom.xml que queremos que se haga 'repackage' en la build. Después ejecutamos como Maven Build y escribimos "clean package" en el cuadro 'goals'.
+```
+<build>
+	<plugins>
+		<plugin>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-maven-plugin</artifactId>
+	    	<version>2.2.6.RELEASE</version>
+		    <executions>
+       			<execution>
+    				<goals>
+        				<goal>repackage</goal>
+       				</goals>
+       			</execution>
+   			</executions>			
+   		</plugin>
+	</plugins>
+</build>
+```
+### Ejecución
+Es necesario guardar los ficheros .jar de la web y del servicio a la carpeta compartida entre el host y la máquina virtual, en nuestro caso es "\vagrant\spring" en el host.
+
+Para poder ejecutar los dos .jar es necesario abrir dos terminales e iniciar la máquina virtual en ambos. Después ejecutaremos un .jar en cada uno.
+```
+vagrant up
+vagrant ssh
+cd /vagrant
+java -jar ./muuzik.jar
+```
+```
+vagrant up
+vagrant ssh
+cd /vagrant
+java -jar ./ServicioInternoMuuzik.jar
+```
+___________________________________________________________________________________
 
 
 # Capturas de pantalla de cada página (Fase 3)
@@ -99,10 +171,7 @@ Muuzik es una web que ayuda a los músicos a comprar y vender instrumentos y equ
 _____________________________________________________________
 
 
-# Diagrama de Navegación en Fase 2
-![](ImagenesReadme/DiagramaNavegacionMuuzik.png)
-
-# Capturas de pantalla de cada página
+# Capturas de pantalla en fase 2
 
 **Inicio**
 ![](ImagenesReadme/PantallasFase2/Index.png)
@@ -143,3 +212,5 @@ ________________________________________________________________________________
 
 # Tablero Trello del desarrollo
 https://trello.com/b/WcTbHPPq/muuzik
+
+  [1]: README.md
