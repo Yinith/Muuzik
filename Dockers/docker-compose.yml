@@ -1,0 +1,53 @@
+version: "3.7"
+services:
+
+
+  web:
+    build: .
+    expose:
+      - "8443"
+    links:
+      - db
+    networks:
+      - red1
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db/miservidor
+
+  db:
+    networks:
+      - red1
+    environment:
+      - MYSQL_ROOT_PASSWORD=1234
+      - MYSQL_DATABASE=miservidor
+    image: mysql:5.6
+
+  web2:
+    build: .
+    expose:
+      - "8443"
+    networks:
+      - red1
+    links:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db/miservidor
+
+
+  lb:
+      image: haproxy:2.1.4
+      ports:
+        - "443:443"
+        - "8404:8404"
+      networks:
+        - red1
+      volumes:
+        - "./haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro"
+      links:
+        - web
+        - web2
+      restart: unless-stopped
+
+
+networks:
+    red1:
+      driver: bridge
