@@ -34,7 +34,17 @@ services:
     environment:
       - SPRING_DATASOURCE_URL=jdbc:mysql://db/miservidor
 
-
+  si:
+    build: dfserviciointerno/
+    expose:
+      - "8050"
+    networks:
+      - red1
+    links:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db/miservidor
+  
   lb:
       image: haproxy:2.1.4
       ports:

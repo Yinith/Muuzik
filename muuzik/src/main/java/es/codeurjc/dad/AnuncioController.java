@@ -29,11 +29,6 @@ import es.codeurjc.dad.usuario.UsuarioRepository;
 
 @Controller
 public class AnuncioController {
-	
-	//Si se abre la URL http://127.0.0.1:8080/h2-console y se configura
-	//la URL JDBC con el valor jdbc:h2:mem:testdb se puede acceder a la 
-	//base de datos de la aplicación 
-	//Green: Voy a utilizar esto para crear un pedido de la misma forma que hacemos el anuncio a usuario.
 
 	@Autowired
 	private AnuncioRepository adRepo;
@@ -71,7 +66,7 @@ public class AnuncioController {
 		
 		//Comunicación por REST
 		RestTemplate rest = new RestTemplate();
-		String anuncios_link = "http://localhost:8050/email/anuncio";
+		String anuncios_link = "http://si:8050/email/anuncio";
 		HttpEntity<Anuncio> mailRequest= new HttpEntity<>(anuncio);
 	    rest.exchange(anuncios_link, HttpMethod.POST,mailRequest,Void.class);
 	    
