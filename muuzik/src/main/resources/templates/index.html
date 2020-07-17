@@ -40,11 +40,21 @@
 	<br>
 	
 	<div class="container">
-		<h1> Bienvenido a Muuzik</h1>
-		<h2> Regístrate o inicia sesión para empezar a usar Muuzik</h2>
-		<br>
-		<p align="center"><a href="/register" class="btn btn-primary my-1">Registrarse</a>
-		<a href="/login" class="btn btn-primary my-1">Iniciar sesión</a></p>
+	
+		{{^loggedIn}}
+			<h1> Bienvenido a Muuzik</h1>
+			<h2> Regístrate o inicia sesión para empezar a usar Muuzik</h2>
+			<br>
+			<p align="center"><a href="/register" class="btn btn-primary my-1">Registrarse</a>
+			<a href="/login" class="btn btn-primary my-1">Iniciar sesión</a></p>
+		{{/loggedIn}}
+		{{#loggedIn}}
+			<h1> ¡Hola, {{username}}!</h1>
+			<h2> Ve al tablón para ver las nuevas ofertas de los usuarios.</h2>
+	        <a href="/tablon" class="btn btn-primary my-1">Ver anuncios</a></p>
+	        <a href="/zona-usuario" class="btn btn-primary my-1">Mi zona de usuario</a></p>
+		{{/loggedIn}}		
+		
 	</div>
 	
 </body>
