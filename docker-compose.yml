@@ -1,4 +1,4 @@
-version: "3.7"
+version: "3.8"
 services:
 
 
@@ -21,7 +21,7 @@ services:
       - MYSQL_ROOT_PASSWORD=1234
       - MYSQL_DATABASE=miservidor
     image: mysql:5.6
-
+    
   web2:
     build: .
     expose:
@@ -46,7 +46,7 @@ services:
       - SPRING_DATASOURCE_URL=jdbc:mysql://db/miservidor
   
   lb:
-      image: haproxy:2.1.4
+      image: haproxy:2.2.0
       ports:
         - "443:443"
         - "8404:8404"

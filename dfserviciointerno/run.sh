@@ -4,4 +4,4 @@ while ! nc -z db 3306 ; do
     sleep 2
 done
 
-exec java -jar ServicioInternoMuuzik-0.0.1-SNAPSHOT.jar
+exec java -jar ServicioInterno-0.0.1-SNAPSHOT.jar
