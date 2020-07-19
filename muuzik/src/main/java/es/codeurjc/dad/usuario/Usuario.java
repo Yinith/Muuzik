@@ -157,6 +157,14 @@ public class Usuario {
 		return this.articulos;
 	}
 
+	public List<Mensaje> getMensajes() {
+		return mensajes;
+	}
+
+	public void setMensajes(List<Mensaje> mensajes) {
+		this.mensajes = mensajes;
+	}
+
 	public void setArticulos(List<Articulo> articulos) {
 		this.articulos = articulos;
 	}
