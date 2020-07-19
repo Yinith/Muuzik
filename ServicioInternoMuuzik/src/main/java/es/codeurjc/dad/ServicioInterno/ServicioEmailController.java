@@ -9,10 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-
 @RestController
 public class ServicioEmailController {
-	
 
 	@Autowired
 	private PedidoRepository peRepo;
@@ -20,76 +18,74 @@ public class ServicioEmailController {
 	private UsuarioRepository userRepo;
 	@Autowired
 	private MensajeRepository msgRepo;
-	
+	@Autowired
+	private AnuncioRepository adRepo;
+
 	private JavaMailSenderImpl servicioEmail = new JavaMailSenderImpl();
-	
-	private ServicioEmail email; 
-	
+
+	private ServicioEmail email;
+
 	public ServicioEmailController(ServicioEmail email) {
-	        this.email = email;
-	        this.propiedadesEmail();
+		this.email = email;
+		this.propiedadesEmail();
 	}
 
 	public void propiedadesEmail() {
-	        
+
 		servicioEmail.setHost(email.getHost());
 		servicioEmail.setPort(2525);
-		//servicioEmail.setPort(2525);
+		// servicioEmail.setPort(2525);
 		servicioEmail.setUsername(email.getUsername());
 		servicioEmail.setPassword(email.getPassword());
 	}
-	
-	
+
 	@PostMapping("/email/pedido")
-	public void emailPedido(@RequestBody Pedido pedido)
-	{
+	public void emailPedido(@RequestBody Pedido pedido) {
 		Pedido ped = peRepo.findById(pedido.getId()).get();
-		
+
 		Anuncio anuncio = ped.getAnuncio();
 		Usuario vendedor = anuncio.getAnunciante();
 		String comprador = ped.getComprador().getNick();
-		
+
 		SimpleMailMessage envemail = new SimpleMailMessage();
 		envemail.setFrom("Muuzik");
 		envemail.setTo(vendedor.getEmail());
 		envemail.setSubject("Te han hecho un pedido.");
-		envemail.setText("El usuario "+comprador+" ha realizado un pedido sobre tu anuncio llamado: "
-				+ anuncio.getArticulo().getNombre()+", con precio "+anuncio.getPrecio()+"€.");
+		envemail.setText("El usuario " + comprador + " ha realizado un pedido sobre tu anuncio llamado: "
+				+ anuncio.getArticulo().getNombre() + ", con precio " + anuncio.getPrecio() + "€.");
 		servicioEmail.send(envemail);
-		
+
 	}
-	
+
 	@PostMapping("/email/anuncio")
-    public void notificarNuevoAnuncio(@RequestBody Anuncio anuncio)
-    {
-        List<Usuario> users = userRepo.findAll();
-        
-        
-        for(Usuario singleuser : users)
-        {
-            SimpleMailMessage envemail = new SimpleMailMessage();
-            envemail.setFrom("Muuzik");
-            envemail.setTo(singleuser.getEmail());
-            envemail.setSubject("Nuevo anuncio publicado");
-            envemail.setText("Hay un nuevo instrumento que podria interesarte.");
-            servicioEmail.send(envemail);
-        }
-    }
-	
-	@PostMapping("/email/mensaje")
-	public void notificarMensaje(@RequestBody Mensaje mensaje)
-    {
-		Mensaje msg = msgRepo.findById(mensaje.getId()).get();
+	public void notificarNuevoAnuncio(@RequestBody Anuncio anuncio) {
 		
+		Anuncio an = adRepo.findById(anuncio.getId()).get();
+		Usuario vendedor = an.getAnunciante();
+		
+		SimpleMailMessage envemail = new SimpleMailMessage();
+		
+		envemail.setFrom("Muuzik");
+		envemail.setTo(vendedor.getEmail());
+		envemail.setSubject("Nuevo anuncio publicado");
+		envemail.setText("Se te ha publicado el anuncio correctamente.");
+		servicioEmail.send(envemail);
+
+	}
+
+	@PostMapping("/email/mensaje")
+	public void notificarMensaje(@RequestBody Mensaje mensaje) {
+		Mensaje msg = msgRepo.findById(mensaje.getId()).get();
+
 		Usuario remitente = msg.getRemitente();
 		Usuario dest = msg.getDestinatario();
-		
+
 		SimpleMailMessage envemail = new SimpleMailMessage();
 		envemail.setFrom("Muuzik");
 		envemail.setTo(dest.getEmail());
 		envemail.setSubject("Tienes un mensaje nuevo");
-		envemail.setText("Revisa tu bandeja de entrada, el usuario "+remitente.getNick()+" ha contactado contigo.");
+		envemail.setText("Revisa tu bandeja de entrada, el usuario " + remitente.getNick() + " ha contactado contigo.");
 		servicioEmail.send(envemail);
-		
-    }
+
+	}
 }

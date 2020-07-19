@@ -69,7 +69,7 @@ public class PedidoController {
 			
 			//Comunicación por REST
 			RestTemplate rest = new RestTemplate();
-			String pedido_url = "http://si:8050/email/pedido";
+			String pedido_url = "http://lbsi/email/pedido";
 			HttpEntity<Pedido> pedidoBody= new HttpEntity<>(pedido);
 			
 //			rest.getInterceptors().add(new BasicAuthenticationInterceptor("user", "pass"));

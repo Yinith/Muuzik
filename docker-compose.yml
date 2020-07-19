@@ -8,7 +8,7 @@ services:
       - "8443"
     links:
       - db
-      - si
+      - lbsi
     networks:
       - red1
     environment:
@@ -30,11 +30,22 @@ services:
       - red1
     links:
       - db
-      - si
+      - lbsi
     environment:
       - SPRING_DATASOURCE_URL=jdbc:mysql://db/miservidor
 
   si:
+    build: dfserviciointerno/
+    expose:
+      - "8050"
+    networks:
+      - red1
+    links:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db/miservidor
+
+  si2:
     build: dfserviciointerno/
     expose:
       - "8050"
@@ -57,6 +68,20 @@ services:
       links:
         - web
         - web2
+      restart: unless-stopped
+
+  lbsi:
+      image: haproxy:2.2.0
+      ports:
+        - "80:80"
+        - "8405:8405"
+      networks:
+        - red1
+      volumes:
+        - "./dfserviciointerno/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro"
+      links:
+        - si
+        - si2
       restart: unless-stopped
 
 
