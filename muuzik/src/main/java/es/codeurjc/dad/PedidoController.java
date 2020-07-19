@@ -3,6 +3,8 @@ package es.codeurjc.dad;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.CacheManager;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.client.support.BasicAuthenticationInterceptor;
@@ -33,14 +35,18 @@ public class PedidoController {
 	private ArticuloRepository artRepo;
 	@Autowired
 	private PedidoRepository peRepo; 
+	@Autowired
+	private CacheManager cacheManager;
 	
 	
-	
+	@CacheEvict(cacheNames="anuncios", allEntries=true)
 	@GetMapping("/hacerPedido/{id}")
 	public String hacerPedido(Model model, @PathVariable long id, HttpServletRequest request) {
 		
 		Usuario comprador = userRepo.findByNick(request.getUserPrincipal().getName());
 		Anuncio anuncio = adRepo.findById(id).get();
+		
+		cacheManager.getCache("anuncios").invalidate();
 		
 		model.addAttribute("userActual", comprador);
 		model.addAttribute("username", comprador.getNick());
