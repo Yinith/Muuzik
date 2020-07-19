@@ -6,7 +6,6 @@ import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
@@ -55,7 +54,7 @@ public class AnuncioController {
 		return "nuevoAnuncio_form";
 	}
 	
-	@CacheEvict(cacheNames="anuncios", allEntries=true)
+
 	@PostMapping("/anuncio/nuevo")
 	public String nuevoAnuncio(Model model, @RequestParam String nombre, @RequestParam int precio, @RequestParam(required=false) String categoria, @RequestParam(defaultValue="0") int anoFabricacion, @RequestParam String comentario, HttpServletRequest request) {
 		Usuario usuarioActual = usRepo.findByNick(request.getUserPrincipal().getName());

@@ -18,8 +18,11 @@ public class Anuncio {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
+	@JsonIgnore
 	private String comentario;
+	@JsonIgnore
 	private int precio;
+	@JsonIgnore
 	private boolean vendido;
 	
 	@JsonIgnore
