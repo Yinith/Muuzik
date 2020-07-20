@@ -19,6 +19,10 @@ Compraventa de instrumentos musicales.
 ## Descripción
 Muuzik es una web que ayuda a los músicos a comprar y vender instrumentos y equipo musical de segunda mano entre particulares. Enfocado a la venta de equipo profesional y especializado, pero también para instrumentos de iniciación.
 
+## Vídeo de presentación de la web  
+[![MiniaturaVideo](ImagenesReadme/MiniaturaVideo.png)](https://www.youtube.com/watch?v=V15uJd0LuXs)
+https://www.youtube.com/watch?v=V15uJd0LuXs
+
 ## Funcionalidades
 ### Funcionalidades públicas
 - Hacer una búsqueda de un cierto artículo por nombre, con posibilidad de filtrado (ciudad del vendedor, precios, fabricante, otras etiquetas).
@@ -45,15 +49,22 @@ Muuzik es una web que ayuda a los músicos a comprar y vender instrumentos y equ
 ## Servicio interno
 - **Alertas por correo electrónico:** Recibir correo electrónico cuando uno de tus productos ha sido comprado, o recibes un nuevo mensaje a través de la aplicación.
   ______________________________________________________________________________________________
-  
+
+# Diagrama del despliegue en Docker
+Este es el esquema de contenedores Docker y los balanceadores de carga HAProxy empleados.
+![DespliegueDocker](ImagenesReadme/DiagramaDocker.png)
+
 # Diagrama UML
-![](ImagenesReadme/uml.gif)
+![](ImagenesReadme/UMLFase4.gif)
 
 # Modelo Entidad-Relación
 ![](ImagenesReadme/ModeloEntidadRelacion.PNG)  
   
 # Diagrama de Navegación
 ![](ImagenesReadme/DiagramaNavegacionMuuzik.PNG)
+
+# Diagrama UML del Servicio Interno
+![](ImagenesReadme/UMLServicioInternoFase4.gif)
 
 _______________________________________________________________________________________________
 
